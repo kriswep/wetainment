@@ -1,0 +1,8 @@
+{
+  "short_name": "Christoph Benjamin's portfolio",
+  "name": "Christoph Benjamin Webers portfolio page",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "orientation": "landscape",
+  "theme_color": "#2196F3"
+}

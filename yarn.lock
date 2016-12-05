@@ -1934,6 +1934,12 @@ dom-helpers@^2.4.0:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/dom-helpers/-/dom-helpers-2.4.0.tgz#9bb4b245f637367b1fa670274272aa28fe06c367"
 
+dom-urls@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/dom-urls/-/dom-urls-1.1.0.tgz#001ddf81628cd1e706125c7176f53ccec55d918e"
+  dependencies:
+    urijs "^1.16.1"
+
 dom-walk@^0.1.0:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/dom-walk/-/dom-walk-0.1.1.tgz#672226dc74c8f799ad35307df936aba11acd6018"
@@ -2086,6 +2092,10 @@ es6-map@^0.1.3:
     es6-set "~0.1.3"
     es6-symbol "~3.1.0"
     event-emitter "~0.3.4"
+
+es6-promise@^4.0.5:
+  version "4.0.5"
+  resolved "https://registry.yarnpkg.com/es6-promise/-/es6-promise-4.0.5.tgz#7882f30adde5b240ccfa7f7d78c548330951ae42"
 
 es6-set@^0.1.4, es6-set@~0.1.3:
   version "0.1.4"
@@ -2836,7 +2846,7 @@ glob@^6.0.1:
     once "^1.3.0"
     path-is-absolute "^1.0.0"
 
-glob@^7.0.0, glob@^7.0.3, glob@^7.0.5, glob@~7.1.1:
+glob@^7.0.0, glob@^7.0.3, glob@^7.0.5, glob@^7.1.1, glob@~7.1.1:
   version "7.1.1"
   resolved "https://registry.yarnpkg.com/glob/-/glob-7.1.1.tgz#805211df04faaf1c63a3600306cdf5ade50b2ec8"
   dependencies:
@@ -3999,6 +4009,10 @@ lodash.deburr@^3.0.0:
   dependencies:
     lodash._root "^3.0.0"
 
+lodash.defaults@^4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/lodash.defaults/-/lodash.defaults-4.2.0.tgz#d09178716ffea4dde9e5fb7b37f6f0802274580c"
+
 lodash.endswith@^4.0.1:
   version "4.2.1"
   resolved "https://registry.yarnpkg.com/lodash.endswith/-/lodash.endswith-4.2.1.tgz#fed59ac1738ed3e236edd7064ec456448b37bc09"
@@ -4083,7 +4097,7 @@ lodash.template@^3.0.0:
     lodash.restparam "^3.0.0"
     lodash.templatesettings "^3.0.0"
 
-lodash.template@^4.2.4:
+lodash.template@^4.2.4, lodash.template@^4.4.0:
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/lodash.template/-/lodash.template-4.4.0.tgz#e73a0385c8355591746e020b99679c690e68fba0"
   dependencies:
@@ -4814,6 +4828,12 @@ path-root@^0.1.1:
   dependencies:
     path-root-regex "^0.1.0"
 
+path-to-regexp@^1.0.1:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/path-to-regexp/-/path-to-regexp-1.7.0.tgz#59fde0f435badacba103a84e9d3bc64e96b9937d"
+  dependencies:
+    isarray "0.0.1"
+
 path-type@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/path-type/-/path-type-1.1.0.tgz#59c44f7ee491da704da415da5a4070ba4f8fe441"
@@ -5472,6 +5492,12 @@ preserve@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/preserve/-/preserve-0.2.0.tgz#815ed1f6ebc65926f865b310c0713bcb3315ce4b"
 
+pretty-bytes@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/pretty-bytes/-/pretty-bytes-3.0.1.tgz#27d0008d778063a0b4811bb35c79f1bd5d5fbccf"
+  dependencies:
+    number-is-nan "^1.0.0"
+
 private@^0.1.6, private@~0.1.5:
   version "0.1.6"
   resolved "https://registry.yarnpkg.com/private/-/private-0.1.6.tgz#55c6a976d0f9bafb9924851350fe47b9b5fbb7c1"
@@ -6117,6 +6143,10 @@ semver@^5.0.1, semver@^5.1.0, semver@^5.3.0, semver@~5.3.0, "semver@2 || 3 || 4 
   version "5.3.0"
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.3.0.tgz#9b2ce5d3de02d17c6012ad326aa6b4d0cf54f94f"
 
+serviceworker-cache-polyfill@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/serviceworker-cache-polyfill/-/serviceworker-cache-polyfill-4.0.0.tgz#de19ee73bef21ab3c0740a37b33db62464babdeb"
+
 set-blocking@^2.0.0, set-blocking@~2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/set-blocking/-/set-blocking-2.0.0.tgz#045f9782d011ae9a6803ddd382b24392b3d890f7"
@@ -6441,6 +6471,27 @@ svgo@^0.7.0:
     sax "~1.2.1"
     whet.extend "~0.9.9"
 
+sw-precache:
+  version "4.2.3"
+  resolved "https://registry.yarnpkg.com/sw-precache/-/sw-precache-4.2.3.tgz#2ba4c213f962d3d138a9c454c1d0c7d3296762bc"
+  dependencies:
+    dom-urls "^1.1.0"
+    es6-promise "^4.0.5"
+    glob "^7.1.1"
+    lodash.defaults "^4.2.0"
+    lodash.template "^4.4.0"
+    meow "^3.7.0"
+    mkdirp "^0.5.1"
+    pretty-bytes "^3.0.1"
+    sw-toolbox "^3.4.0"
+
+sw-toolbox@^3.4.0:
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/sw-toolbox/-/sw-toolbox-3.4.0.tgz#a16efecf4a79ed32191cf1923525f2ee89bc76dc"
+  dependencies:
+    path-to-regexp "^1.0.1"
+    serviceworker-cache-polyfill "^4.0.0"
+
 systemjs-builder@^0.15.33, systemjs-builder@0.15.34:
   version "0.15.34"
   resolved "https://registry.yarnpkg.com/systemjs-builder/-/systemjs-builder-0.15.34.tgz#6f1b7437e681e395bbdadb2e0b9d4bfd86f1ce56"
@@ -6746,6 +6797,10 @@ units-css@^0.4.0:
 unzip-response@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/unzip-response/-/unzip-response-1.0.2.tgz#b984f0877fc0a89c2c773cc1ef7b5b232b5b06fe"
+
+urijs@^1.16.1:
+  version "1.18.4"
+  resolved "https://registry.yarnpkg.com/urijs/-/urijs-1.18.4.tgz#0c97a17a0b0e4a2e635a565c2f16c0f180605e28"
 
 url-loader@^0.5.7:
   version "0.5.7"
