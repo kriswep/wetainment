@@ -17,7 +17,7 @@ My recommendation so far is: Use [nodeclipse](http://www.nodeclipse.org/).
 
 Howto install:
 
-It’s probably best to use the [Eclipse Java EE](https://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/lunar) version of eclipse, since it has elementary plugins like git support preinstalled. After starting Eclipse (you need a Java RE), just goto Help-Install New Software and add the nodeclipse update site [**http://www.nodeclipse.org/updates/**](http://www.nodeclipse.org/updates/) . There should be the ._Features Set_ group with a _Features included in Enide Studio_ option. Use that and feel free to check everything else you consider useful. I like the _StartExplorer Feature_ addon, which allows you to easily open your shell in the current path, very useful if you consider using grunt, which you should.
+It’s probably best to use the [Eclipse Java EE](https://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/lunar) version of eclipse, since it has elementary plugins like git support preinstalled. After starting Eclipse (you need a Java RE), just goto Help-Install New Software and add the nodeclipse update site [http://www.nodeclipse.org/updates/](http://www.nodeclipse.org/updates/) . There should be the ._Features Set_ group with a _Features included in Enide Studio_ option. Use that and feel free to check everything else you consider useful. I like the _StartExplorer Feature_ addon, which allows you to easily open your shell in the current path, very useful if you consider using grunt, which you should.
 
 This setup allows you to create node.js project with New-Project-Nodeclipse-Node.js Project, as well as debugging of your node.js server component.
 
