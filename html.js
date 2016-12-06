@@ -27,7 +27,9 @@ module.exports = React.createClass({
                     <title>
                         {title}
                     </title>
+                    <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32" />
                     <link rel="manifest" href="/manifest.json" />
+                    <meta name="theme-color" content="#2196F3" />
                     {font}
                     {css}
                 </head>
@@ -36,8 +38,6 @@ module.exports = React.createClass({
                     <script src={prefixLink('/register-worker.js')} />
                     <script src={prefixLink(`/bundle.js?t=${BUILD_TIME}`)} />
                 </body>
-                <script>/* global document, window, require */
-                </script>
             </html>
         )
     },

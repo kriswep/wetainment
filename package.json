@@ -5,7 +5,7 @@
   "main": "n/a",
   "scripts": {
     "dev": "gatsby develop",
-    "build": "npm run clean && gatsby build --prefix-links && cp static/js/*.js* public/ && sw-precache --root=public",
+    "build": "npm run clean && gatsby build --prefix-links && cp static/js/*.js* public/ && sw-precache --root=public && cp static/img/*.png public/ ",
     "clean:public": "rm -rf public",
     "clean": "npm run clean:public",
     "copy:files": "cp pages/*.{pdf,txt,png,jpg,jpeg,gif} public/",
