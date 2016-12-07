@@ -4,8 +4,8 @@
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",
-  "theme_color": "#2196f3",
-  "background_color": "#b1dafb",
+  "theme_color": "#f7a046",
+  "background_color": "#000000",
   "icons": [
     {
       "src": "/ic_launcher_48.png",
