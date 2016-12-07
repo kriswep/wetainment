@@ -5,7 +5,7 @@
   "display": "standalone",
   "orientation": "portrait",
   "theme_color": "#f7a046",
-  "background_color": "#000000",
+  "background_color": "#ffffff",
   "icons": [
     {
       "src": "/ic_launcher_48.png",
