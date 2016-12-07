@@ -21,4 +21,4 @@ It’s probably best to use the [Eclipse Java EE](https://www.eclipse.org/downlo
 
 This setup allows you to create node.js project with New-Project-Nodeclipse-Node.js Project, as well as debugging of your node.js server component.
 
-<sub><sup>Side: This article was originally published at [Medium](https://medium.com/@kriswep/how-i-enabled-http2-on-my-vserver-and-so-can-you-ce91bdc5a959).</sup></sub>
+<sub><sup>Side: This article was originally published at [Medium](https://medium.com/@kriswep/setting-up-eclipse-ide-for-node-js-development-aa6cea19f94).</sup></sub>
