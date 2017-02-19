@@ -9,14 +9,14 @@ description: "Writing unit tests for your React index.js file can be a little tr
 
 #### with Create React App and Jest
 
-**Tl,dr: Unit testing in JavaScript can be an art. To test my React index component I had to use a neat trick, which I want to share here. You should just read it :)**
+**Tl,dr: Unit testing in JavaScript can be an difficult art. To test my React index.js component I had to use a neat trick, which I want to share here. You should just read it :)**
 
-In a recent side project of mine I used [React](https://facebook.github.io/react/), 
+In a recent JavaScript side project of mine I used [React](https://facebook.github.io/react/), 
 more specificlly [Create React App (CRA)](https://github.com/facebookincubator/create-react-app). 
 CRA sets you up with [Jest](https://facebook.github.io/jest/) as a testing platform, which I enjoyed using. 
 That's mostly because a lot of things work out of the box and you can start quickly. Also their watch CLI is awesome.
 
-However I struggled with writing unit tests for the index.js start file. That's that file which imports your App component 
+However, I struggled with writing unit tests for the index.js start file. That's that file which imports your App component 
 and renders it to the DOM, something like that:
 ```JavaScript
 // index.js 
@@ -30,16 +30,16 @@ ReactDOM.render(
 );
 
 ```
-Well, not a lot is happening here, so I wanted to just have a smoke test for that. A smoke test basically checks, 
-if the thing crashes or not. I just wanted to import that index file,
+Well, not a lot is happening here, so I wanted to just have a smoke test for that. A smoke test basically checks 
+if the component crashes or not. My plan was to import that index file,
 jsonify it and do a snapshot test with it. For those who don't know,
-snapshot testing is a thing, which checks if a string is the same as before.
-It's sper simple in Jest. Read more [here](https://facebook.github.io/jest/docs/snapshot-testing.html#content).
+snapshot testing checks if a string is the same as before after your changes.
+It's super simple in Jest. Read more [here](https://facebook.github.io/jest/docs/snapshot-testing.html#content).
 
 Now the problems started. As you might see, index.js doesn't
 really export something testable, like a function. Instead, it renders
 to the DOM. In a first try, I imported the index component to my test file,
-JSON stringifed and snapshot tested it. Like that, better don't try that at home
+JSON stringifed and snapshot tested it. Like so, better don't try that at home:
 ```JavaScript
 // index.test.js 
 import Index from './index.js';
@@ -49,8 +49,8 @@ it('renders without crashing', () => {
 });
 ```
 BUT... `TypeError: Converting circular structure to JSON`.
-That was frustrating, especially since I knew the index code works quite well.
-Ok, long story short, I messed with that, debugged it, googled it, lost almost my mind and
+That was frustrating, especially since I knew the index code worked quite well.
+Ok, long story short, I messed with that, googled it, debugged it, lost almost my mind and
 found out, that there is a _reactInternalInstance property in that component, which we cannot stringify.
 Hmm, I ended up with that (you could almost try this at home):
 ```JavaScript
@@ -66,7 +66,7 @@ it('renders without crashing', () => {
 That circular thing is gone, which is great, progress, victory? Sadly not quite.
 `Invariant Violation: _registerComponent(...): Target container is not a DOM element.`
 Yeah, fair enough, I wanted to render to an elemnet with id root, 
-which I didn't have in my test environment, Got it. After giving it
+which I didn't have in my test environment, got it. After giving it
 a little thougt I ended up with changing the index component. 
 ```JavaScript
 // index.js
@@ -83,9 +83,10 @@ Give me a break, that does not really hurt in production and the test
 passes fine. Green, I have a snapshot and will be notified when the index component 
 crashes due to me doing stupid things in the future.
 
-If you do that yourself, you could be alright, you could meet additional problems based on your environment.
-I hope you don't.
+If you do that yourself, you could be alright or you could meet additional problems based on your environment.
+I hope you don't but if you're unlucky I would recommend you trying out shallow rendering with 
+[enzyme](https://github.com/airbnb/enzyme) from airbnb and [enzyme-to-json](https://www.npmjs.com/package/enzyme-to-json) for snapshot testing.
 
-If that helped you out, you have a better method of testing a React
-index component, or you think that's really terrible, 
+If this helped you out, you have a better method of testing a React
+index.js component, or you think that's really terrible, 
 feel free to let me know on my [twitter @kriswep](https://twitter.com/kriswep).
