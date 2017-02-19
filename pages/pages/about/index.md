@@ -8,4 +8,4 @@ My personal portfolio page. I'm a software developer living kind of in the cente
 
 Working for a great medium sized company doing development and consulting in SAP environments.
 
-Personally interested in all thinks JS.
+Personally interested in all thinks JS, this is what I'm talking about here mostly.
