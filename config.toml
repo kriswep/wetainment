@@ -2,12 +2,12 @@ siteTitle = "wetainment"
 siteDescr = "My personal blog/portfolio. ABAP at day, JS at night."
 siteAuthor = "Christoph Benjamin Weber"
 
-siteTelegramUrl = "#"
+siteTelegramUrl = ""
 siteTwitterUrl = "https://twitter.com/kriswep"
 siteGithubUrl = "https://github.com/kriswep"
 siteEmailUrl = "mailto:kriswep@wetainment.com"
-siteRssUrl = "#"
-siteVkUrl = "#"
+siteRssUrl = ""
+siteVkUrl = ""
 
 googleAnalyticsId = ""
 

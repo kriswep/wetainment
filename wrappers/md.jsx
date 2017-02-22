@@ -1,5 +1,5 @@
 import React from 'react'
-import DocumentTitle from 'react-document-title'
+import Helmet from 'react-helmet'
 import SitePost from '../components/SitePost'
 import SitePage from '../components/SitePage'
 import { config } from 'config'
@@ -13,17 +13,24 @@ class MarkdownWrapper extends React.Component {
         layout = post.layout
 
         if (layout != 'page') {
-            template = <SitePost {...this.props}/>
+            template = <SitePost {...this.props} post={post}/>
         } else {
-            template = <SitePage {...this.props}/>
+            template = <SitePage {...this.props} post={post}/>
         }
 
         return (
-            <DocumentTitle title={ `${post.title} - ${config.siteTitle}` }>
-              <div>
-                { template }
-              </div>
-            </DocumentTitle>
+            <div>
+              <Helmet 
+                title={ `${post.title} - ${config.siteTitle}` }
+                meta={[
+                    {"name": "description", "content": post.description},
+                    {"name": "twitter:card", "content": "summary"},
+                    {"name": "twitter:site", "content": post.author},
+                    {"name": "twitter:title", "content": post.title},
+                    {"name": "twitter:description", "content": post.description},
+                ]}    />
+              { template }
+            </div>
             );
     }
 }
