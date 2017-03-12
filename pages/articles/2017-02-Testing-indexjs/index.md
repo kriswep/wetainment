@@ -6,7 +6,7 @@ path: "/testing-indexjs/"
 category: "Testing"
 description: "Writing unit tests for your React index.js file can be a little tricky. Read on how I did it lately..."
 author: "@kriswep"
-readNext: "/enable-http2/"
+readNext: "/tree-shaking/"
 ---
 
 #### with Create React App and Jest
