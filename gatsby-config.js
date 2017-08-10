@@ -1,6 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
+    title: 'wetainment',
+    author: 'Christoph Benjamin Weber',
   },
-  plugins: [`gatsby-plugin-react-helmet`],
-}
+  plugins: ['gatsby-plugin-catch-links', 'gatsby-plugin-react-helmet'],
+};

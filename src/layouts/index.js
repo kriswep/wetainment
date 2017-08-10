@@ -6,7 +6,7 @@ import Helmet from 'react-helmet';
 import './index.css';
 
 const Header = () =>
-  <div
+  (<div
     style={{
       background: 'rebeccapurple',
       marginBottom: '1.45rem',
@@ -31,10 +31,10 @@ const Header = () =>
         </Link>
       </h1>
     </div>
-  </div>;
+  </div>);
 
 const TemplateWrapper = ({ children }) =>
-  <div>
+  (<div>
     <Helmet
       title="Gatsby Default Starter"
       meta={[
@@ -53,7 +53,7 @@ const TemplateWrapper = ({ children }) =>
     >
       {children()}
     </div>
-  </div>;
+  </div>);
 
 TemplateWrapper.propTypes = {
   children: PropTypes.func,
