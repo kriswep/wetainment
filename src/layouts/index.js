@@ -2,21 +2,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'gatsby-link';
 import Helmet from 'react-helmet';
+import 'normalize.css';
 
 import './index.css';
 
 const Header = () =>
-  (<div
+  (<header
     style={{
       background: 'rebeccapurple',
       marginBottom: '1.45rem',
+      'grid-area': 'header',
     }}
   >
     <div
       style={{
-        margin: '0 auto',
         maxWidth: 960,
-        padding: '1.45rem 1.0875rem',
+        padding: '1.45rem 0',
       }}
     >
       <h1 style={{ margin: 0 }}>
@@ -31,10 +32,17 @@ const Header = () =>
         </Link>
       </h1>
     </div>
-  </div>);
+  </header>);
 
 const TemplateWrapper = ({ children }) =>
-  (<div>
+  (<section
+    style={{
+      display: 'grid',
+      'grid-gap': '10px',
+      'grid-template-columns': '120px 1fr',
+      'grid-template-areas': '". header header" "sidebar content content" "sidebar footer footer"',
+    }}
+  >
     <Helmet
       title="wetainment"
       meta={[
@@ -47,17 +55,34 @@ const TemplateWrapper = ({ children }) =>
       ]}
     />
     <Header />
+    <aside
+      style={{
+        'font-size': '0.5rem',
+        'grid-area': 'sidebar',
+      }}
+    >
+      <nav />
+    </aside>
     <div
       style={{
-        margin: '0 auto',
         maxWidth: 960,
-        padding: '0px 1.0875rem 1.45rem',
-        paddingTop: 0,
+        padding: '0',
+        'grid-area': 'content',
       }}
     >
       {children()}
     </div>
-  </div>);
+    <footer
+      style={{
+        'font-size': '0.75rem',
+        'grid-area': 'footer',
+      }}
+    >
+      <p>
+        Made with ❤ by <a href="https://twitter.com/kriswep">@kriswep</a>
+      </p>
+    </footer>
+  </section>);
 
 TemplateWrapper.propTypes = {
   children: PropTypes.func,
