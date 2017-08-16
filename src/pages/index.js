@@ -7,13 +7,26 @@ import Link from 'gatsby-link';
 export default function Index({ data }) {
   const { edges: posts } = data.allMarkdownRemark;
   return (
-    <div className="blog-posts">
+    <div
+      className="blog-posts"
+      style={{
+        display: 'grid',
+        'grid-gap': '10px',
+        'grid-template-columns': '1fr 1fr',
+      }}
+    >
       {posts
         .filter(
           post => post.node.frontmatter.title.length > 0 && post.node.frontmatter.layout === 'post',
         )
         .map(({ node: post }) =>
-          (<div className="blog-post-preview" key={post.id}>
+          (<div
+            className="blog-post-preview"
+            key={post.id}
+            style={{
+              'grid-column': '1 span',
+            }}
+          >
             <h1>
               <Link to={post.frontmatter.path}>
                 {post.frontmatter.title}
