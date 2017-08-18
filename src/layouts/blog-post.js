@@ -1,9 +1,10 @@
+/* globals graphql */
 import React from 'react';
+import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 
-// import '../css/blog-post.css';
-
-export default function Template({ data }) {
+/* eslint-disable react/no-danger */
+const Template = ({ data }) => {
   const { markdownRemark: post } = data;
   return (
     <article className="blog-post-container">
@@ -16,7 +17,14 @@ export default function Template({ data }) {
       <div className="blog-post-content" dangerouslySetInnerHTML={{ __html: post.html }} />
     </article>
   );
-}
+};
+/* eslint-enable react/no-danger */
+
+Template.propTypes = {
+  data: PropTypes.func.isRequired,
+};
+
+export default Template;
 
 export const pageQuery = graphql`
   query BlogPostByPath($path: String!) {

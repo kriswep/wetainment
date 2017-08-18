@@ -36,13 +36,17 @@ const Header = () =>
     </div>
   </header>);
 
-// Create a Wrapper component that'll render a <section> tag with some styles
 const StyledWrapper = styled.section`
   background: papayawhip;
   display: grid;
-  grid-gap: 10px;
+  grid-gap: 3px;
   grid-template-columns: 120px 1fr;
-  grid-template-areas: ". header header" "sidebar content content" "sidebar footer footer";
+  grid-template-areas: "header header header" "content content content" "sidebar sidebar sidebar"
+    "footer footer footer";
+  @media (min-width: 768px) {
+    grid-gap: 10px;
+    grid-template-areas: ". header header" "sidebar content content" "sidebar footer footer";
+  }
 `;
 
 const TemplateWrapper = ({ children }) =>
@@ -65,6 +69,7 @@ const TemplateWrapper = ({ children }) =>
         'grid-area': 'sidebar',
       }}
     >
+      <p>Sidebar</p>
       <nav />
     </aside>
     <div

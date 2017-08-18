@@ -1,20 +1,24 @@
+/* globals graphql */
 import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import Link from 'gatsby-link';
 // import Helmet from 'react-helmet';
 
-// import '../css/index.css'; // add some style if you want!
+const StyledWrapper = styled.div`
+  display: grid;
+  grid-gap: 3px
+  grid-template-columns: 1fr;
+  @media (min-width: 512px) {
+    grid-gap: 10px;
+    grid-template-columns: 1fr 1fr;
+  }
+`;
 
-export default function Index({ data }) {
+const Index = ({ data }) => {
   const { edges: posts } = data.allMarkdownRemark;
   return (
-    <div
-      className="blog-posts"
-      style={{
-        display: 'grid',
-        'grid-gap': '10px',
-        'grid-template-columns': '1fr 1fr',
-      }}
-    >
+    <StyledWrapper className="blog-posts">
       {posts
         .filter(
           post => post.node.frontmatter.title.length > 0 && post.node.frontmatter.layout === 'post',
@@ -28,11 +32,23 @@ export default function Index({ data }) {
             }}
           >
             <h1>
-              <Link to={post.frontmatter.path}>
+              <Link
+                to={post.frontmatter.path}
+                style={{
+                  color: '#222',
+                  textDecoration: 'none',
+                }}
+              >
                 {post.frontmatter.title}
               </Link>
             </h1>
-            <h2>
+            <h2
+              style={{
+                margin: 0,
+                padding: 0,
+                fontSize: '0.7rem',
+              }}
+            >
               {post.frontmatter.date}
             </h2>
             <p>
@@ -40,9 +56,15 @@ export default function Index({ data }) {
             </p>
           </div>),
         )}
-    </div>
+    </StyledWrapper>
   );
-}
+};
+
+Index.propTypes = {
+  data: PropTypes.func.isRequired,
+};
+
+export default Index;
 
 export const pageQuery = graphql`
   query IndexQuery {
