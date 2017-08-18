@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import Link from 'gatsby-link';
 import Helmet from 'react-helmet';
 import 'normalize.css';
@@ -10,7 +11,7 @@ import './index.css';
 const Header = () =>
   (<header
     style={{
-      background: 'rebeccapurple',
+      background: 'palevioletred',
       marginBottom: '1.45rem',
       'grid-area': 'header',
     }}
@@ -35,15 +36,17 @@ const Header = () =>
     </div>
   </header>);
 
+// Create a Wrapper component that'll render a <section> tag with some styles
+const StyledWrapper = styled.section`
+  background: papayawhip;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 120px 1fr;
+  grid-template-areas: ". header header" "sidebar content content" "sidebar footer footer";
+`;
+
 const TemplateWrapper = ({ children }) =>
-  (<section
-    style={{
-      display: 'grid',
-      'grid-gap': '10px',
-      'grid-template-columns': '120px 1fr',
-      'grid-template-areas': '". header header" "sidebar content content" "sidebar footer footer"',
-    }}
-  >
+  (<StyledWrapper>
     <Helmet
       title="wetainment"
       meta={[
@@ -83,7 +86,7 @@ const TemplateWrapper = ({ children }) =>
         Made with ❤ by <a href="https://twitter.com/kriswep">@kriswep</a>
       </p>
     </footer>
-  </section>);
+  </StyledWrapper>);
 
 TemplateWrapper.propTypes = {
   children: PropTypes.func,
