@@ -2,8 +2,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Link from 'gatsby-link';
+// import Link from 'gatsby-link';
 // import Helmet from 'react-helmet';
+
+import StyledLink from '../layouts/link';
 
 const StyledWrapper = styled.div`
   display: grid;
@@ -28,11 +30,11 @@ const Index = ({ data }) => {
             className="blog-post-preview"
             key={post.id}
             style={{
-              'grid-column': '1 span',
+              gridColumn: '1 span',
             }}
           >
             <h1>
-              <Link
+              <StyledLink
                 to={post.frontmatter.path}
                 style={{
                   color: '#222',
@@ -40,7 +42,7 @@ const Index = ({ data }) => {
                 }}
               >
                 {post.frontmatter.title}
-              </Link>
+              </StyledLink>
             </h1>
             <h2
               style={{
@@ -61,7 +63,7 @@ const Index = ({ data }) => {
 };
 
 Index.propTypes = {
-  data: PropTypes.func.isRequired,
+  data: PropTypes.shape().isRequired,
 };
 
 export default Index;

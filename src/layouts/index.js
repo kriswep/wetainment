@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Link from 'gatsby-link';
+// import Link from 'gatsby-link';
 import Helmet from 'react-helmet';
 import 'normalize.css';
 import 'prismjs/themes/prism-okaidia.css';
+
+import StyledLink from './link';
 
 import Sidebar from './sidebar';
 import './index.css';
@@ -23,15 +25,9 @@ const Header = () =>
       }}
     >
       <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: 'white',
-            textDecoration: 'none',
-          }}
-        >
+        <StyledLink to="/" head>
           wetainment
-        </Link>
+        </StyledLink>
       </h1>
     </div>
   </header>);
