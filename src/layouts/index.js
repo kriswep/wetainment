@@ -6,6 +6,7 @@ import Helmet from 'react-helmet';
 import 'normalize.css';
 import 'prismjs/themes/prism-okaidia.css';
 
+import Sidebar from './sidebar';
 import './index.css';
 
 const Header = () =>
@@ -13,7 +14,7 @@ const Header = () =>
     style={{
       background: 'palevioletred',
       marginBottom: '1.45rem',
-      'grid-area': 'header',
+      gridArea: 'header',
     }}
   >
     <div
@@ -40,12 +41,15 @@ const StyledWrapper = styled.section`
   background: papayawhip;
   display: grid;
   grid-gap: 3px;
-  grid-template-columns: 120px 1fr;
+  grid-template-columns: 200px 1fr;
   grid-template-areas: "header header header" "content content content" "sidebar sidebar sidebar"
     "footer footer footer";
   @media (min-width: 768px) {
     grid-gap: 10px;
     grid-template-areas: ". header header" "sidebar content content" "sidebar footer footer";
+  }
+  @media (min-width: 1024px) {
+    grid-template-columns: 320px 1fr;
   }
 `;
 
@@ -63,28 +67,20 @@ const TemplateWrapper = ({ children }) =>
       ]}
     />
     <Header />
-    <aside
-      style={{
-        'font-size': '0.5rem',
-        'grid-area': 'sidebar',
-      }}
-    >
-      <p>Sidebar</p>
-      <nav />
-    </aside>
+    <Sidebar />
     <div
       style={{
         maxWidth: 960,
         padding: '0',
-        'grid-area': 'content',
+        gridArea: 'content',
       }}
     >
       {children()}
     </div>
     <footer
       style={{
-        'font-size': '0.75rem',
-        'grid-area': 'footer',
+        fontSize: '0.75rem',
+        gridArea: 'footer',
       }}
     >
       <p>
