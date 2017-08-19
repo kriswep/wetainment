@@ -13,7 +13,6 @@ const Header = () =>
   (<header
     style={{
       background: 'palevioletred',
-      marginBottom: '1.45rem',
       gridArea: 'header',
     }}
   >
@@ -38,18 +37,21 @@ const Header = () =>
   </header>);
 
 const StyledWrapper = styled.section`
+  min-height: 100vh;
   background: papayawhip;
   display: grid;
   grid-gap: 3px;
-  grid-template-columns: 200px 1fr;
+  grid-template-columns: 17.5rem 1fr;
+  grid-template-rows: auto 1fr auto auto;
   grid-template-areas: "header header header" "content content content" "sidebar sidebar sidebar"
     "footer footer footer";
   @media (min-width: 768px) {
     grid-gap: 10px;
-    grid-template-areas: ". header header" "sidebar content content" "sidebar footer footer";
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas: "sidebar header header" "sidebar content content" "footer footer footer";
   }
   @media (min-width: 1024px) {
-    grid-template-columns: 320px 1fr;
+    grid-template-columns: 20rem 1fr;
   }
 `;
 

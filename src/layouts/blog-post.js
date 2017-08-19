@@ -21,7 +21,7 @@ const Template = ({ data }) => {
 /* eslint-enable react/no-danger */
 
 Template.propTypes = {
-  data: PropTypes.func.isRequired,
+  data: PropTypes.shape().isRequired,
 };
 
 export default Template;

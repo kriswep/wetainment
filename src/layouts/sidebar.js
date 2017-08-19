@@ -9,7 +9,6 @@ import StyledLink from './link';
 const Sidebar = () =>
   (<aside
     style={{
-      fontSize: '0.5rem',
       gridArea: 'sidebar',
     }}
   >
