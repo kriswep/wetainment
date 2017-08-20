@@ -1,7 +1,9 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 import styled from 'styled-components';
-// import Link from 'gatsby-link';
+import TwitterIcon from 'react-icons/lib/fa/twitter';
+import GithubIcon from 'react-icons/lib/fa/github';
+import MailIcon from 'react-icons/lib/fa/envelope-o';
 
 import StyledLink from './link';
 
@@ -29,8 +31,9 @@ const NavLink = styled(StyledLink)`
 `;
 
 const SocialLink = styled.a`
+  font-size: 1.5rem;
   display: inline-block;
-  padding: 0.4rem 1rem;
+  padding: 0.2rem 1rem;
   margin: 0.2rem 0.2rem 0.2rem 0;
   text-decoration: none;
   background-color: #eee;
@@ -66,9 +69,15 @@ const Sidebar = () =>
     </nav>
 
     <nav>
-      <SocialLink href="https://twitter.com/kriswep">T</SocialLink>
-      <SocialLink href="https://github.com/kriswep">G</SocialLink>
-      <SocialLink href="mailto:kriswep@wetainment.com">M</SocialLink>
+      <SocialLink href="https://twitter.com/kriswep">
+        <TwitterIcon />
+      </SocialLink>
+      <SocialLink href="https://github.com/kriswep">
+        <GithubIcon />
+      </SocialLink>
+      <SocialLink href="mailto:kriswep@wetainment.com">
+        <MailIcon />
+      </SocialLink>
     </nav>
   </aside>);
 
