@@ -6,8 +6,8 @@ import PropTypes from 'prop-types';
 const Styled = styled(Link)`
   text-decoration: none;
   color: ${(props) => {
-    if (props.head) return 'white';
-    else if (props.nav) return '#5d93ff';
+    if (props['data-head']) return 'white';
+    else if (props['data-nav']) return '#5d93ff';
     return 'black';
   }};
 `;
@@ -20,7 +20,7 @@ const StyledLink = ({ to, children, className, ...rest }) =>
 StyledLink.propTypes = {
   to: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
-  className: PropTypes.string,
+  className: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
 };
 
 StyledLink.defaultProps = {

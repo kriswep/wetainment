@@ -1,5 +1,5 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import TwitterIcon from 'react-icons/lib/fa/twitter';
 import GithubIcon from 'react-icons/lib/fa/github';
@@ -9,6 +9,7 @@ import StyledLink from './link';
 
 const ProfileImage = styled.img`
   display: none;
+  border-radius: 50%;
   @media (min-width: 768px) {
     display: inline;
   }
@@ -25,8 +26,8 @@ const NavLink = styled(StyledLink)`
   margin: 0.2rem 0.2rem 0.2rem 0;
   @media (min-width: 768px) {
     display: block;
-  padding: 0.4rem 0;
-  margin: 0.2rem 0;
+    padding: 0.4rem 0;
+    margin: 0.2rem 0;
   }
 `;
 
@@ -40,23 +41,15 @@ const SocialLink = styled.a`
   color: black;
 `;
 
-// const Sidebar = ({ data }) =>
-const Sidebar = () =>
-  (<aside
-    style={{
-      gridArea: 'sidebar',
-    }}
-  >
+const Sidebar = ({ className }) =>
+  // const Sidebar = () =>
+  (<aside className={className}>
     <header>
       <StyledLink to="/">
-        <ProfileImage
-          style={{ borderRadius: '50%' }}
-          src="../img/photo.jpg"
-          alt="Portrait showing myself"
-        />
+        <ProfileImage src="../img/photo.jpg" alt="Portrait showing myself" />
       </StyledLink>
       <H1>
-        <StyledLink nav to="/">
+        <StyledLink data-nav to="/">
           Christoph Benjamin Weber
         </StyledLink>
       </H1>
@@ -81,8 +74,12 @@ const Sidebar = () =>
     </nav>
   </aside>);
 
-// Sidebar.defaultProps = {
-//   data: PropTypes.func,
-// };
+Sidebar.propTypes = {
+  className: PropTypes.string,
+};
+
+Sidebar.defaultProps = {
+  className: PropTypes.string,
+};
 
 export default Sidebar;

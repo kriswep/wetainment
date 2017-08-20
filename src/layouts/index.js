@@ -11,27 +11,6 @@ import StyledLink from './link';
 import Sidebar from './sidebar';
 import './index.css';
 
-const Header = () =>
-  (<header
-    style={{
-      background: 'palevioletred',
-      gridArea: 'header',
-    }}
-  >
-    <div
-      style={{
-        maxWidth: 960,
-        padding: '1.45rem 0',
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <StyledLink to="/" head>
-          wetainment
-        </StyledLink>
-      </h1>
-    </div>
-  </header>);
-
 const StyledWrapper = styled.section`
   min-height: 100vh;
   background: papayawhip;
@@ -51,6 +30,43 @@ const StyledWrapper = styled.section`
   }
 `;
 
+const StyledHeader = styled.header`
+  background: palevioletred;
+  grid-area: header;
+  max-width: 960;
+  padding: 1.45rem 0;
+  margin: 0;
+`;
+
+const H1 = styled.h1`
+  padding: 0;
+  margin: 0;
+`;
+
+const Header = () =>
+  (<StyledHeader>
+    <H1>
+      <StyledLink to="/" data-head>
+        wetainment
+      </StyledLink>
+    </H1>
+  </StyledHeader>);
+
+const StyledSidebar = styled(Sidebar)`
+  grid-area: sidebar;
+`;
+
+const ContentWrapper = styled.div`
+  max-width: 960px;
+  padding: 0;
+  grid-area: content;
+`;
+
+const StyledFooter = styled.footer`
+  grid-area: footer;
+  font-size: 0.75rem;
+`;
+
 const TemplateWrapper = ({ children }) =>
   (<StyledWrapper>
     <Helmet
@@ -61,30 +77,19 @@ const TemplateWrapper = ({ children }) =>
           content:
             "wetainment is Christoph Benjamin's personal blog and portfolio. Writing about JavaScript",
         },
-        { name: 'keywords', content: 'blog, portfolio' },
+        { name: 'keywords', content: 'blog, portfolio, JavaScript' },
       ]}
     />
     <Header />
-    <Sidebar />
-    <div
-      style={{
-        maxWidth: 960,
-        padding: '0',
-        gridArea: 'content',
-      }}
-    >
+    <StyledSidebar />
+    <ContentWrapper>
       {children()}
-    </div>
-    <footer
-      style={{
-        fontSize: '0.75rem',
-        gridArea: 'footer',
-      }}
-    >
+    </ContentWrapper>
+    <StyledFooter>
       <p>
         Made with ❤ by <a href="https://twitter.com/kriswep">@kriswep</a>
       </p>
-    </footer>
+    </StyledFooter>
   </StyledWrapper>);
 
 TemplateWrapper.propTypes = {

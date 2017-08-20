@@ -9,12 +9,24 @@ import StyledLink from '../layouts/link';
 
 const StyledWrapper = styled.div`
   display: grid;
-  grid-gap: 3px
+  grid-gap: 3px;
   grid-template-columns: 1fr;
   @media (min-width: 512px) {
     grid-gap: 10px;
     grid-template-columns: 1fr 1fr;
   }
+`;
+
+const PostPreviewWrapper = styled.div`grid-column: 1 span;`;
+
+const PostLink = styled(StyledLink)`
+  color: #222;
+`;
+
+const H2 = styled.div`
+  margin: 0;
+  padding: 0;
+  font-size: 0.7rem;
 `;
 
 const Index = ({ data }) => {
@@ -26,37 +38,19 @@ const Index = ({ data }) => {
           post => post.node.frontmatter.title.length > 0 && post.node.frontmatter.layout === 'post',
         )
         .map(({ node: post }) =>
-          (<div
-            className="blog-post-preview"
-            key={post.id}
-            style={{
-              gridColumn: '1 span',
-            }}
-          >
+          (<PostPreviewWrapper className="blog-post-preview" key={post.id}>
             <h1>
-              <StyledLink
-                to={post.frontmatter.path}
-                style={{
-                  color: '#222',
-                  textDecoration: 'none',
-                }}
-              >
+              <PostLink to={post.frontmatter.path}>
                 {post.frontmatter.title}
-              </StyledLink>
+              </PostLink>
             </h1>
-            <h2
-              style={{
-                margin: 0,
-                padding: 0,
-                fontSize: '0.7rem',
-              }}
-            >
+            <H2>
               {post.frontmatter.date}
-            </h2>
+            </H2>
             <p>
               {post.excerpt}
             </p>
-          </div>),
+          </PostPreviewWrapper>),
         )}
     </StyledWrapper>
   );
