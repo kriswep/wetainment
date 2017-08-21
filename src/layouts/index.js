@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import Helmet from 'react-helmet';
 import 'normalize.css';
 import 'prismjs/themes/prism-okaidia.css';
+import 'typeface-roboto'; // eslint-disable-line import/extensions
 
 import StyledLink from './link';
 
@@ -13,7 +14,7 @@ import './index.css';
 
 const StyledWrapper = styled.section`
   min-height: 100vh;
-  background: papayawhip;
+  background: #fafafa;
   display: grid;
   grid-gap: 3px;
   grid-template-columns: 17.5rem 1fr;
@@ -31,9 +32,9 @@ const StyledWrapper = styled.section`
 `;
 
 const StyledHeader = styled.header`
-  background: palevioletred;
   grid-area: header;
-  max-width: 960;
+  border-bottom: solid 1px #eee;
+  max-width: 960px;
   padding: 1.45rem 0;
   margin: 0;
 `;
@@ -54,6 +55,11 @@ const Header = () =>
 
 const StyledSidebar = styled(Sidebar)`
   grid-area: sidebar;
+  border-top: solid 1px #eee;
+  @media (min-width: 768px) {
+    border-top: none;
+    border-right: solid 1px #eee;
+  }
 `;
 
 const ContentWrapper = styled.div`

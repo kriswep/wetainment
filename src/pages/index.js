@@ -23,11 +23,16 @@ const PostLink = styled(StyledLink)`
   color: #222;
 `;
 
-const H2 = styled.div`
+const Date = styled.div`
   margin: 0;
   padding: 0;
-  font-size: 0.7rem;
+  font-size: 1rem;
+  font-weight: bold;
 `;
+
+const PostExcerpt = styled.div`color: #222;`;
+
+const H1 = styled.h1`margin: 0;`;
 
 const Index = ({ data }) => {
   const { edges: posts } = data.allMarkdownRemark;
@@ -39,17 +44,17 @@ const Index = ({ data }) => {
         )
         .map(({ node: post }) =>
           (<PostPreviewWrapper key={post.id}>
-            <h1>
+            <Date>
+              {post.frontmatter.date}
+            </Date>
+            <H1>
               <PostLink to={post.frontmatter.path}>
                 {post.frontmatter.title}
               </PostLink>
-            </h1>
-            <H2>
-              {post.frontmatter.date}
-            </H2>
-            <p>
+            </H1>
+            <PostExcerpt>
               {post.excerpt}
-            </p>
+            </PostExcerpt>
           </PostPreviewWrapper>),
         )}
     </StyledWrapper>
