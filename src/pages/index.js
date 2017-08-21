@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 // import Link from 'gatsby-link';
 // import Helmet from 'react-helmet';
+import ArrowIcon from 'react-icons/lib/ti/arrow-right';
 
 import StyledLink from '../layouts/link';
 
@@ -23,11 +24,25 @@ const PostLink = styled(StyledLink)`
   color: #222;
 `;
 
+const ReadLink = styled(StyledLink)`
+  padding: 5px 0;
+  display: inline-block;
+`;
+
 const Date = styled.div`
   margin: 0;
-  padding: 0;
+  padding: 0 5px 0 0;
   font-size: 1rem;
   font-weight: bold;
+  display: inline-block;
+`;
+
+const Category = styled.div`
+  margin: 0;
+  color: #dc680b;
+  font-size: 1rem;
+  font-weight: bold;
+  display: inline-block;
 `;
 
 const PostExcerpt = styled.div`color: #222;`;
@@ -45,8 +60,11 @@ const Index = ({ data }) => {
         .map(({ node: post }) =>
           (<PostPreviewWrapper key={post.id}>
             <Date>
-              {post.frontmatter.date}
+              {String(post.frontmatter.date).toUpperCase()}
             </Date>
+            <Category>
+              {String(post.frontmatter.category).toUpperCase()}
+            </Category>
             <H1>
               <PostLink to={post.frontmatter.path}>
                 {post.frontmatter.title}
@@ -55,6 +73,9 @@ const Index = ({ data }) => {
             <PostExcerpt>
               {post.excerpt}
             </PostExcerpt>
+            <ReadLink data-nav to={post.frontmatter.path}>
+              <ArrowIcon />Read
+            </ReadLink>
           </PostPreviewWrapper>),
         )}
     </StyledWrapper>
@@ -76,10 +97,11 @@ export const pageQuery = graphql`
           id
           frontmatter {
             title
-            date(formatString: "MMMM, YYYY")
+            date(formatString: "MMMM YYYY")
             path
             layout
             author
+            category
           }
         }
       }
