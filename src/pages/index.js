@@ -32,13 +32,13 @@ const H2 = styled.div`
 const Index = ({ data }) => {
   const { edges: posts } = data.allMarkdownRemark;
   return (
-    <StyledWrapper className="blog-posts">
+    <StyledWrapper>
       {posts
         .filter(
           post => post.node.frontmatter.title.length > 0 && post.node.frontmatter.layout === 'post',
         )
         .map(({ node: post }) =>
-          (<PostPreviewWrapper className="blog-post-preview" key={post.id}>
+          (<PostPreviewWrapper key={post.id}>
             <h1>
               <PostLink to={post.frontmatter.path}>
                 {post.frontmatter.title}

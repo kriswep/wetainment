@@ -3,7 +3,7 @@ const path = require('path');
 exports.createPages = ({ boundActionCreators, graphql }) => {
   const { createPage } = boundActionCreators;
 
-  const blogPostTemplate = path.resolve('src/layouts/blog-post.js');
+  const blogPostTemplate = path.resolve('src/layouts/page.js');
 
   return graphql(`{
     allMarkdownRemark(

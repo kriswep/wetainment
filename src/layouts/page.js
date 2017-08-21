@@ -7,14 +7,14 @@ import Helmet from 'react-helmet';
 const Template = ({ data }) => {
   const { markdownRemark: post } = data;
   return (
-    <article className="blog-post-container">
+    <article>
       <Helmet title={`wetainment - ${post.frontmatter.title}`} />
-      <header className="blog-post">
+      <header>
         <h1>
           {post.frontmatter.title}
         </h1>
       </header>
-      <div className="blog-post-content" dangerouslySetInnerHTML={{ __html: post.html }} />
+      <div dangerouslySetInnerHTML={{ __html: post.html }} />
     </article>
   );
 };
