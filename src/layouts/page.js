@@ -2,12 +2,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
+import styled from 'styled-components';
+
+const Article = styled.article`
+  color: ${props => props.theme.darkShades};
+  &  a {
+    color: ${props => props.theme.darkAccent};
+  }
+`;
 
 /* eslint-disable react/no-danger */
 const Template = ({ data }) => {
   const { markdownRemark: post } = data;
   return (
-    <article>
+    <Article>
       <Helmet title={`wetainment - ${post.frontmatter.title}`} />
       <header>
         <h1>
@@ -15,7 +23,7 @@ const Template = ({ data }) => {
         </h1>
       </header>
       <div dangerouslySetInnerHTML={{ __html: post.html }} />
-    </article>
+    </Article>
   );
 };
 /* eslint-enable react/no-danger */

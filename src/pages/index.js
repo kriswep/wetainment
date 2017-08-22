@@ -9,6 +9,7 @@ import ArrowIcon from 'react-icons/lib/ti/arrow-right';
 import StyledLink from '../layouts/link';
 
 const StyledWrapper = styled.div`
+  color: ${props => props.theme.darkShades};
   display: grid;
   grid-gap: 3px;
   grid-template-columns: 1fr;
@@ -21,7 +22,7 @@ const StyledWrapper = styled.div`
 const PostPreviewWrapper = styled.div`grid-column: 1 span;`;
 
 const PostLink = styled(StyledLink)`
-  color: #222;
+  color: ${props => props.theme.darkShades};
 `;
 
 const ReadLink = styled(StyledLink)`
@@ -39,13 +40,13 @@ const Date = styled.div`
 
 const Category = styled.div`
   margin: 0;
-  color: #dc680b;
+  color: ${props => props.theme.main};
   font-size: 1rem;
   font-weight: bold;
   display: inline-block;
 `;
 
-const PostExcerpt = styled.div`color: #222;`;
+const PostExcerpt = styled.div`color: ${props => props.theme.darkShades};`;
 
 const H1 = styled.h1`margin: 0;`;
 

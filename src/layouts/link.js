@@ -6,9 +6,9 @@ import PropTypes from 'prop-types';
 const Styled = styled(Link)`
   text-decoration: none;
   color: ${(props) => {
-    if (props['data-head']) return '#444';
-    else if (props['data-nav']) return '#5d93ff';
-    return '#222';
+    if (props['data-head']) return props.theme.main;
+    else if (props['data-nav']) return props.theme.darkAccent;
+    return props.theme.darkShades;
   }};
 `;
 
