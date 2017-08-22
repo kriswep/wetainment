@@ -7,7 +7,8 @@ import 'normalize.css';
 import 'prismjs/themes/prism-okaidia.css';
 import 'typeface-roboto'; // eslint-disable-line import/extensions
 
-import theme from '../styles';
+import theme from '../styles/theme';
+import media from '../styles/media';
 
 import StyledLink from './link';
 
@@ -23,14 +24,15 @@ const StyledWrapper = styled.section`
   grid-template-rows: auto 1fr auto auto;
   grid-template-areas: "header header header" "content content content" "sidebar sidebar sidebar"
     "footer footer footer";
-  @media (min-width: 768px) {
-    grid-gap: 10px;
-    grid-template-rows: auto 1fr auto;
-    grid-template-areas: "sidebar header header" "sidebar content content" "footer footer footer";
-  }
-  @media (min-width: 1024px) {
+  ${media.m`
+  grid-gap: 10px;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas: "sidebar header header" "sidebar content content" "footer footer footer";
+  `} ${media.l`
     grid-template-columns: 20rem 1fr;
-  }
+  `} ${media.xl`
+    grid-template-columns: 25rem 1fr;
+  `};
 `;
 
 const StyledHeader = styled.header`
@@ -58,10 +60,10 @@ const Header = () =>
 const StyledSidebar = styled(Sidebar)`
   grid-area: sidebar;
   border-top: solid 1px ${props => props.theme.lightAccent};
-  @media (min-width: 768px) {
+  ${media.m`
     border-top: none;
     border-right: solid 1px ${props => props.theme.lightAccent};
-  }
+  `}
 `;
 
 const ContentWrapper = styled.div`

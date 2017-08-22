@@ -6,6 +6,7 @@ import styled from 'styled-components';
 // import Helmet from 'react-helmet';
 import ArrowIcon from 'react-icons/lib/ti/arrow-right';
 
+import media from '../styles/media';
 import StyledLink from '../layouts/link';
 
 const StyledWrapper = styled.div`
@@ -13,10 +14,11 @@ const StyledWrapper = styled.div`
   display: grid;
   grid-gap: 3px;
   grid-template-columns: 1fr;
-  @media (min-width: 512px) {
+
+  ${media.s`
     grid-gap: 10px;
     grid-template-columns: 1fr 1fr;
-  }
+  `};
 `;
 
 const PostPreviewWrapper = styled.div`grid-column: 1 span;`;

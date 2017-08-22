@@ -5,6 +5,7 @@ import TwitterIcon from 'react-icons/lib/fa/twitter';
 import GithubIcon from 'react-icons/lib/fa/github';
 import MailIcon from 'react-icons/lib/fa/envelope-o';
 
+import media from '../styles/media';
 import StyledLink from './link';
 
 const Aside = styled.aside`color: ${props => props.theme.darkShades};`;
@@ -12,9 +13,9 @@ const Aside = styled.aside`color: ${props => props.theme.darkShades};`;
 const ProfileImage = styled.img`
   display: none;
   border-radius: 50%;
-  @media (min-width: 768px) {
+  ${media.m`
     display: inline;
-  }
+  `};
 `;
 
 const H1 = styled.h1`font-size: 1.2rem;`;
@@ -26,11 +27,11 @@ const NavLink = styled(StyledLink)`
   display: inline-block;
   padding: 0.4rem 1rem 0.4rem 0;
   margin: 0.2rem 0.2rem 0.2rem 0;
-  @media (min-width: 768px) {
+  ${media.m`
     display: block;
     padding: 0.4rem 0;
     margin: 0.2rem 0;
-  }
+  `}
 `;
 
 const SocialLink = styled.a`
