@@ -19,9 +19,21 @@ const StyledWrapper = styled.div`
     grid-gap: 10px;
     grid-template-columns: 1fr 1fr;
   `};
+  ${media.m`
+    grid-template-columns: 1fr;
+  `};
+  ${media.l`
+    grid-template-columns: 1fr 1fr;
+  `};
 `;
 
-const PostPreviewWrapper = styled.div`grid-column: 1 span;`;
+const PostPreviewWrapper = styled.div`
+  grid-column: 1 span;
+  padding: 0;
+  ${media.m`
+    padding: 1rem;
+  `};
+`;
 
 const PostLink = styled(StyledLink)`
   color: ${props => props.theme.darkShades};
@@ -50,7 +62,11 @@ const Category = styled.div`
 
 const PostExcerpt = styled.div`color: ${props => props.theme.darkShades};`;
 
-const H1 = styled.h1`margin: 0;`;
+const H1 = styled.h1`
+  margin: 0;
+  padding: 0 0 1rem 0;
+  line-height: 2.5rem;
+`;
 
 const Index = ({ data }) => {
   const { edges: posts } = data.allMarkdownRemark;
@@ -74,7 +90,7 @@ const Index = ({ data }) => {
               </PostLink>
             </H1>
             <PostExcerpt>
-              {post.excerpt}
+              {post.frontmatter.description || post.excerpt}
             </PostExcerpt>
             <ReadLink data-nav to={post.frontmatter.path}>
               <ArrowIcon />Read
@@ -101,6 +117,7 @@ export const pageQuery = graphql`
           frontmatter {
             title
             date(formatString: "MMMM YYYY")
+            description
             path
             layout
             author

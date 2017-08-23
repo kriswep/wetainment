@@ -4,11 +4,15 @@ import styled from 'styled-components';
 import TwitterIcon from 'react-icons/lib/fa/twitter';
 import GithubIcon from 'react-icons/lib/fa/github';
 import MailIcon from 'react-icons/lib/fa/envelope-o';
+import profile from '../img/profile.jpg';
 
 import media from '../styles/media';
 import StyledLink from './link';
 
-const Aside = styled.aside`color: ${props => props.theme.darkShades};`;
+const Aside = styled.aside`
+  color: ${props => props.theme.darkShades};
+  text-align: center;
+`;
 
 const ProfileImage = styled.img`
   display: none;
@@ -49,7 +53,7 @@ const Sidebar = ({ className }) =>
   (<Aside className={className}>
     <header>
       <StyledLink to="/">
-        <ProfileImage src="../img/photo.jpg" alt="Portrait showing myself" />
+        <ProfileImage src={profile} alt="Portrait showing myself" />
       </StyledLink>
       <H1>
         <StyledLink data-nav to="/">

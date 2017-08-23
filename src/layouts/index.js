@@ -18,6 +18,7 @@ import './index.css';
 const StyledWrapper = styled.section`
   min-height: 100vh;
   background: ${props => props.theme.lightShades};
+  line-height: 1.625rem;
   display: grid;
   grid-gap: 3px;
   grid-template-columns: 17.5rem 1fr;
@@ -37,10 +38,12 @@ const StyledWrapper = styled.section`
 
 const StyledHeader = styled.header`
   grid-area: header;
-  border-bottom: solid 1px ${props => props.theme.lightAccent};
+  border-bottom: solid 1px ${props => props.theme.lightestAccent};
   max-width: 960px;
-  padding: 1.45rem 0;
-  margin: 0;
+  padding: 1.45rem 0.5rem;
+  ${media.m`
+    padding: 1.45rem 2rem;
+  `};
 `;
 
 const H1 = styled.h1`
@@ -59,23 +62,31 @@ const Header = () =>
 
 const StyledSidebar = styled(Sidebar)`
   grid-area: sidebar;
-  border-top: solid 1px ${props => props.theme.lightAccent};
+  padding: 0.5rem;
+  border-top: solid 1px ${props => props.theme.lightestAccent};
   ${media.m`
+    padding: 1rem;
     border-top: none;
-    border-right: solid 1px ${props => props.theme.lightAccent};
+    border-right: solid 1px ${props => props.theme.lightestAccent};
   `}
 `;
 
 const ContentWrapper = styled.div`
   max-width: 960px;
-  padding: 0;
   grid-area: content;
+  padding: 0.5rem;
+  ${media.m`
+    padding: 1rem;
+  `};
 `;
 
 const StyledFooter = styled.footer`
   grid-area: footer;
   font-size: 0.75rem;
-  color: ${props => props.theme.darkShades};
+  padding: 0.25rem;
+  ${media.m`
+    padding: 0.5rem;
+  `} color: ${props => props.theme.darkShades};
   &  a {
     color: ${props => props.theme.darkAccent};
   }
