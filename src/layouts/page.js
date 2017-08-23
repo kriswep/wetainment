@@ -23,6 +23,10 @@ const Template = ({ data }) => {
         </h1>
       </header>
       <div dangerouslySetInnerHTML={{ __html: post.html }} />
+      {post.frontmatter.date !== 'Invalid date' &&
+        <footer>
+          Published {post.frontmatter.date}
+        </footer>}
     </Article>
   );
 };
@@ -42,6 +46,7 @@ export const pageQuery = graphql`
         date(formatString: "MMMM DD, YYYY")
         path
         title
+        readNext
       }
     }
   }
