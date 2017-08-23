@@ -11,6 +11,8 @@ const Article = styled.article`
   }
 `;
 
+// const Published = styled.p``;
+
 /* eslint-disable react/no-danger */
 const Template = ({ data }) => {
   const { markdownRemark: post } = data;
@@ -24,9 +26,9 @@ const Template = ({ data }) => {
       </header>
       <div dangerouslySetInnerHTML={{ __html: post.html }} />
       {post.frontmatter.date !== 'Invalid date' &&
-        <footer>
+        <em>
           Published {post.frontmatter.date}
-        </footer>}
+        </em>}
     </Article>
   );
 };
