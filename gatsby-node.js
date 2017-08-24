@@ -1,4 +1,17 @@
 const path = require('path');
+// const { createFilePath } = require('gatsby-source-filesystem');
+
+// exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
+//   const { createNodeField } = boundActionCreators;
+//   if (node.internal.type === 'MarkdownRemark') {
+//     const slug = createFilePath({ node, getNode, basePath: 'pages' });
+//     createNodeField({
+//       node,
+//       name: 'slug',
+//       value: slug,
+//     });
+//   }
+// };
 
 exports.createPages = ({ boundActionCreators, graphql }) => {
   const { createPage } = boundActionCreators;
@@ -35,7 +48,9 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
       createPage({
         path: node.frontmatter.path,
         component: blogPostTemplate,
-        context: {}, // additional data can be passed via context
+        context: {
+          readNext: node.frontmatter.readNext,
+        }, // additional data can be passed via context
       });
     });
   });

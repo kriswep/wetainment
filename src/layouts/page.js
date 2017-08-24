@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import styled from 'styled-components';
 
+import StyledLink from '../layouts/link';
+
 const Article = styled.article`
   color: ${props => props.theme.darkShades};
   &  a {
@@ -11,11 +13,19 @@ const Article = styled.article`
   }
 `;
 
-// const Published = styled.p``;
+const ReadNext = styled.footer`
+  border-top: solid 1px ${props => props.theme.lightestAccent};
+  margin: 0.5rem 0;
+`;
+const ReadNextHeader = styled.h6`margin: 0.1rem 0;`;
+const ReadNextDescription = styled.p`
+  margin: 0.1rem 0;
+  font-size: 0.8rem;
+`;
 
 /* eslint-disable react/no-danger */
 const Template = ({ data }) => {
-  const { markdownRemark: post } = data;
+  const { markdownRemark: post, readNext } = data;
   return (
     <Article>
       <Helmet title={`wetainment - ${post.frontmatter.title}`} />
@@ -29,6 +39,16 @@ const Template = ({ data }) => {
         <em>
           Published {post.frontmatter.date}
         </em>}
+      {readNext &&
+        <ReadNext>
+          <ReadNextHeader>READ THIS NEXT:</ReadNextHeader>
+          <StyledLink to={readNext.frontmatter.path}>
+            {readNext.frontmatter.title}
+          </StyledLink>
+          <ReadNextDescription>
+            {readNext.frontmatter.description}
+          </ReadNextDescription>
+        </ReadNext>}
     </Article>
   );
 };
@@ -41,7 +61,7 @@ Template.propTypes = {
 export default Template;
 
 export const pageQuery = graphql`
-  query BlogPostByPath($path: String!) {
+  query BlogPostByPath($path: String!, $readNext: String) {
     markdownRemark(frontmatter: { path: { eq: $path } }) {
       html
       frontmatter {
@@ -49,6 +69,14 @@ export const pageQuery = graphql`
         path
         title
         readNext
+      }
+    }
+    readNext: markdownRemark(frontmatter: { path: { eq: $readNext } }) {
+      frontmatter {
+        date(formatString: "MMMM DD, YYYY")
+        path
+        title
+        description
       }
     }
   }

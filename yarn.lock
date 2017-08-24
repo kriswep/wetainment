@@ -3560,11 +3560,12 @@ gatsby-remark-prismjs@^1.2.0:
     prismjs "^1.6.0"
     unist-util-visit "^1.1.1"
 
-gatsby-source-filesystem@^1.4.1:
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/gatsby-source-filesystem/-/gatsby-source-filesystem-1.4.1.tgz#fe5cd2b6f73883883867ff24e17cda5cb7d1e29a"
+gatsby-source-filesystem@^1.4.4:
+  version "1.4.4"
+  resolved "https://registry.yarnpkg.com/gatsby-source-filesystem/-/gatsby-source-filesystem-1.4.4.tgz#62e65894ab7c21730765f379bf74e165e35d2e57"
   dependencies:
     babel-cli "^6.24.1"
+    babel-runtime "6.26.0"
     bluebird "^3.5.0"
     chokidar "^1.7.0"
     md5-file "^3.1.1"
