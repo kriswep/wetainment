@@ -6,7 +6,7 @@ path: "/enable-http2/"
 category: "DevOps"
 description: "How I overcame obstacles activating HTTP2 on my vServer using a setup of nginx in a docker container environment"
 author: "@kriswep"
-readNext: "/testing-indexjs/"
+readNext: "/eclipse-for-node/"
 ---
 
 #### even on newer versions off chrome >51

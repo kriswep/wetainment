@@ -4,10 +4,15 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import styled from 'styled-components';
 
+import media from '../styles/media';
 import StyledLink from '../layouts/link';
 
 const Article = styled.article`
   color: ${props => props.theme.darkShades};
+  padding: 0;
+  ${media.m`
+    padding: 0 1rem;
+  `};
   &  a {
     color: ${props => props.theme.darkAccent};
   }
@@ -22,6 +27,7 @@ const ReadNextDescription = styled.p`
   margin: 0.1rem 0;
   font-size: 0.8rem;
 `;
+const H1 = styled.h1`line-height: 2.5rem;`;
 
 /* eslint-disable react/no-danger */
 const Template = ({ data }) => {
@@ -30,9 +36,9 @@ const Template = ({ data }) => {
     <Article>
       <Helmet title={`wetainment - ${post.frontmatter.title}`} />
       <header>
-        <h1>
+        <H1>
           {post.frontmatter.title}
-        </h1>
+        </H1>
       </header>
       <div dangerouslySetInnerHTML={{ __html: post.html }} />
       {post.frontmatter.date !== 'Invalid date' &&
@@ -61,7 +67,7 @@ Template.propTypes = {
 export default Template;
 
 export const pageQuery = graphql`
-  query BlogPostByPath($path: String!, $readNext: String) {
+  query BlogPostByPath($path: String!, $readNext: String = "undefined") {
     markdownRemark(frontmatter: { path: { eq: $path } }) {
       html
       frontmatter {

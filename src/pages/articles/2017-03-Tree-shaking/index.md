@@ -6,7 +6,7 @@ path: "/tree-shaking/"
 category: "Performance"
 description: "Setting up tree shaking with webpack2, Babel and ES2015 modules"
 author: "@kriswep"
-readNext: "/testing-indexjs/"
+readNext: "/enable-http2/"
 ---
 
 #### with webpack v2.2, Babel and ES2015 modules
