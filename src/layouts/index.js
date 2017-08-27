@@ -7,6 +7,8 @@ import 'normalize.css';
 import 'prismjs/themes/prism-okaidia.css';
 import 'typeface-roboto'; // eslint-disable-line import/extensions
 
+import Counter from '../components/Counter';
+
 import theme from '../styles/theme';
 import media from '../styles/media';
 
@@ -109,6 +111,7 @@ const TemplateWrapper = ({ children }) =>
       <Header />
       <StyledSidebar />
       <ContentWrapper>
+        <Counter />
         {children()}
       </ContentWrapper>
       <StyledFooter>
