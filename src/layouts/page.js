@@ -77,7 +77,7 @@ Template.propTypes = {
 export default Template;
 
 export const pageQuery = graphql`
-  query BlogPostByPath($path: String, $readNext: String = "undefined") {
+  query BlogPostByPath($path: String = "/eclipse-for-node/", $readNext: String = "undefined") {
     markdownRemark(frontmatter: { path: { eq: $path } }) {
       html
       frontmatter {

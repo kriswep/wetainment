@@ -110,6 +110,14 @@ const TemplateWrapper = ({ children }) =>
               "wetainment is Christoph Benjamin's personal blog and portfolio. Writing about JavaScript",
           },
           { name: 'keywords', content: 'blog, portfolio, JavaScript' },
+          { name: 'twitter:card', content: 'summary' },
+          { name: 'twitter:site', content: '@kriswep' },
+          { name: 'twitter:title', content: 'wetainment' },
+          {
+            name: 'twitter:description',
+            content:
+              "wetainment is Christoph Benjamin's personal blog and portfolio. Writing mostly about JavaScript",
+          },
         ]}
       />
       <Header />
