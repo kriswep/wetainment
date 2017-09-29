@@ -34,7 +34,17 @@ const Template = ({ data }) => {
   const { markdownRemark: post, readNext } = data;
   return (
     <Article>
-      <Helmet title={`wetainment - ${post.frontmatter.title}`} />
+      {/* <Helmet title={`wetainment - ${post.frontmatter.title}`} /> */}
+      <Helmet
+        title={`${post.frontmatter.title} - wetainment`}
+        meta={[
+          { name: 'description', content: post.frontmatter.description },
+          { name: 'twitter:card', content: 'summary' },
+          { name: 'twitter:site', content: post.frontmatter.author },
+          { name: 'twitter:title', content: post.frontmatter.title },
+          { name: 'twitter:description', content: post.frontmatter.description },
+        ]}
+      />
       <header>
         <H1>
           {post.frontmatter.title}
@@ -74,6 +84,8 @@ export const pageQuery = graphql`
         date(formatString: "MMMM DD, YYYY")
         path
         title
+        description
+        author
         readNext
       }
     }
