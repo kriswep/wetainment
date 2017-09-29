@@ -1,6 +1,9 @@
 import { css } from 'styled-components';
 
 const sizes = {
+  uxxxl: 3840,
+  xxxl: 2560,
+  xxl: 1920,
   xl: 1280,
   l: 1024,
   m: 768,

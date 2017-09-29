@@ -32,7 +32,13 @@ const StyledWrapper = styled.section`
   `} ${media.l`
     grid-template-columns: 20rem 1fr;
   `} ${media.xl`
-    grid-template-columns: 25rem 1fr;
+    grid-template-columns: 35rem 1fr;
+  `} ${media.xxl`
+    grid-template-columns: 50rem 1fr;
+  `} ${media.xxxl`
+    grid-template-columns: 70rem 1fr;
+  `} ${media.uxxxl`
+    grid-template-columns: 100rem 1fr;
   `};
 `;
 
