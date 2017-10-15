@@ -29,7 +29,7 @@ const StyledWrapper = styled.div`
 
 const PostPreviewWrapper = styled.div`
   grid-column: 1 span;
-  padding: 0;
+  padding: 0 0 1rem 0;
   ${media.m`
     padding: 1rem;
   `};
@@ -64,8 +64,11 @@ const PostExcerpt = styled.div`color: ${props => props.theme.darkShades};`;
 
 const H1 = styled.h1`
   margin: 0;
-  padding: 0 0 1rem 0;
   line-height: 2.5rem;
+  padding: 0 0 0.5rem 0;
+  ${media.m`
+    padding: 0 0 1rem 0;
+  `};
 `;
 
 const Index = ({ data }) => {
