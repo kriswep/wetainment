@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import styled from 'styled-components';
 
+import Comments from '../components/Comments';
 import media from '../styles/media';
 import StyledLink from '../layouts/link';
 
@@ -65,6 +66,7 @@ const Template = ({ data }) => {
             {readNext.frontmatter.description}
           </ReadNextDescription>
         </ReadNext>}
+      <Comments />
     </Article>
   );
 };
