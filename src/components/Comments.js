@@ -33,8 +33,8 @@ class Comments extends Component {
   render() {
     return (
       <Gitcomment
-        repo="kriswep/gitcomment"
-        issueNumber={1}
+        repo="kriswep/wetainment"
+        issueNumber={5}
         token={this.state.token || process.env.REACT_APP_GH_TOKEN}
         render={(loaded, comments, user, postComment) => {
           const commentList = comments.map(comment => (
