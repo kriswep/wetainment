@@ -5,7 +5,7 @@ import Gitcomment from 'gitcomment';
 
 const redirect = () =>
   window.location.replace(
-    `https://github.com/login/oauth/authorize?client_id=ce7fd0d5cdbd634de3aa&scope=repo%20user&redirect_uri=${window
+    `https://github.com/login/oauth/authorize?client_id=70d2271271780a415da8&scope=repo%20user&redirect_uri=${window
       .location.href}`,
   );
 
@@ -20,9 +20,9 @@ class Comments extends Component {
   componentDidMount() {
     const { code } = queryString.parse(window.location.search);
     if (code) {
-      // lets pretend we have a gatekeepr instance on https://gitcomment.now.sh/
+      // lets pretend we have a gatekeepr instance on https://gk-wetainment.now.sh/
       window
-        .fetch(`https://gitcomment.now.sh/authenticate/${code}`, {
+        .fetch(`https://gk-wetainment.now.sh/authenticate/${code}`, {
           method: 'GET',
         })
         .then(res => res.json())
