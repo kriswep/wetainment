@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import queryString from 'query-string';
 import Gitcomment from 'gitcomment';
 
+const gkServer = process.env.NODE_ENV === 'production' ? 'https://gk-wetainment.now.sh/' : 'https://gatekeeper-peeozbyjee.now.sh/';
+
 const redirect = () =>
   window.location.replace(
     `https://github.com/login/oauth/authorize?client_id=70d2271271780a415da8&scope=repo%20user&redirect_uri=${window
@@ -20,9 +22,9 @@ class Comments extends Component {
   componentDidMount() {
     const { code } = queryString.parse(window.location.search);
     if (code) {
-      // lets pretend we have a gatekeepr instance on https://gk-wetainment.now.sh/
+      // lets pretend we have a gatekeepr instance on gkServer
       window
-        .fetch(`https://gk-wetainment.now.sh/authenticate/${code}`, {
+        .fetch(`${gkServer}authenticate/${code}`, {
           method: 'GET',
         })
         .then(res => res.json())

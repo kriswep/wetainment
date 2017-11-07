@@ -4254,9 +4254,9 @@ getpass@^0.1.1:
   dependencies:
     assert-plus "^1.0.0"
 
-gitcomment@^0.4.1:
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/gitcomment/-/gitcomment-0.4.1.tgz#6a50320ce4811a023c8d3881b60e0b72746ee4d1"
+gitcomment@0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/gitcomment/-/gitcomment-0.6.0.tgz#81187849da4be66a1d70fa1abd6a9de0695116c5"
 
 github-slugger@^1.1.1:
   version "1.1.3"
