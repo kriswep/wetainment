@@ -14,7 +14,7 @@ const Article = styled.article`
   ${media.m`
     padding: 0 1rem;
   `};
-  &  a {
+  & a {
     color: ${props => props.theme.darkAccent};
   }
 `;
@@ -23,12 +23,16 @@ const ReadNext = styled.footer`
   border-top: solid 1px ${props => props.theme.lightestAccent};
   margin: 0.5rem 0;
 `;
-const ReadNextHeader = styled.h6`margin: 0.1rem 0;`;
+const ReadNextHeader = styled.h6`
+  margin: 0.1rem 0;
+`;
 const ReadNextDescription = styled.p`
   margin: 0.1rem 0;
   font-size: 0.8rem;
 `;
-const H1 = styled.h1`line-height: 2.5rem;`;
+const H1 = styled.h1`
+  line-height: 2.5rem;
+`;
 
 /* eslint-disable react/no-danger */
 const Template = ({ data }) => {
@@ -47,26 +51,18 @@ const Template = ({ data }) => {
         ]}
       />
       <header>
-        <H1>
-          {post.frontmatter.title}
-        </H1>
+        <H1>{post.frontmatter.title}</H1>
       </header>
       <div dangerouslySetInnerHTML={{ __html: post.html }} />
-      {post.frontmatter.date !== 'Invalid date' &&
-        <em>
-          Published {post.frontmatter.date}
-        </em>}
-      {readNext &&
+      {post.frontmatter.date !== 'Invalid date' && <em>Published {post.frontmatter.date}</em>}
+      {readNext && (
         <ReadNext>
           <ReadNextHeader>READ THIS NEXT:</ReadNextHeader>
-          <StyledLink to={readNext.frontmatter.path}>
-            {readNext.frontmatter.title}
-          </StyledLink>
-          <ReadNextDescription>
-            {readNext.frontmatter.description}
-          </ReadNextDescription>
-        </ReadNext>}
-      <Comments />
+          <StyledLink to={readNext.frontmatter.path}>{readNext.frontmatter.title}</StyledLink>
+          <ReadNextDescription>{readNext.frontmatter.description}</ReadNextDescription>
+        </ReadNext>
+      )}
+      {post.frontmatter.issueNumber && <Comments issueNumber={post.frontmatter.issueNumber} />}
     </Article>
   );
 };
@@ -89,6 +85,7 @@ export const pageQuery = graphql`
         description
         author
         readNext
+        issueNumber
       }
     }
     readNext: markdownRemark(frontmatter: { path: { eq: $readNext } }) {

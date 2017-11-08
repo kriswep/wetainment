@@ -1,15 +1,18 @@
 /* globals window */
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import queryString from 'query-string';
 import Gitcomment from 'gitcomment';
 
-const gkServer = process.env.NODE_ENV === 'production' ? 'https://gk-wetainment.now.sh/' : 'https://gatekeeper-peeozbyjee.now.sh/';
+const gkServer =
+  process.env.NODE_ENV === 'production'
+    ? 'https://gk-wetainment.now.sh/'
+    : 'https://gatekeeper-peeozbyjee.now.sh/';
 
 const redirect = () =>
-  window.location.replace(
-    `https://github.com/login/oauth/authorize?client_id=70d2271271780a415da8&scope=repo%20user&redirect_uri=${window
-      .location.href}`,
-  );
+  window.location.replace(`https://github.com/login/oauth/authorize?client_id=70d2271271780a415da8&scope=repo%20user&redirect_uri=${
+    window.location.href
+  }`);
 
 class Comments extends Component {
   constructor(props) {
@@ -36,7 +39,7 @@ class Comments extends Component {
     return (
       <Gitcomment
         repo="kriswep/wetainment"
-        issueNumber={5}
+        issueNumber={this.props.issueNumber}
         token={this.state.token || process.env.REACT_APP_GH_TOKEN}
         render={(loaded, comments, user, postComment) => {
           const commentList = comments.map(comment => (
@@ -59,5 +62,9 @@ class Comments extends Component {
     );
   }
 }
+
+Comments.propTypes = {
+  issueNumber: PropTypes.number.isRequired,
+};
 
 export default Comments;

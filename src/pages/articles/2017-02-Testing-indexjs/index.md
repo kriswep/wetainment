@@ -7,6 +7,7 @@ category: "Testing"
 description: "Writing unit tests for your React index.js file can be a little tricky. Read on how I did it lately..."
 author: "@kriswep"
 readNext: "/tree-shaking/"
+issueNumber: 9
 ---
 
 #### with Create React App and Jest

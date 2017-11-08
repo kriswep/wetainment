@@ -7,6 +7,7 @@ category: "DevOps"
 description: "How I overcame obstacles activating HTTP2 on my vServer using a setup of nginx in a docker container environment"
 author: "@kriswep"
 readNext: "/testing-indexjs/"
+issueNumber: 8
 ---
 
 #### even on newer versions off chrome >51
