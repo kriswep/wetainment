@@ -23,8 +23,9 @@ const StyledWrapper = styled.section`
   grid-gap: 3px;
   grid-template-columns: 17.5rem 1fr;
   grid-template-rows: auto 1fr auto auto;
-  grid-template-areas: "header header header" "content content content" "sidebar sidebar sidebar"
-    "footer footer footer";
+  grid-template-areas:
+    'header header header' 'content content content' 'sidebar sidebar sidebar'
+    'footer footer footer';
   ${media.m`
   grid-gap: 10px;
   grid-template-rows: auto 1fr auto;
@@ -57,14 +58,15 @@ const H1 = styled.h1`
   margin: 0;
 `;
 
-const Header = () =>
-  (<StyledHeader>
+const Header = () => (
+  <StyledHeader>
     <H1>
       <StyledLink to="/" data-head>
         wetainment
       </StyledLink>
     </H1>
-  </StyledHeader>);
+  </StyledHeader>
+);
 
 const StyledSidebar = styled(Sidebar)`
   grid-area: sidebar;
@@ -74,11 +76,12 @@ const StyledSidebar = styled(Sidebar)`
     padding: 1rem;
     border-top: none;
     border-right: solid 1px ${props => props.theme.lightestAccent};
-  `}
+  `};
 `;
 
 const ContentWrapper = styled.div`
   max-width: 960px;
+  width: 100%;
   grid-area: content;
   padding: 0.5rem;
   ${media.m`
@@ -93,13 +96,13 @@ const StyledFooter = styled.footer`
   ${media.m`
     padding: 0.5rem;
   `} color: ${props => props.theme.darkShades};
-  &  a {
+  & a {
     color: ${props => props.theme.darkAccent};
   }
 `;
 
-const TemplateWrapper = ({ children }) =>
-  (<ThemeProvider theme={theme}>
+const TemplateWrapper = ({ children }) => (
+  <ThemeProvider theme={theme}>
     <StyledWrapper>
       <Helmet
         title="wetainment"
@@ -122,19 +125,18 @@ const TemplateWrapper = ({ children }) =>
       />
       <Header />
       <StyledSidebar />
-      <ContentWrapper>
-        {children()}
-      </ContentWrapper>
+      <ContentWrapper>{children()}</ContentWrapper>
       <StyledFooter>
         <p>
           Made with ❤ by <a href="https://twitter.com/kriswep">@kriswep</a>
         </p>
       </StyledFooter>
     </StyledWrapper>
-  </ThemeProvider>);
+  </ThemeProvider>
+);
 
 TemplateWrapper.propTypes = {
-  children: PropTypes.func,
+  children: PropTypes.func, // eslint-disable-line
 };
 
 export default TemplateWrapper;
