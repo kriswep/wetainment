@@ -7,15 +7,17 @@ category: "CSS"
 description: "Add the Tailwind CSS utility-first Framework in a Create React App environment, without ejecting from CRA!"
 author: "@kriswep"
 readNext: "/tree-shaking/"
+issueNumber: 11
 ---
 
 **Tl;dr: Tailwind CSS is a utility-first CSS Framework. It is realised as a PostCSS plugin, which can't be easily add to a Create React App environment. Luckily, since Tailwind provides a CLI as well, we can add that as a script running right before CRA's `react-scripts`. You can find an example setup right [here](https://github.com/kriswep/cra-tailwindcss).**
 
-*Disclaimer: I am by no means an expert in Tailwind CSS, but it sounds like a good match for a [React](https://reactjs.org/) app. There are quite a lot alternatives to styling React components, like `CSS in JS` projects, but the more the better, right? Let's see how to integrate Tailwind CSS with React, maybe it's really a cool thing.*
+_Disclaimer: I am by no means an expert in Tailwind CSS, but it sounds like a good match for a [React](https://reactjs.org/) app. There are quite a lot alternatives to styling React components, like `CSS in JS` projects, but the more the better, right? Let's see how to integrate Tailwind CSS with React, maybe it's really a cool thing._
 
 [Tailwind CSS](https://tailwindcss.com/) is a newly released utility-first CSS Framework. It's value proposition is that it provides a lot of different utility CSS classes, instead of whole components. So designing an app means, you add CSS classes right to your html elements. These classes are highly composable and allow you to build components and full fledged designs with them. You can find more informations and explanations on their website, or by listening to the [Fullstack Radio podcast 76](http://www.fullstackradio.com/76), which I enjoyed quite a lot.
 
 ![Wind turbines and a highway, giving you an impression of speed and wind](wind-teaser-image.jpg)
+
 <p>
 <sub><sup>Kind of related image showing wind turbines and a highway as a metaphor for speed and wind. Photo by <a href="https://unsplash.com/@andreaboldizsar">Andrea Boldizsar</a> on <a href="https://unsplash.com/photos/BwgKUh9tN84">Unsplash</a></sup></sub></p>
 
@@ -32,31 +34,38 @@ You can find a newly created CRA project with Tailwind CSS integration right [he
 #### Step by step setup
 
 Let's set that up and start with Create React App. In case you don't have it already installed (or use the opportunity to upgrade), install it as per their [docu](https://github.com/facebookincubator/create-react-app#getting-started) - that's basically running `npm install -g create-react-app`. Create a new project like that on your command prompt:
+
 ```bash
 # Replace cra-tailwindcss with whatever you want to name your project
 create-react-app cra-tailwindcss
 # Wait for it to finish
 cd cra-tailwindcss
 ```
+
 In the generated folder is your brand new React App project, feel free to try it out by running `npm run start`.
 Next step is installing Tailwind CSS by running the following commands in your project's root directory:
+
 ```bash
 # install tailwind to your project
 npm install tailwindcss --save-dev
 # create a tailwind.js configuration file
 ./node_modules/.bin/tailwind init
 ```
+
 The last command generates the magic configuration file. This is one of the major benefits of Tailwind CSS. Take a moment and read through that file, the available options are commented right there. You can also read more about the [configration options](https://tailwindcss.com/docs/configuration).
 
 Create React App includes a global css file under `./src/index.css`. Delete this file, as this is where we let Tailwind CSS generate it's utility classes to. Now create a new file called `./src/index.tailwind.css` with the following content:
+
 ```CSS
 @tailwind preflight;
 
 @tailwind utilities;
 ```
+
 These are Tailwind's directives, which declare what to include. Again, there is more information in their [docs](https://tailwindcss.com/docs/installation#3-use-tailwind-in-your-css).
 
 The last step is to add the Tailwind build command. Open your projects' `package.json` and replace the start and build task with the following
+
 ```JSON
   "scripts": {
     "start":
