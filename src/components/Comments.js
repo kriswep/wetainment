@@ -5,6 +5,7 @@ import queryString from 'query-string';
 import styled from 'styled-components';
 import LoadingIcon from 'react-icons/lib/fa/spinner';
 import Gitcomment from 'gitcomment';
+import Button from './Button';
 
 const gkServer =
   process.env.NODE_ENV === 'production'
@@ -23,8 +24,12 @@ const CommentsContainer = styled.ul`
 
 const Comment = styled.li`
   list-style: none;
+  padding: 0.15rem 0rem;
+`;
+
+const Divider = styled.hr`
+  border: solid 0px ${props => props.theme.lightestAccent};
   border-bottom: solid 1px ${props => props.theme.lightestAccent};
-  padding: 1.45rem 0rem;
 `;
 
 class Comments extends Component {
@@ -55,10 +60,12 @@ class Comments extends Component {
         issueNumber={this.props.issueNumber}
         token={this.state.token || process.env.REACT_APP_GH_TOKEN}
         render={(loaded, comments, user, postComment) => {
-          const commentList = comments.map(comment => (
+          const commentList = comments.map((comment, idx) => (
             <Comment key={comment.id}>
+              {idx === 0 && <Divider />}
               {`${comment.author ? comment.author.login : ''} (${new Date(comment.created).toLocaleDateString()}): `}
               {comment.body}
+              <Divider />
             </Comment>
           ));
           const handler = () => {
@@ -74,8 +81,8 @@ class Comments extends Component {
                 </div>
               )}
               {!!loaded &&
-                ((!!user.login && <button onClick={handler}>Post sthg</button>) ||
-                  (!user.login && <button onClick={redirect}>Login</button>))}
+                ((!!user.login && <Button onClick={handler}>Add Comment</Button>) ||
+                  (!user.login && <Button onClick={redirect}>Login</Button>))}
             </div>
           );
         }}
