@@ -26,6 +26,21 @@ const Comment = styled.li`
   list-style: none;
   padding: 0.15rem 0rem;
 `;
+const CommentEditor = styled.textarea`
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 5rem;
+  border: 1px solid ${props => props.theme.darkShades};
+  color: ${props => props.theme.darkShades};
+  background: ${props => props.theme.lightShades};
+  &:hover {
+    background: ${props => props.theme.lightestAccent};
+  }
+  &:focus {
+    outline-color: ${props => props.theme.darkAccent};
+  }
+`;
 
 const Divider = styled.hr`
   border: solid 0px ${props => props.theme.lightestAccent};
@@ -37,6 +52,7 @@ class Comments extends Component {
     super(props);
     this.state = {
       token: '',
+      newComment: '',
     };
   }
 
@@ -51,6 +67,10 @@ class Comments extends Component {
         .then(res => res.json())
         .then(({ token }) => this.setState({ token }));
     }
+  }
+
+  changeNewComment(e) {
+    return this.setState({ newComment: e.target.value });
   }
 
   render() {
@@ -69,7 +89,7 @@ class Comments extends Component {
             </Comment>
           ));
           const handler = () => {
-            postComment('test');
+            postComment(this.state.newComment);
           };
           return (
             <div>
@@ -81,7 +101,15 @@ class Comments extends Component {
                 </div>
               )}
               {!!loaded &&
-                ((!!user.login && <Button onClick={handler}>Add Comment</Button>) ||
+                ((!!user.login && (
+                  <div>
+                    <CommentEditor
+                      value={this.state.newComment}
+                      onChange={this.changeNewComment.bind(this)} // eslint-disable-line react/jsx-no-bind
+                    />
+                    <Button onClick={handler}>Add Comment</Button>
+                  </div>
+                )) ||
                   (!user.login && <Button onClick={redirect}>Login</Button>))}
             </div>
           );
