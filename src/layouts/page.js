@@ -54,15 +54,18 @@ const Template = ({ data }) => {
         <H1>{post.frontmatter.title}</H1>
       </header>
       <div dangerouslySetInnerHTML={{ __html: post.html }} />
-      {post.frontmatter.date !== 'Invalid date' && <em>Published {post.frontmatter.date}</em>}
-      {readNext && (
-        <ReadNext>
-          <ReadNextHeader>READ THIS NEXT:</ReadNextHeader>
-          <StyledLink to={readNext.frontmatter.path}>{readNext.frontmatter.title}</StyledLink>
-          <ReadNextDescription>{readNext.frontmatter.description}</ReadNextDescription>
-        </ReadNext>
-      )}
-      {post.frontmatter.issueNumber && <Comments issueNumber={post.frontmatter.issueNumber} />}
+      {post.frontmatter.date &&
+        post.frontmatter.date !== 'Invalid date' && <em>Published {post.frontmatter.date}</em>}
+      {readNext &&
+        post.frontmatter.layout === 'post' && (
+          <ReadNext>
+            <ReadNextHeader>READ THIS NEXT:</ReadNextHeader>
+            <StyledLink to={readNext.frontmatter.path}>{readNext.frontmatter.title}</StyledLink>
+            <ReadNextDescription>{readNext.frontmatter.description}</ReadNextDescription>
+          </ReadNext>
+        )}
+      {post.frontmatter.layout === 'post' &&
+        post.frontmatter.issueNumber && <Comments issueNumber={post.frontmatter.issueNumber} />}
     </Article>
   );
 };
@@ -75,7 +78,10 @@ Template.propTypes = {
 export default Template;
 
 export const pageQuery = graphql`
-  query BlogPostByPath($path: String = "/eclipse-for-node/", $readNext: String = "undefined") {
+  query BlogPostByPath(
+    $path: String = "/eclipse-for-node/"
+    $readNext: String = "/eclipse-for-node/"
+  ) {
     markdownRemark(frontmatter: { path: { eq: $path } }) {
       html
       frontmatter {
@@ -84,6 +90,7 @@ export const pageQuery = graphql`
         title
         description
         author
+        layout
         readNext
         issueNumber
       }

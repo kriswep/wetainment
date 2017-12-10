@@ -81,6 +81,7 @@ const StyledSidebar = styled(Sidebar)`
 
 const ContentWrapper = styled.div`
   max-width: 960px;
+  width: 100%;
   grid-area: content;
   padding: 0.5rem;
   ${media.m`
@@ -135,7 +136,7 @@ const TemplateWrapper = ({ children }) => (
 );
 
 TemplateWrapper.propTypes = {
-  children: PropTypes.func,
+  children: PropTypes.func, // eslint-disable-line
 };
 
 export default TemplateWrapper;
