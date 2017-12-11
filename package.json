@@ -17,7 +17,7 @@
     "gatsby-remark-prismjs": "^1.2.9",
     "gatsby-source-filesystem": "^1.5.8",
     "gatsby-transformer-remark": "^1.7.20",
-    "gitcomment": "^0.7.0",
+    "gitcomment": "^0.8.0",
     "normalize.css": "^7.0.0",
     "prop-types": "^15.6.0",
     "react-icons": "^2.2.7",
