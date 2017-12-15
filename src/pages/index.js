@@ -60,7 +60,9 @@ const Category = styled.div`
   display: inline-block;
 `;
 
-const PostExcerpt = styled.div`color: ${props => props.theme.darkShades};`;
+const PostExcerpt = styled.div`
+  color: ${props => props.theme.darkShades};
+`;
 
 const H1 = styled.h1`
   margin: 0;
@@ -76,30 +78,20 @@ const Index = ({ data }) => {
   return (
     <StyledWrapper>
       {posts
-        .filter(
-          post => post.node.frontmatter.title.length > 0 && post.node.frontmatter.layout === 'post',
-        )
-        .map(({ node: post }) =>
-          (<PostPreviewWrapper key={post.id}>
-            <Date>
-              {String(post.frontmatter.date).toUpperCase()}
-            </Date>
-            <Category>
-              {String(post.frontmatter.category).toUpperCase()}
-            </Category>
+        .filter(post => post.node.frontmatter.title.length > 0 && post.node.frontmatter.layout === 'post')
+        .map(({ node: post }) => (
+          <PostPreviewWrapper key={post.id}>
+            <Date>{String(post.frontmatter.date).toUpperCase()}</Date>
+            <Category>{String(post.frontmatter.category).toUpperCase()}</Category>
             <H1>
-              <PostLink to={post.frontmatter.path}>
-                {post.frontmatter.title}
-              </PostLink>
+              <PostLink to={post.frontmatter.path}>{post.frontmatter.title}</PostLink>
             </H1>
-            <PostExcerpt>
-              {post.frontmatter.description || post.excerpt}
-            </PostExcerpt>
+            <PostExcerpt>{post.frontmatter.description || post.excerpt}</PostExcerpt>
             <ReadLink data-nav to={post.frontmatter.path}>
               <ArrowIcon />Read
             </ReadLink>
-          </PostPreviewWrapper>),
-        )}
+          </PostPreviewWrapper>
+        ))}
     </StyledWrapper>
   );
 };

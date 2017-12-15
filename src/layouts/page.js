@@ -21,7 +21,7 @@ const Article = styled.article`
 
 const ReadNext = styled.footer`
   border-top: solid 1px ${props => props.theme.lightestAccent};
-  margin: 0.5rem 0;
+  margin: 2.5rem 0 0.5rem;
 `;
 const ReadNextHeader = styled.h6`
   margin: 0.1rem 0;
@@ -56,6 +56,9 @@ const Template = ({ data }) => {
       <div dangerouslySetInnerHTML={{ __html: post.html }} />
       {post.frontmatter.date &&
         post.frontmatter.date !== 'Invalid date' && <em>Published {post.frontmatter.date}</em>}
+
+      {post.frontmatter.layout === 'post' &&
+        post.frontmatter.issueNumber && <Comments issueNumber={post.frontmatter.issueNumber} />}
       {readNext &&
         post.frontmatter.layout === 'post' && (
           <ReadNext>
@@ -64,8 +67,6 @@ const Template = ({ data }) => {
             <ReadNextDescription>{readNext.frontmatter.description}</ReadNextDescription>
           </ReadNext>
         )}
-      {post.frontmatter.layout === 'post' &&
-        post.frontmatter.issueNumber && <Comments issueNumber={post.frontmatter.issueNumber} />}
     </Article>
   );
 };

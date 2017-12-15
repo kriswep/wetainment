@@ -18,6 +18,11 @@ const redirect = () =>
     window.location.href
   }`);
 
+const CommentHeader = styled.h2`
+  padding: 0;
+  margin: 2rem 0 0.3rem;
+`;
+
 const CommentsContainer = styled.ul`
   padding: 0;
   margin: 0;
@@ -104,10 +109,11 @@ class Comments extends Component {
           ));
           const handler = () => {
             postComment(this.state.newComment);
+            this.setState({ newComment: '' });
           };
           return (
             <div>
-              <h2>Comments, anyone?</h2>
+              <CommentHeader>Comments, anyone?</CommentHeader>
               {!loaded && <LoadingIcon />}
               {!!loaded && (
                 <div>
@@ -132,7 +138,12 @@ class Comments extends Component {
                     </FlexContainer>
                   </div>
                 )) ||
-                  (!user.login && <Button onClick={redirect}>Login</Button>))}
+                  (!user.login && (
+                    <FlexContainer>
+                      <Button onClick={redirect}>Login</Button>
+                      <Small>Please authenticate with GitHub in order to add a comment.</Small>
+                    </FlexContainer>
+                  )))}
             </div>
           );
         }}
