@@ -4,7 +4,7 @@ const Button = styled.button`
   border: solid 1px ${props => props.theme.lightestAccent};
   background: ${props => props.theme.lightShades};
   margin: 0;
-  padding: 0.85rem 0.25rem;
+  padding: 0.85rem 0.5rem;
   color: ${props => props.theme.darkShades};
   &:hover {
     background: ${props => props.theme.lightestAccent};
