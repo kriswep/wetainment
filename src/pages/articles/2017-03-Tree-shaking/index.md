@@ -7,6 +7,7 @@ category: "Performance"
 description: "Setting up tree shaking with webpack2, Babel and ES2015 modules"
 author: "@kriswep"
 readNext: "/create-react-app-tailwind-css/"
+issueNumber: 10
 ---
 
 #### with webpack v2.2, Babel and ES2015 modules

@@ -4,23 +4,25 @@
   "version": "2.0.0",
   "author": "Christoph Benjamin Weber",
   "dependencies": {
-    "gatsby": "^1.9.49",
-    "gatsby-link": "^1.6.17",
-    "gatsby-plugin-catch-links": "^1.0.8",
+    "gatsby": "^1.9.103",
+    "gatsby-link": "^1.6.24",
+    "gatsby-plugin-catch-links": "^1.0.9",
     "gatsby-plugin-manifest": "^1.0.8",
-    "gatsby-plugin-offline": "^1.0.9",
-    "gatsby-plugin-react-helmet": "^1.0.6",
-    "gatsby-plugin-sharp": "^1.6.8",
-    "gatsby-plugin-styled-components": "^1.0.5",
-    "gatsby-remark-copy-linked-files": "^1.5.7",
-    "gatsby-remark-images": "^1.5.13",
-    "gatsby-remark-prismjs": "^1.2.8",
-    "gatsby-source-filesystem": "^1.5.1",
-    "gatsby-transformer-remark": "^1.7.15",
+    "gatsby-plugin-offline": "^1.0.10",
+    "gatsby-plugin-react-helmet": "^1.0.8",
+    "gatsby-plugin-sharp": "^1.6.20",
+    "gatsby-plugin-styled-components": "^2.0.1",
+    "gatsby-remark-copy-linked-files": "^1.5.16",
+    "gatsby-remark-images": "^1.5.31",
+    "gatsby-remark-prismjs": "^1.2.9",
+    "gatsby-source-filesystem": "^1.5.8",
+    "gatsby-transformer-remark": "^1.7.20",
+    "gitcomment": "^0.8.0",
     "normalize.css": "^7.0.0",
-    "prop-types": "^15.5.10",
-    "react-icons": "^2.2.5",
-    "typeface-roboto": "^0.0.35"
+    "prop-types": "^15.6.0",
+    "react-icons": "^2.2.7",
+    "styled-components": "^2.2.3",
+    "typeface-roboto": "^0.0.43"
   },
   "keywords": [
     "gatsby"
@@ -35,12 +37,13 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "eslint": "^4.4.1",
-    "eslint-config-airbnb": "^15.1.0",
-    "eslint-plugin-import": "^2.7.0",
-    "eslint-plugin-jsx-a11y": "^5.1.1",
-    "eslint-plugin-react": "^7.1.0",
-    "prettier-eslint-cli": "^4.1.1"
+    "eslint": "^4.10.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.4.0",
+    "prettier-eslint": "^8.2.1",
+    "prettier-eslint-cli": "^4.4.0"
   },
   "eslintConfig": {
     "extends": "airbnb",

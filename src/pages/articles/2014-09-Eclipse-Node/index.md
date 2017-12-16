@@ -7,6 +7,7 @@ category: "Development"
 description: "How I set up the Eclipse IDE for node.js development"
 author: "@kriswep"
 readNext: "/testing-indexjs/"
+issueNumber: 7
 ---
 
 **Tl;dr: Let’s setup our Eclipse for node.js with the help of the great [nodeclipse](http://www.nodeclipse.org/) project.**
