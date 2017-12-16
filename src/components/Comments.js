@@ -8,13 +8,10 @@ import Gitcomment from 'gitcomment';
 import Button from './Button';
 
 const repo = 'kriswep/wetainment';
-const gkServer =
-  process.env.NODE_ENV === 'production'
-    ? 'https://gk-wetainment.now.sh/'
-    : 'https://gatekeeper-peeozbyjee.now.sh/';
-
+const gkServer = process.env.GATEKEEPER_URL || 'https://gk-wetainment.now.sh/';
+const ghClientId = process.env.GITHUB_CLIENTID || 'ccfe868780485a0221b3';
 const redirect = () =>
-  window.location.replace(`https://github.com/login/oauth/authorize?client_id=70d2271271780a415da8&scope=repo%20user&redirect_uri=${
+  window.location.replace(`https://github.com/login/oauth/authorize?client_id=${ghClientId}&scope=repo%20user&redirect_uri=${
     window.location.href
   }`);
 
