@@ -11,7 +11,7 @@ const repo = 'kriswep/wetainment';
 const gkServer = process.env.GATEKEEPER_URL || 'https://gk-wetainment.now.sh/';
 const ghClientId = process.env.GITHUB_CLIENTID || 'ccfe868780485a0221b3';
 const redirect = () =>
-  window.location.replace(`https://github.com/login/oauth/authorize?client_id=${ghClientId}&scope=repo%20user&redirect_uri=${
+  window.location.replace(`https://github.com/login/oauth/authorize?client_id=${ghClientId}&scope=public_repo&redirect_uri=${
     window.location.href
   }`);
 
