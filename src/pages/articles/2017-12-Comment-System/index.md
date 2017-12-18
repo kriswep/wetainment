@@ -16,7 +16,7 @@ issueNumber: 12
 
 This blog is a pregenerated, static html website. That means, every page you visit here is basically plain old html, there is no server rendering or database action happening. That's a more and more popular approach to writing blogs and websites in general. One downside is, that we need a special solution for adding dynamic content, like comments. This weekend, I added a comment system here, and would like to share some details with you.
 
-By the way: This blog is completely open sourced on [GitHub](https://github.com/kriswep/wetainment), you you can take a look anytime.
+By the way: This blog is completely open sourced on [GitHub](https://github.com/kriswep/wetainment), you can take a look anytime.
 
 ![A calligraphy pen on top of a bright scetchbook on a very dark, wooden desk.](writing.jpg)
 
