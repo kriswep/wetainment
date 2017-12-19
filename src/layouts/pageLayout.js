@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled, { ThemeProvider } from 'styled-components';
 // import Link from 'gatsby-link';
@@ -44,28 +44,17 @@ const StyledWrapper = styled.section`
   `};
 `;
 
-// const StyledHeader = styled.header`
-//   grid-area: header;
-//   border-bottom: solid 1px ${props => props.theme.lightestAccent};
-//   max-width: 960px;
-//   padding: 1.45rem 0.5rem;
-//   ${media.m`
-//     padding: 1.45rem 2rem;
-//   `};
-// `;
-
-// const H1 = styled.h1`
-//   padding: 0;
-//   margin: 0;
-// `;
-
-const MainHeader = () => (
+const MainHeader = ({ title }) => (
   <Header>
     <StyledLink to="/" data-head>
-      wetainment
+      {title}
     </StyledLink>
   </Header>
 );
+
+MainHeader.propTypes = {
+  title: PropTypes.string.isRequired,
+};
 
 const StyledSidebar = styled(Sidebar)`
   grid-area: sidebar;
@@ -100,44 +89,59 @@ const StyledFooter = styled.footer`
   }
 `;
 
-const TemplateWrapper = ({ children, ...rest }) => (
-  <ThemeProvider theme={theme}>
-    <StyledWrapper>
-      <Helmet
-        title="wetainment"
-        meta={[
-          {
-            name: 'description',
-            content:
-              "wetainment is Christoph Benjamin's personal blog and portfolio. Writing about JavaScript",
-          },
-          { name: 'keywords', content: 'blog, portfolio, JavaScript' },
-          { name: 'twitter:card', content: 'summary' },
-          { name: 'twitter:site', content: '@kriswep' },
-          { name: 'twitter:title', content: 'wetainment' },
-          {
-            name: 'twitter:description',
-            content:
-              "wetainment is Christoph Benjamin's personal blog and portfolio. Writing mostly about JavaScript",
-          },
-        ]}
-      />
-      <MainHeader />
-      <StyledSidebar />
-      <ContentWrapper>{children({ ...rest })}</ContentWrapper>
-      <StyledFooter>
-        <p>
-          Made with{' '}
-          <span role="img" aria-label="love">
-            ❤
-          </span>{' '}
-          by <a href="https://twitter.com/kriswep">@kriswep</a>
-        </p>
-      </StyledFooter>
-    </StyledWrapper>
-  </ThemeProvider>
-);
+class TemplateWrapper extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { pageTitle: 'wetainment from state' };
+    this.setTitle = this.setTitle.bind(this);
+  }
 
+  setTitle(newTitle) {
+    this.setState({ pageTitle: newTitle });
+  }
+
+  render() {
+    return (
+      <ThemeProvider theme={theme}>
+        <StyledWrapper>
+          <Helmet
+            title={this.state.pageTitle}
+            meta={[
+              {
+                name: 'description',
+                content:
+                  "wetainment is Christoph Benjamin's personal blog and portfolio. Writing about JavaScript",
+              },
+              { name: 'keywords', content: 'blog, portfolio, JavaScript' },
+              { name: 'twitter:card', content: 'summary' },
+              { name: 'twitter:site', content: '@kriswep' },
+              { name: 'twitter:title', content: 'wetainment' },
+              {
+                name: 'twitter:description',
+                content:
+                  "wetainment is Christoph Benjamin's personal blog and portfolio. Writing mostly about JavaScript",
+              },
+            ]}
+          />
+          <MainHeader title={this.state.pageTitle} />
+          <StyledSidebar />
+          <ContentWrapper>
+            {this.props.children(...{ setTitle: this.setTitle, ...this.props })}
+          </ContentWrapper>
+          <StyledFooter>
+            <p>
+              Made with{' '}
+              <span role="img" aria-label="love">
+                ❤
+              </span>{' '}
+              by <a href="https://twitter.com/kriswep">@kriswep</a>
+            </p>
+          </StyledFooter>
+        </StyledWrapper>
+      </ThemeProvider>
+    );
+  }
+}
 TemplateWrapper.propTypes = {
   children: PropTypes.func, // eslint-disable-line
 };
