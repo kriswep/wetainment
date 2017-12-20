@@ -4,11 +4,9 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import styled from 'styled-components';
 
-import Header from './header';
 import media from '../styles/media';
 import StyledLink from '../layouts/link';
 import Comments from '../components/Comments';
-import { setTimeout } from 'timers';
 
 const Article = styled.article`
   color: ${props => props.theme.darkShades};
@@ -32,26 +30,14 @@ const ReadNextDescription = styled.p`
   margin: 0.1rem 0;
   font-size: 0.8rem;
 `;
-// const H1 = styled.h1`
-//   line-height: 2.5rem;
-// `;
-// const StyledHeader = styled.header`
-//   grid-area: header;
-//   border-bottom: solid 1px ${props => props.theme.lightestAccent};
-//   max-width: 960px;
-//   padding: 1.45rem 0.5rem;
-//   ${media.m`
-//     padding: 1.45rem 2rem;
-//   `};
-// `;
 
 /* eslint-disable react/no-danger */
-const Template = ({ setTitle, data }) => {
-  console.log('setTitle!!!!!!!!!!!!!!!1', setTitle);
+const Template = ({ data }, { setTitle }) => {
   const { markdownRemark: post, readNext } = data;
+  // set title in pageLayout
+  setTitle(post.frontmatter.title);
   return (
     <Article>
-      {/* <Helmet title={`wetainment - ${post.frontmatter.title}`} /> */}
       <Helmet
         title={`${post.frontmatter.title} - wetainment`}
         meta={[
@@ -62,7 +48,6 @@ const Template = ({ setTitle, data }) => {
           { name: 'twitter:description', content: post.frontmatter.description },
         ]}
       />
-      <Header>{post.frontmatter.title}</Header>
       <div dangerouslySetInnerHTML={{ __html: post.html }} />
       {post.frontmatter.date &&
         post.frontmatter.date !== 'Invalid date' && <em>Published {post.frontmatter.date}</em>}
@@ -84,6 +69,10 @@ const Template = ({ setTitle, data }) => {
 
 Template.propTypes = {
   data: PropTypes.shape().isRequired,
+};
+// yes, we're using context. They'll provide a codemod if needs be... right...?
+Template.contextTypes = {
+  setTitle: PropTypes.func,
 };
 
 export default Template;

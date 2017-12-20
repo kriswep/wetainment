@@ -95,6 +95,9 @@ class TemplateWrapper extends Component {
     this.state = { pageTitle: 'wetainment from state' };
     this.setTitle = this.setTitle.bind(this);
   }
+  getChildContext() {
+    return { setTitle: this.setTitle };
+  }
 
   setTitle(newTitle) {
     this.setState({ pageTitle: newTitle });
@@ -144,6 +147,11 @@ class TemplateWrapper extends Component {
 }
 TemplateWrapper.propTypes = {
   children: PropTypes.func, // eslint-disable-line
+};
+// yes, we're using context. Need to push deep down, through gatsbys' magic.
+// They'll provide a codemod if needs be... right...?
+TemplateWrapper.childContextTypes = {
+  setTitle: PropTypes.func,
 };
 
 export default TemplateWrapper;
