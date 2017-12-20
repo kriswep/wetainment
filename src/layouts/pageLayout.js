@@ -92,7 +92,8 @@ const StyledFooter = styled.footer`
 class TemplateWrapper extends Component {
   constructor(props) {
     super(props);
-    this.state = { pageTitle: 'wetainment from state' };
+
+    this.state = { pageTitle: 'wetainment' };
     this.setTitle = this.setTitle.bind(this);
   }
   getChildContext() {
