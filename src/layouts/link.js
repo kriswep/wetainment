@@ -1,7 +1,6 @@
 import React from 'react';
 import Link from 'gatsby-link';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 
 const Styled = styled(Link)`
   text-decoration: none;
@@ -11,20 +10,14 @@ const Styled = styled(Link)`
     return props.theme.darkShades;
   }};
 `;
-
-const StyledLink = ({ to, children, className, ...rest }) =>
-  (<Styled className={className} to={to} {...rest}>
+/* eslint-disable react/prop-types */
+const StyledLink = ({
+  to, children, className, ...rest
+}) => (
+  <Styled className={className} to={to} {...rest}>
     {children}
-  </Styled>);
-
-StyledLink.propTypes = {
-  to: PropTypes.string.isRequired,
-  children: PropTypes.node.isRequired,
-  className: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
-};
-
-StyledLink.defaultProps = {
-  className: PropTypes.string,
-};
+  </Styled>
+);
+/* eslint-enable react/prop-types */
 
 export default StyledLink;
