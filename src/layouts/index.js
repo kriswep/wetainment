@@ -14,6 +14,8 @@ import Header from './header';
 import StyledLink from './link';
 
 import Sidebar from './sidebar';
+import Footer from './footer';
+
 import './index.css';
 
 const StyledWrapper = styled.section`
@@ -44,21 +46,6 @@ const StyledWrapper = styled.section`
   `};
 `;
 
-// const StyledHeader = styled.header`
-//   grid-area: header;
-//   border-bottom: solid 1px ${props => props.theme.lightestAccent};
-//   max-width: 960px;
-//   padding: 1.45rem 0.5rem;
-//   ${media.m`
-//     padding: 1.45rem 2rem;
-//   `};
-// `;
-
-// const H1 = styled.h1`
-//   padding: 0;
-//   margin: 0;
-// `;
-
 const MainHeader = () => (
   <Header>
     <StyledLink to="/" data-head>
@@ -88,18 +75,6 @@ const ContentWrapper = styled.div`
   `};
 `;
 
-const StyledFooter = styled.footer`
-  grid-area: footer;
-  font-size: 0.75rem;
-  padding: 0.25rem;
-  ${media.m`
-    padding: 0.5rem;
-  `} color: ${props => props.theme.darkShades};
-  & a {
-    color: ${props => props.theme.darkAccent};
-  }
-`;
-
 const TemplateWrapper = ({ children, ...rest }) => (
   <ThemeProvider theme={theme}>
     <StyledWrapper>
@@ -125,7 +100,7 @@ const TemplateWrapper = ({ children, ...rest }) => (
       <MainHeader />
       <StyledSidebar />
       <ContentWrapper>{children({ ...rest })}</ContentWrapper>
-      <StyledFooter>
+      <Footer>
         <p>
           Made with{' '}
           <span role="img" aria-label="love">
@@ -133,7 +108,7 @@ const TemplateWrapper = ({ children, ...rest }) => (
           </span>{' '}
           by <a href="https://twitter.com/kriswep">@kriswep</a>
         </p>
-      </StyledFooter>
+      </Footer>
     </StyledWrapper>
   </ThemeProvider>
 );

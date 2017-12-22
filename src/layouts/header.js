@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import media from '../styles/media';
 
 const StyledHeader = styled.header`
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 1.45rem), 0 100%);
   grid-area: header;
   background: ${props => props.theme.main};
   border-bottom: solid 1px ${props => props.theme.lightestAccent};

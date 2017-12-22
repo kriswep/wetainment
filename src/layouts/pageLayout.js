@@ -14,6 +14,8 @@ import Header from './header';
 import StyledLink from './link';
 
 import Sidebar from './sidebar';
+import Footer from './footer';
+
 import './index.css';
 
 const StyledWrapper = styled.section`
@@ -77,18 +79,6 @@ const ContentWrapper = styled.div`
   `};
 `;
 
-const StyledFooter = styled.footer`
-  grid-area: footer;
-  font-size: 0.75rem;
-  padding: 0.25rem;
-  ${media.m`
-    padding: 0.5rem;
-  `} color: ${props => props.theme.darkShades};
-  & a {
-    color: ${props => props.theme.darkAccent};
-  }
-`;
-
 class TemplateWrapper extends Component {
   constructor(props) {
     super(props);
@@ -132,7 +122,7 @@ class TemplateWrapper extends Component {
           <ContentWrapper>
             {this.props.children(...{ setTitle: this.setTitle, ...this.props })}
           </ContentWrapper>
-          <StyledFooter>
+          <Footer>
             <p>
               Made with{' '}
               <span role="img" aria-label="love">
@@ -140,7 +130,7 @@ class TemplateWrapper extends Component {
               </span>{' '}
               by <a href="https://twitter.com/kriswep">@kriswep</a>
             </p>
-          </StyledFooter>
+          </Footer>
         </StyledWrapper>
       </ThemeProvider>
     );
