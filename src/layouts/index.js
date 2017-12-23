@@ -10,9 +10,12 @@ import 'typeface-roboto'; // eslint-disable-line import/extensions
 import theme from '../styles/theme';
 import media from '../styles/media';
 
+import Header from './header';
 import StyledLink from './link';
 
 import Sidebar from './sidebar';
+import Footer from './footer';
+
 import './index.css';
 
 const StyledWrapper = styled.section`
@@ -29,7 +32,7 @@ const StyledWrapper = styled.section`
   ${media.m`
   grid-gap: 10px;
   grid-template-rows: auto 1fr auto;
-  grid-template-areas: "sidebar header header" "sidebar content content" "footer footer footer";
+  grid-template-areas: "header header header" "sidebar content content" "footer footer footer";
   `} ${media.l`
     grid-template-columns: 20rem 1fr;
   `} ${media.xl`
@@ -43,29 +46,12 @@ const StyledWrapper = styled.section`
   `};
 `;
 
-const StyledHeader = styled.header`
-  grid-area: header;
-  border-bottom: solid 1px ${props => props.theme.lightestAccent};
-  max-width: 960px;
-  padding: 1.45rem 0.5rem;
-  ${media.m`
-    padding: 1.45rem 2rem;
-  `};
-`;
-
-const H1 = styled.h1`
-  padding: 0;
-  margin: 0;
-`;
-
-const Header = () => (
-  <StyledHeader>
-    <H1>
-      <StyledLink to="/" data-head>
-        wetainment
-      </StyledLink>
-    </H1>
-  </StyledHeader>
+const MainHeader = () => (
+  <Header>
+    <StyledLink to="/" data-head>
+      wetainment
+    </StyledLink>
+  </Header>
 );
 
 const StyledSidebar = styled(Sidebar)`
@@ -89,19 +75,7 @@ const ContentWrapper = styled.div`
   `};
 `;
 
-const StyledFooter = styled.footer`
-  grid-area: footer;
-  font-size: 0.75rem;
-  padding: 0.25rem;
-  ${media.m`
-    padding: 0.5rem;
-  `} color: ${props => props.theme.darkShades};
-  & a {
-    color: ${props => props.theme.darkAccent};
-  }
-`;
-
-const TemplateWrapper = ({ children }) => (
+const TemplateWrapper = ({ children, ...rest }) => (
   <ThemeProvider theme={theme}>
     <StyledWrapper>
       <Helmet
@@ -123,14 +97,18 @@ const TemplateWrapper = ({ children }) => (
           },
         ]}
       />
-      <Header />
+      <MainHeader />
       <StyledSidebar />
-      <ContentWrapper>{children()}</ContentWrapper>
-      <StyledFooter>
+      <ContentWrapper>{children({ ...rest })}</ContentWrapper>
+      <Footer>
         <p>
-          Made with ❤ by <a href="https://twitter.com/kriswep">@kriswep</a>
+          Made with{' '}
+          <span role="img" aria-label="love">
+            ❤
+          </span>{' '}
+          by <a href="https://twitter.com/kriswep">@kriswep</a>
         </p>
-      </StyledFooter>
+      </Footer>
     </StyledWrapper>
   </ThemeProvider>
 );

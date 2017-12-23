@@ -5,7 +5,7 @@ import styled from 'styled-components';
 const Styled = styled(Link)`
   text-decoration: none;
   color: ${(props) => {
-    if (props['data-head']) return props.theme.main;
+    if (props['data-head']) return props.theme.lightShades;
     else if (props['data-nav']) return props.theme.darkAccent;
     return props.theme.darkShades;
   }};

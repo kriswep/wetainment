@@ -48,6 +48,7 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
       createPage({
         path: node.frontmatter.path,
         component: blogPostTemplate,
+        layout: 'pageLayout',
         context: {
           readNext: node.frontmatter.readNext,
         }, // additional data can be passed via context
