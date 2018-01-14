@@ -1,8 +1,7 @@
-/* globals graphql */
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-// import Link from 'gatsby-link';
+import Link from 'gatsby-link';
 // import Helmet from 'react-helmet';
 import ArrowIcon from 'react-icons/lib/ti/arrow-right';
 
@@ -73,11 +72,38 @@ const H1 = styled.h1`
   `};
 `;
 
-const Index = ({ data }) => {
-  const { edges: posts } = data.allMarkdownRemark;
+const PaginationWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  grid-column: 1 span;
+  padding: 0 0 1rem 0;
+
+  ${media.s`
+    grid-column: 2 span;
+  `};
+  ${media.m`
+    grid-column: 1 span;
+    padding: 1rem;
+  `};
+  ${media.l`
+    grid-column: 2 span;
+  `};
+`;
+
+const PaginationLink = styled(StyledLink)`
+  padding: 5px 0;
+  display: inline-block;
+`;
+
+const Index = ({ pathContext }) => {
+  const {
+    group, index, first, last,
+  } = pathContext;
+
   return (
+    // const { edges: posts } = data.allMarkdownRemark;
     <StyledWrapper>
-      {posts
+      {group
         .filter(post => post.node.frontmatter.title.length > 0 && post.node.frontmatter.layout === 'post')
         .map(({ node: post }) => (
           <PostPreviewWrapper key={post.id}>
@@ -92,34 +118,23 @@ const Index = ({ data }) => {
             </ReadLink>
           </PostPreviewWrapper>
         ))}
+      <PaginationWrapper>
+        {!first && (
+          <PaginationLink data-nav to={index > 2 ? `/p/${index - 1}` : '/'}>
+            Newer posts
+          </PaginationLink>
+        )}
+        {!last && (
+          <PaginationLink data-nav to={`/p/${index + 1}`}>
+            Older posts
+          </PaginationLink>
+        )}
+      </PaginationWrapper>
     </StyledWrapper>
   );
 };
-
 Index.propTypes = {
-  data: PropTypes.shape().isRequired,
+  pathContext: PropTypes.shape().isRequired,
 };
 
 export default Index;
-
-export const pageQuery = graphql`
-  query IndexQuery {
-    allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
-      edges {
-        node {
-          excerpt(pruneLength: 250)
-          id
-          frontmatter {
-            title
-            date(formatString: "MMMM YYYY")
-            description
-            path
-            layout
-            author
-            category
-          }
-        }
-      }
-    }
-  }
-`;
