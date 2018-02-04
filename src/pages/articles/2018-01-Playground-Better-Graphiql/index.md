@@ -31,7 +31,7 @@ Honestly, the first time I stumpled upon GraphQL Playground, was when I tried ou
 
 There is still room for improvement, on my wishlist would be an easy way to close individual schema columns.
 
-![A boy having fun on a swing. The background shows a bright sky and some other kids' playground equipment](playground.jpg).
+![A boy having fun on a swing. The background shows a bright sky and some other kids' playground equipment](playground.jpg)
 
 <p><sub><sup>A boy having fun on a swing! Little pun on the name playground. Photo by <a href="https://unsplash.com/@mylestan">Myles Tan</a> on <a href="https://unsplash.com/photos/WNAO036c6FM">Unsplash</a>.</sup></sub></p>
 
