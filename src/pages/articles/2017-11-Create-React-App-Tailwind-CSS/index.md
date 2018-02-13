@@ -64,14 +64,14 @@ Create React App includes a global css file under `./src/index.css`. Delete this
 
 These are Tailwind's directives, which declare what to include. Again, there is more information in their [docs](https://tailwindcss.com/docs/installation#3-use-tailwind-in-your-css).
 
-The last step is to add the Tailwind build command. Open your projects' `package.json` and replace the start and build task with the following
+The last step is to add the Tailwind build command to our tooling scripts. Open your projects' `package.json` and add the following prebuild and prestart tasks:
 
 ```JSON
   "scripts": {
-    "start":
-      "tailwind build ./src/index.tailwind.css -o ./src/index.css && react-scripts start",
-    "build":
-      "tailwind build ./src/index.tailwind.css -o ./src/index.css && react-scripts build",
+    "prestart": "tailwind build ./src/index.tailwind.css -c ./tailwind.js -o ./src/index.css",
+    "start": "react-scripts start",
+    "prebuild": "tailwind build ./src/index.tailwind.css -c ./tailwind.js -o ./src/index.css",
+    "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
