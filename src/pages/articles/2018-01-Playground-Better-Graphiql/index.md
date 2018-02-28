@@ -6,7 +6,7 @@ path: "/playground-better-graphiql/"
 category: "GraphQL"
 description: "GraphQL Playground expands on the idea of GraphiQL, adding some nice features to provide an even better development experience for the GraphQL world."
 author: "@kriswep"
-readNext: "/create-react-app-tailwind-css/"
+readNext: "/revealing-prismagraphql-magic/"
 issueNumber: 15
 ---
 
