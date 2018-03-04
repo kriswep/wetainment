@@ -18,7 +18,7 @@ Lately I'm becoming more and more of a [GraphQL](http://facebook.github.io/graph
 
 In september 2017, the team of [graph.cool](https://www.graph.cool/) released a open sourced tool called [GraphQL Playground](https://github.com/graphcool/graphql-playground). It builds upon the idea of GraphiQL, but adds some nice functionality on top.
 
-The coolest features it has over GraphiQl:
+The coolest features it has over GraphiQL:
 
 * Tabs!
 * Nice themes
