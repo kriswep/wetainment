@@ -6,13 +6,16 @@ path: "/wid-2018-03-27/"
 category: "WiD"
 description: "The start of my series blogging about the achievements, big and small, I made on my free time projects."
 author: "@kriswep"
-readNext: "/revealing-prismagraphql-magic/"
+readNext: "/wid-2018-04-11/"
 issueNumber: 18
 ---
 
 #### Working on morphlog
 
 **Tl,dr: Hey, my name is Benjamin and here I write about the things I made during the last week (or more). This mostly involves coding projects in my spare time. Today, let's talk about [morphlog](https://github.com/kriswep/morphlog).**
+
+ - [WiD - What I Did | Part 1 (This post!)](/wid-2018-03-27/)
+ - [WiD - What I Did | Part 2](/wid-2018-04-11/)
 
 But first we'll set the scene. I'm a software developer from Germany working at a company developing different products and doing consulting in the SAP ecosystem. Like many other people I started some side projects during my free time and, let's face it, often didn't finish. That's ok, I use them mostly to learn new things, relax and do what I want, not to build the next big thing. Still, it would be nice to finish more of them. So I decided to write publically, right here, about what I do. See it as a public commitment and incentive to me.
 
