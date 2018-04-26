@@ -16,6 +16,11 @@ issueNumber: 17
 
 The team from [graph.cool](graph.cool) launched their Prisma GraphQL project in mid January 2018. At the heart it is a API layer using [GraphQL](http://graphql.org/). It uses some amazing techniques for that, and that could feel like true magic. So, let us explore Prisma as if it was a Las Vegas show. To get the most out of this article, it would be best if you already know GraphQL. You could catch up on [How to GraphQL](https://www.howtographql.com/). Also try to follow along on your machine. If you can't, find the code, we are going to look at, over [here](https://github.com/kriswep/prisma-show).
 
+**Since writting this article a new Prisma version was released (1.7).
+Some of the introduced changes revealed a little bit magic by exposing a `docker-compose.yml`.
+Read more at their [release notes](https://github.com/graphcool/prisma/releases/tag/1.7.0).
+Still, the things written here hold true and the commands were changed as needed.**
+
 ![A circus show with elephants and different artists, some of them on motorcyles.](circus.jpg)
 
 <p><sub><sup>Feel the magic circus atmosphere? Photo by <a href="https://unsplash.com/@beckyphan">Becky Phan</a> on <a href="https://unsplash.com/photos/o8-670KHgK8">Unsplash</a>.</sup></sub></p>
@@ -25,15 +30,14 @@ The team from [graph.cool](graph.cool) launched their Prisma GraphQL project in 
 Grab your free tickets by entering the following commands in your prompt:
 
 ```bash
-npm install -g prisma
-prisma init prisma-show
+npm install -g prisma graphql-cli
+graphql create prisma-show
 ```
 
-There are different shows running, let me select you a fun one. When asked, choose the following options:
- - `GraphQL server/fullstack boilerplate (recommended)`
+There are different shows running, let me select you a fun one. When asked, choose the following option:
  - `typescript-advanced     GraphQL server (incl. database & authentication)`
 
-Prisma will set up your theatre stage, just wait a bit. When asked about the cluster, choose local, if you have a docker and docker-compose installation on your machine. Otherwhise one of the public cloud options will cover you, albeit not as cool.
+Prisma will set up your theatre stage, just wait a bit. When asked about the cluster, choose local, if you have a docker and docker-compose installation on your machine. Otherwhise one of the public cloud options will cover you, albeit not as cool. Newer versions might not ask you about deployment clusters. If you want to work on a local setup, you will need to remove the `PRISMA_ENDPOINT` from the `.env` file and run `prisma deploy`. To start your local cluster, try `prisma init`.
 
 Done? Saw that information about changed types and fields? That's a little hint about Prismas' tricks, but we'll have a closer look at that later.
 
