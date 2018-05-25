@@ -59,7 +59,6 @@ class Template extends Component {
           title={`${post.frontmatter.title} - wetainment`}
           meta={meta}
         />
-        <p>{JSON.stringify(post.frontmatter)}</p>
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
         {post.frontmatter.date &&
           post.frontmatter.date !== 'Invalid date' && <em>Published {post.frontmatter.date}</em>}

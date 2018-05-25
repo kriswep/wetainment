@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { ThemeProvider } from 'styled-components';
 import Helmet from 'react-helmet';
+
+
 import 'normalize.css';
 import 'prismjs/themes/prism-okaidia.css';
 import 'typeface-roboto'; // eslint-disable-line import/extensions
@@ -14,8 +16,10 @@ import StyledLink from './link';
 
 import Sidebar from './sidebar';
 import Footer from './footer';
+import Cookie from '../components/Cookie';
 
 import './index.css';
+
 
 const StyledWrapper = styled.section`
   min-height: 100vh;
@@ -96,6 +100,7 @@ const TemplateWrapper = ({ children, ...rest }) => (
           },
         ]}
       />
+
       <MainHeader />
       <StyledSidebar />
       <ContentWrapper>{children({ ...rest })}</ContentWrapper>
@@ -111,6 +116,7 @@ const TemplateWrapper = ({ children, ...rest }) => (
           </StyledLink>
         </p>
       </Footer>
+      <Cookie />
     </StyledWrapper>
   </ThemeProvider>
 );

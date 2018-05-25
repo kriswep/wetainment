@@ -15,6 +15,7 @@ import StyledLink from './link';
 
 import Sidebar from './sidebar';
 import Footer from './footer';
+import Cookie from '../components/Cookie';
 
 import './index.css';
 
@@ -134,6 +135,7 @@ class TemplateWrapper extends Component {
               </StyledLink>
             </p>
           </Footer>
+          <Cookie />
         </StyledWrapper>
       </ThemeProvider>
     );

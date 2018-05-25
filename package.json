@@ -20,6 +20,7 @@
     "gitcomment": "^0.8.0",
     "normalize.css": "^7.0.0",
     "prop-types": "^15.6.0",
+    "react-cookie-banner": "^4.0.0",
     "react-helmet": "^5.2.0",
     "react-icons": "^2.2.7",
     "styled-components": "^2.3.3",
