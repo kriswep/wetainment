@@ -3,6 +3,7 @@ title: "About me"
 layout: page
 path: "/about"
 readNext: "/create-react-app-tailwind-css/"
+noindex: "true"
 ---
 
 My personal portfolio page. I'm a software developer living kind of in the

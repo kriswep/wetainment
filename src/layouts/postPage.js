@@ -129,6 +129,9 @@ class TemplateWrapper extends Component {
                 ❤
               </span>{' '}
               by <a href="https://twitter.com/kriswep">@kriswep</a>
+              <StyledLink to="/privacy" style={{ position: 'absolute', right: '10px' }} data-underline>
+                Privacy
+              </StyledLink>
             </p>
           </Footer>
         </StyledWrapper>

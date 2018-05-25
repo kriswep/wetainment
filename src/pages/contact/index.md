@@ -3,6 +3,7 @@ title: "Contact me"
 layout: page
 path: "/contact"
 readNext: "/create-react-app-tailwind-css/"
+noindex: "true"
 ---
 
 If anyone wants to contact me, just send me a

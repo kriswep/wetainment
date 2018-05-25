@@ -70,6 +70,7 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
               category
               readNext
               issueNumber
+              noindex
             }
           }
         }

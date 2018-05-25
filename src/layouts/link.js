@@ -3,7 +3,10 @@ import Link from 'gatsby-link';
 import styled from 'styled-components';
 
 const Styled = styled(Link)`
-  text-decoration: none;
+  text-decoration: ${(props) => {
+    if (props['data-underline']) return 'underline';
+    return 'none';
+  }};
   color: ${(props) => {
     if (props['data-head']) return props.theme.lightShades;
     else if (props['data-nav']) return props.theme.darkAccent;

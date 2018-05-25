@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { ThemeProvider } from 'styled-components';
-// import Link from 'gatsby-link';
 import Helmet from 'react-helmet';
 import 'normalize.css';
 import 'prismjs/themes/prism-okaidia.css';
@@ -107,6 +106,9 @@ const TemplateWrapper = ({ children, ...rest }) => (
             ❤
           </span>{' '}
           by <a href="https://twitter.com/kriswep">@kriswep</a>
+          <StyledLink to="/privacy" style={{ position: 'absolute', right: '10px' }} data-underline>
+            Privacy
+          </StyledLink>
         </p>
       </Footer>
     </StyledWrapper>

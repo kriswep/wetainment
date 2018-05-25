@@ -42,18 +42,24 @@ class Template extends Component {
   }
   render() {
     const { markdownRemark: post, readNext } = this.props.data;
+    // <meta name="robots" content="noindex" />
+    const meta = [
+      { name: 'description', content: post.frontmatter.description },
+      { name: 'twitter:card', content: 'summary' },
+      { name: 'twitter:site', content: post.frontmatter.author },
+      { name: 'twitter:title', content: post.frontmatter.title },
+      { name: 'twitter:description', content: post.frontmatter.description },
+    ];
+    if (post.frontmatter.noindex) {
+      meta.push({ name: 'robots', content: 'noindex' });
+    }
     return (
       <Article>
         <Helmet
           title={`${post.frontmatter.title} - wetainment`}
-          meta={[
-            { name: 'description', content: post.frontmatter.description },
-            { name: 'twitter:card', content: 'summary' },
-            { name: 'twitter:site', content: post.frontmatter.author },
-            { name: 'twitter:title', content: post.frontmatter.title },
-            { name: 'twitter:description', content: post.frontmatter.description },
-          ]}
+          meta={meta}
         />
+        <p>{JSON.stringify(post.frontmatter)}</p>
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
         {post.frontmatter.date &&
           post.frontmatter.date !== 'Invalid date' && <em>Published {post.frontmatter.date}</em>}
