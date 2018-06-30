@@ -6,7 +6,7 @@ path: "/wid-2018-04-11/"
 category: "WiD"
 description: "Setting up end to end tests with Cypress.io, automated and run on CircleCI."
 author: "@kriswep"
-readNext: "/wid-2018-03-27/"
+readNext: "/wid-2018-06-30/"
 issueNumber: 19
 ---
 
