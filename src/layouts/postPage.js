@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled, { ThemeProvider } from 'styled-components';
-// import Link from 'gatsby-link';
+// import { Link } from 'gatsby';
 import Helmet from 'react-helmet';
 import 'normalize.css';
 import 'prismjs/themes/prism-okaidia.css';
@@ -121,7 +121,7 @@ class TemplateWrapper extends Component {
           <MainHeader title={this.state.pageTitle} />
           <StyledSidebar />
           <ContentWrapper>
-            {this.props.children(...{ setTitle: this.setTitle, ...this.props })}
+            {this.props.children}
           </ContentWrapper>
           <Footer>
             <p>

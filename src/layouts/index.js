@@ -78,7 +78,7 @@ const ContentWrapper = styled.div`
   `};
 `;
 
-const TemplateWrapper = ({ children, ...rest }) => (
+const TemplateWrapper = ({ children }) => (
   <ThemeProvider theme={theme}>
     <StyledWrapper>
       <Helmet
@@ -103,7 +103,7 @@ const TemplateWrapper = ({ children, ...rest }) => (
 
       <MainHeader />
       <StyledSidebar />
-      <ContentWrapper>{children({ ...rest })}</ContentWrapper>
+      <ContentWrapper>{children}</ContentWrapper>
       <Footer>
         <p>
           Made with{' '}
