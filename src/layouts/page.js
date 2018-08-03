@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import styled from 'styled-components';
 
+import PostLayout from './postPage';
 import media from '../styles/media';
 import StyledLink from '../layouts/link';
 import Comments from '../components/Comments';
@@ -54,26 +55,28 @@ class Template extends Component {
       meta.push({ name: 'robots', content: 'noindex' });
     }
     return (
-      <Article>
-        <Helmet
-          title={`${post.frontmatter.title} - wetainment`}
-          meta={meta}
-        />
-        <div dangerouslySetInnerHTML={{ __html: post.html }} />
-        {post.frontmatter.date &&
-          post.frontmatter.date !== 'Invalid date' && <em>Published {post.frontmatter.date}</em>}
+      <PostLayout>
+        <Article>
+          <Helmet
+            title={`${post.frontmatter.title} - wetainment`}
+            meta={meta}
+          />
+          <div dangerouslySetInnerHTML={{ __html: post.html }} />
+          {post.frontmatter.date &&
+            post.frontmatter.date !== 'Invalid date' && <em>Published {post.frontmatter.date}</em>}
 
-        {post.frontmatter.layout === 'post' &&
-          post.frontmatter.issueNumber && <Comments issueNumber={post.frontmatter.issueNumber} />}
-        {readNext &&
-          post.frontmatter.layout === 'post' && (
-            <ReadNext>
-              <ReadNextHeader>READ THIS NEXT:</ReadNextHeader>
-              <StyledLink to={readNext.frontmatter.path}>{readNext.frontmatter.title}</StyledLink>
-              <ReadNextDescription>{readNext.frontmatter.description}</ReadNextDescription>
-            </ReadNext>
-          )}
-      </Article>
+          {post.frontmatter.layout === 'post' &&
+            post.frontmatter.issueNumber && <Comments issueNumber={post.frontmatter.issueNumber} />}
+          {readNext &&
+            post.frontmatter.layout === 'post' && (
+              <ReadNext>
+                <ReadNextHeader>READ THIS NEXT:</ReadNextHeader>
+                <StyledLink to={readNext.frontmatter.path}>{readNext.frontmatter.title}</StyledLink>
+                <ReadNextDescription>{readNext.frontmatter.description}</ReadNextDescription>
+              </ReadNext>
+            )}
+        </Article>
+      </PostLayout>
     );
   }
 }
