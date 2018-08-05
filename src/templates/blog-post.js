@@ -1,20 +1,4 @@
-// import React from 'react';
-// import { graphql } from 'gatsby';
-// import Layout from '../components/layout';
-
-// export default ({ data }) => {
-//   const post = data.markdownRemark;
-//   return (
-//     <Layout>
-//       <div>
-//         <h1>{post.frontmatter.title}</h1>
-//         <div dangerouslySetInnerHTML={{ __html: post.html }} />
-//       </div>
-//     </Layout>
-//   );
-// };
-
-import React, { Component } from 'react';
+import React from 'react';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
@@ -49,50 +33,41 @@ const ReadNextDescription = styled.p`
 `;
 
 /* eslint-disable react/no-danger */
-class Template extends Component {
-  constructor(props, { setTitle }) {
-    super(props);
-
-    // set title in pageLayout
-    // const { markdownRemark: post } = props.data;
-    // setTitle(post.frontmatter.title);
+const Template = (props) => {
+  const { markdownRemark: post, readNext } = props.data;
+  // <meta name="robots" content="noindex" />
+  const meta = [
+    { name: 'description', content: post.frontmatter.description },
+    { name: 'twitter:card', content: 'summary' },
+    { name: 'twitter:site', content: post.frontmatter.author },
+    { name: 'twitter:title', content: post.frontmatter.title },
+    { name: 'twitter:description', content: post.frontmatter.description },
+  ];
+  if (post.frontmatter.noindex) {
+    meta.push({ name: 'robots', content: 'noindex' });
   }
-  render() {
-    const { markdownRemark: post, readNext } = this.props.data;
-    // <meta name="robots" content="noindex" />
-    const meta = [
-      { name: 'description', content: post.frontmatter.description },
-      { name: 'twitter:card', content: 'summary' },
-      { name: 'twitter:site', content: post.frontmatter.author },
-      { name: 'twitter:title', content: post.frontmatter.title },
-      { name: 'twitter:description', content: post.frontmatter.description },
-    ];
-    if (post.frontmatter.noindex) {
-      meta.push({ name: 'robots', content: 'noindex' });
-    }
-    return (
-      <PostLayout title={post.frontmatter.title}>
-        <Article>
-          <Helmet title={`${post.frontmatter.title} - wetainment`} meta={meta} />
-          <div dangerouslySetInnerHTML={{ __html: post.html }} />
-          {post.frontmatter.date &&
-            post.frontmatter.date !== 'Invalid date' && <em>Published {post.frontmatter.date}</em>}
+  return (
+    <PostLayout title={post.frontmatter.title}>
+      <Article>
+        <Helmet title={`${post.frontmatter.title} - wetainment`} meta={meta} />
+        <div dangerouslySetInnerHTML={{ __html: post.html }} />
+        {post.frontmatter.date &&
+          post.frontmatter.date !== 'Invalid date' && <em>Published {post.frontmatter.date}</em>}
 
-          {post.frontmatter.layout === 'post' &&
-            post.frontmatter.issueNumber && <Comments issueNumber={post.frontmatter.issueNumber} />}
-          {readNext &&
-            post.frontmatter.layout === 'post' && (
-              <ReadNext>
-                <ReadNextHeader>READ THIS NEXT:</ReadNextHeader>
-                <StyledLink to={readNext.frontmatter.path}>{readNext.frontmatter.title}</StyledLink>
-                <ReadNextDescription>{readNext.frontmatter.description}</ReadNextDescription>
-              </ReadNext>
-            )}
-        </Article>
-      </PostLayout>
-    );
-  }
-}
+        {post.frontmatter.layout === 'post' &&
+          post.frontmatter.issueNumber && <Comments issueNumber={post.frontmatter.issueNumber} />}
+        {readNext &&
+          post.frontmatter.layout === 'post' && (
+            <ReadNext>
+              <ReadNextHeader>READ THIS NEXT:</ReadNextHeader>
+              <StyledLink to={readNext.frontmatter.path}>{readNext.frontmatter.title}</StyledLink>
+              <ReadNextDescription>{readNext.frontmatter.description}</ReadNextDescription>
+            </ReadNext>
+          )}
+      </Article>
+    </PostLayout>
+  );
+};
 /* eslint-enable react/no-danger */
 
 Template.propTypes = {
