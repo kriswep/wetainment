@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import styled from 'styled-components';
 
-import PostLayout from '../layouts/postPage';
+import Layout from '../components/layout';
 import media from '../styles/media';
 import StyledLink from '../layouts/link';
 import Comments from '../components/Comments';
@@ -47,7 +47,7 @@ const Template = (props) => {
     meta.push({ name: 'robots', content: 'noindex' });
   }
   return (
-    <PostLayout title={post.frontmatter.title}>
+    <Layout title={post.frontmatter.title}>
       <Article>
         <Helmet title={`${post.frontmatter.title} - wetainment`} meta={meta} />
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
@@ -65,17 +65,13 @@ const Template = (props) => {
             </ReadNext>
           )}
       </Article>
-    </PostLayout>
+    </Layout>
   );
 };
 /* eslint-enable react/no-danger */
 
 Template.propTypes = {
   data: PropTypes.shape().isRequired,
-};
-// yes, we're using context. They'll provide a codemod if needs be... right...?
-Template.contextTypes = {
-  setTitle: PropTypes.func,
 };
 
 export default Template;

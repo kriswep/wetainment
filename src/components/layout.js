@@ -47,13 +47,16 @@ const StyledWrapper = styled.section`
   `};
 `;
 
-const MainHeader = () => (
+const MainHeader = ({ title }) => (
   <Header>
     <StyledLink to="/" data-head>
-      wetainment
+      {title}
     </StyledLink>
   </Header>
 );
+MainHeader.propTypes = {
+  title: PropTypes.string.isRequired,
+};
 
 const StyledSidebar = styled(Sidebar)`
   grid-area: sidebar;
@@ -76,11 +79,11 @@ const ContentWrapper = styled.div`
   `};
 `;
 
-const TemplateWrapper = ({ children }) => (
+const TemplateWrapper = props => (
   <ThemeProvider theme={theme}>
     <StyledWrapper>
       <Helmet
-        title="wetainment"
+        title={props.title}
         meta={[
           {
             name: 'description',
@@ -99,9 +102,9 @@ const TemplateWrapper = ({ children }) => (
         ]}
       />
 
-      <MainHeader />
+      <MainHeader title={props.title} />
       <StyledSidebar />
-      <ContentWrapper>{children}</ContentWrapper>
+      <ContentWrapper>{props.children}</ContentWrapper>
       <Footer>
         <p>
           Made with{' '}
@@ -121,6 +124,10 @@ const TemplateWrapper = ({ children }) => (
 
 TemplateWrapper.propTypes = {
   children: PropTypes.object, // eslint-disable-line
+  title: PropTypes.string,
+};
+TemplateWrapper.defaultProps = {
+  title: 'wetainment',
 };
 
 export default TemplateWrapper;
