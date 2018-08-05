@@ -1,7 +1,7 @@
 const path = require('path');
 
 const createIndexPages = (createPage, posts) => {
-  const indexPageTemplate = path.resolve('src/layouts/indexPage.js');
+  const indexPageTemplate = path.resolve('src/templates/index-page.js');
   const paginateSize = 6;
 
   // Split posts into arrays of length equal to number posts on each page/paginateSize
@@ -111,11 +111,19 @@ exports.createPages = ({ graphql, actions }) => {
         allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }, limit: 1000) {
           edges {
             node {
+              id
+              excerpt(pruneLength: 250)
               frontmatter {
                 title
-                layout
+                date(formatString: "MMMM YYYY")
+                description
                 path
+                layout
+                author
+                category
                 readNext
+                issueNumber
+                # noindex
               }
               fields {
                 slug
