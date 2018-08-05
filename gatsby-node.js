@@ -112,6 +112,7 @@ exports.createPages = ({ graphql, actions }) => {
               frontmatter {
                 layout
                 path
+                readNext
               }
               fields {
                 slug
@@ -129,6 +130,7 @@ exports.createPages = ({ graphql, actions }) => {
             // Data passed to context is available
             // in page queries as GraphQL variables.
             slug: node.fields.slug,
+            readNext: node.frontmatter.readNext,
           },
         });
       });

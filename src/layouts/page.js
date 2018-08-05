@@ -92,12 +92,37 @@ Template.contextTypes = {
 
 export default Template;
 
-export const pageQuery = graphql`
-  query BlogPostByPath(
-    $path: String = "/eclipse-for-node/"
-    $readNext: String = "/eclipse-for-node/"
-  ) {
-    markdownRemark(frontmatter: { path: { eq: $path } }) {
+// export const pageQuery = graphql`
+//   query BlogPostByPath(
+//     $path: String = "/eclipse-for-node/"
+//     $readNext: String = "/eclipse-for-node/"
+//   ) {
+//     markdownRemark(frontmatter: { path: { eq: $path } }) {
+//       html
+//       frontmatter {
+//         date(formatString: "MMMM DD, YYYY")
+//         path
+//         title
+//         description
+//         author
+//         layout
+//         readNext
+//         issueNumber
+//       }
+//     }
+//     readNext: markdownRemark(frontmatter: { path: { eq: $readNext } }) {
+//       frontmatter {
+//         date(formatString: "MMMM DD, YYYY")
+//         path
+//         title
+//         description
+//       }
+//     }
+//   }
+// `;
+export const query = graphql`
+  query($slug: String!, $readNext: String = "/eclipse-for-node/") {
+    markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
@@ -110,7 +135,7 @@ export const pageQuery = graphql`
         issueNumber
       }
     }
-    readNext: markdownRemark(frontmatter: { path: { eq: $readNext } }) {
+    readNext: markdownRemark(fields: { slug: { eq: $readNext } }) {
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
         path

@@ -80,74 +80,54 @@ const ContentWrapper = styled.div`
   `};
 `;
 
-class TemplateWrapper extends Component {
-  constructor(props) {
-    super(props);
+const TemplateWrapper = props => (
+  <ThemeProvider theme={theme}>
+    <StyledWrapper>
+      <Helmet
+        title={props.title}
+        meta={[
+          {
+            name: 'description',
+            content:
+              "wetainment is Christoph Benjamin's personal blog and portfolio. Writing about JavaScript",
+          },
+          { name: 'keywords', content: 'blog, portfolio, JavaScript' },
+          { name: 'twitter:card', content: 'summary' },
+          { name: 'twitter:site', content: '@kriswep' },
+          { name: 'twitter:title', content: 'wetainment' },
+          {
+            name: 'twitter:description',
+            content:
+              "wetainment is Christoph Benjamin's personal blog and portfolio. Writing mostly about JavaScript",
+          },
+        ]}
+      />
+      <MainHeader title={props.title} />
+      <StyledSidebar />
+      <ContentWrapper>{props.children}</ContentWrapper>
+      <Footer>
+        <p>
+          Made with{' '}
+          <span role="img" aria-label="love">
+            ❤
+          </span>{' '}
+          by <a href="https://twitter.com/kriswep">@kriswep</a>
+          <StyledLink to="/privacy" style={{ position: 'absolute', right: '10px' }} data-underline>
+            Privacy
+          </StyledLink>
+        </p>
+      </Footer>
+      <Cookie />
+    </StyledWrapper>
+  </ThemeProvider>
+);
 
-    this.state = { pageTitle: 'wetainment' };
-    this.setTitle = this.setTitle.bind(this);
-  }
-  getChildContext() {
-    return { setTitle: this.setTitle };
-  }
-
-  setTitle(newTitle) {
-    this.setState({ pageTitle: newTitle });
-  }
-
-  render() {
-    return (
-      <ThemeProvider theme={theme}>
-        <StyledWrapper>
-          <Helmet
-            title={this.state.pageTitle}
-            meta={[
-              {
-                name: 'description',
-                content:
-                  "wetainment is Christoph Benjamin's personal blog and portfolio. Writing about JavaScript",
-              },
-              { name: 'keywords', content: 'blog, portfolio, JavaScript' },
-              { name: 'twitter:card', content: 'summary' },
-              { name: 'twitter:site', content: '@kriswep' },
-              { name: 'twitter:title', content: 'wetainment' },
-              {
-                name: 'twitter:description',
-                content:
-                  "wetainment is Christoph Benjamin's personal blog and portfolio. Writing mostly about JavaScript",
-              },
-            ]}
-          />
-          <MainHeader title={this.state.pageTitle} />
-          <StyledSidebar />
-          <ContentWrapper>
-            {this.props.children}
-          </ContentWrapper>
-          <Footer>
-            <p>
-              Made with{' '}
-              <span role="img" aria-label="love">
-                ❤
-              </span>{' '}
-              by <a href="https://twitter.com/kriswep">@kriswep</a>
-              <StyledLink to="/privacy" style={{ position: 'absolute', right: '10px' }} data-underline>
-                Privacy
-              </StyledLink>
-            </p>
-          </Footer>
-          <Cookie />
-        </StyledWrapper>
-      </ThemeProvider>
-    );
-  }
-}
 TemplateWrapper.propTypes = {
   children: PropTypes.func, // eslint-disable-line
+  title: PropTypes.string,
 };
-// yes, we're using context. Need to push deep down, through gatsbys' magic.
-// They'll provide a codemod if needs be... right...?
-TemplateWrapper.childContextTypes = {
-  setTitle: PropTypes.func,
+TemplateWrapper.defaultProps = {
+  title: 'wetainment',
 };
 
 export default TemplateWrapper;
