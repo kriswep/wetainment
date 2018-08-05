@@ -6,7 +6,7 @@ path: "/eclipse-for-node/"
 category: "Development"
 description: "How I set up the Eclipse IDE for node.js development"
 author: "@kriswep"
-readNext: "/testing-indexjs/"
+readNext: "/articles/2017-02-Testing-indexjs/"
 issueNumber: 7
 ---
 

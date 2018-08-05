@@ -6,7 +6,7 @@ path: "/tree-shaking/"
 category: "Performance"
 description: "Setting up tree shaking with webpack2, Babel and ES2015 modules"
 author: "@kriswep"
-readNext: "/comment-system/"
+readNext: "/articles/2017-12-Comment-System/"
 issueNumber: 10
 ---
 

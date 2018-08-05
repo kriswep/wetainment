@@ -6,7 +6,7 @@ path: "/create-react-app-tailwind-css/"
 category: "CSS"
 description: "Add the Tailwind CSS utility-first Framework in a Create React App environment, without ejecting from CRA!"
 author: "@kriswep"
-readNext: "/comment-system/"
+readNext: "/articles/2017-12-Comment-System/"
 issueNumber: 11
 ---
 
