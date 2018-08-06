@@ -1,10 +1,15 @@
 import React from 'react';
 import { Link } from 'gatsby';
+import Helmet from 'react-helmet';
 
 import Layout from '../components/layout';
 
 const ContactPage = () => (
   <Layout>
+    <Helmet>
+      <title>Contact me - wetainment</title>
+      <meta name="robots" content="noindex" />
+    </Helmet>
     <h1>Contact me</h1>
     <p>
       If anyone wants to contact me, just send me a{' '}

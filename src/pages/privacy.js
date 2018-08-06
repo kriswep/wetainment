@@ -5,7 +5,10 @@ import Layout from '../components/layout';
 
 const PrivacyPage = () => (
   <Layout>
-    <Helmet title="Privacy Policy - wetainment" meta={[{ name: 'robots', content: 'noindex' }]} />
+    <Helmet>
+      <title>Privacy Policy - wetainment</title>
+      <meta name="robots" content="noindex" />
+    </Helmet>
     <h1>Privacy Policy</h1>
 
     <p>
