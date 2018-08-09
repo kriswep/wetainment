@@ -83,6 +83,7 @@ const TemplateWrapper = props => (
   <ThemeProvider theme={theme}>
     <StyledWrapper>
       <Helmet
+        htmlAttributes={{ lang: 'en' }}
         title={props.title}
         meta={[
           {
