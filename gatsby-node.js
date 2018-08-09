@@ -1,4 +1,5 @@
 const path = require('path');
+const { createFilePath } = require('gatsby-source-filesystem');
 
 const createIndexPages = (createPage, posts) => {
   const indexPageTemplate = path.resolve('src/templates/index-page.js');
@@ -51,46 +52,6 @@ const createPostPages = (createPage, posts) => {
   });
 };
 
-// exports.createPages = ({ boundActionCreators, graphql }) => {
-//   const { createPage } = boundActionCreators;
-
-//   return graphql(`
-//     {
-//       allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }, limit: 1000) {
-//         edges {
-//           node {
-//             excerpt(pruneLength: 250)
-//             html
-//             id
-//             frontmatter {
-//               title
-//               date(formatString: "MMMM YYYY")
-//               description
-//               path
-//               layout
-//               author
-//               category
-//               readNext
-//               issueNumber
-//               noindex
-//             }
-//           }
-//         }
-//       }
-//     }
-//   `).then((result) => {
-//     if (result.errors) {
-//       return Promise.reject(result.errors);
-//     }
-
-//     const posts = result.data.allMarkdownRemark.edges;
-//     createIndexPages(createPage, posts);
-//     return createPostPages(createPage, posts);
-//   });
-// };
-
-const { createFilePath } = require('gatsby-source-filesystem');
-
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions;
   if (node.internal.type === 'MarkdownRemark') {
@@ -138,18 +99,6 @@ exports.createPages = ({ graphql, actions }) => {
       }
       createPostPages(createPage, result.data.allMarkdownRemark.edges);
       createIndexPages(createPage, result.data.allMarkdownRemark.edges);
-      // result.data.allMarkdownRemark.edges.forEach(({ node }) => {
-      //   createPage({
-      //     path: node.frontmatter.path || node.fields.slug,
-      //     component: path.resolve('./src/templates/blog-post.js'),
-      //     context: {
-      //       // Data passed to context is available
-      //       // in page queries as GraphQL variables.
-      //       slug: node.fields.slug,
-      //       readNext: node.frontmatter.readNext,
-      //     },
-      //   });
-      // });
       return resolve();
     });
   });

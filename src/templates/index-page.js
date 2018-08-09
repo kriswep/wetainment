@@ -5,9 +5,9 @@ import styled from 'styled-components';
 // import Helmet from 'react-helmet';
 import ArrowIcon from 'react-icons/lib/ti/arrow-right';
 
-import Layout from '../components/layout';
+import Layout from '../components/Layout';
 import media from '../styles/media';
-import StyledLink from '../layouts/link';
+import StyledLink from '../components/Link';
 
 const StyledWrapper = styled.div`
   color: ${props => props.theme.darkShades};
@@ -106,7 +106,8 @@ const Index = ({ pathContext }) => {
     <Layout>
       <StyledWrapper>
         {group
-          .filter(post => post.node.frontmatter.title.length > 0 && post.node.frontmatter.layout === 'post')
+          .filter(post =>
+              post.node.frontmatter.title.length > 0 && post.node.frontmatter.layout === 'post')
           .map(({ node: post }) => (
             <PostPreviewWrapper key={post.id}>
               <Date>{String(post.frontmatter.date).toUpperCase()}</Date>
@@ -116,7 +117,8 @@ const Index = ({ pathContext }) => {
               </H1>
               <PostExcerpt>{post.frontmatter.description || post.excerpt}</PostExcerpt>
               <ReadLink data-nav to={post.frontmatter.path}>
-                <ArrowIcon />Read
+                <ArrowIcon />
+                Read
               </ReadLink>
             </PostPreviewWrapper>
           ))}

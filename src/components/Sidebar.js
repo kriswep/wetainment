@@ -7,7 +7,7 @@ import MailIcon from 'react-icons/lib/fa/envelope-o';
 import profile from '../img/profile.jpg';
 
 import media from '../styles/media';
-import StyledLink from './link';
+import StyledLink from './Link';
 
 const Aside = styled.aside`
   color: ${props => props.theme.darkShades};
@@ -22,7 +22,9 @@ const ProfileImage = styled.img`
   `};
 `;
 
-const H1 = styled.h1`font-size: 1.2rem;`;
+const H1 = styled.h1`
+  font-size: 1.2rem;
+`;
 
 const NavLink = styled(StyledLink)`
   text-decoration: underline;
@@ -35,7 +37,7 @@ const NavLink = styled(StyledLink)`
     display: block;
     padding: 0.4rem 0;
     margin: 0.2rem 0;
-  `}
+  `};
 `;
 
 const SocialLink = styled.a`
@@ -48,9 +50,9 @@ const SocialLink = styled.a`
   color: ${props => props.theme.darkShades};
 `;
 
-const Sidebar = ({ className }) =>
+const Sidebar = ({ className }) => (
   // const Sidebar = () =>
-  (<Aside className={className}>
+  <Aside className={className}>
     <header>
       <StyledLink to="/">
         <ProfileImage src={profile} alt="Portrait showing myself" />
@@ -79,7 +81,8 @@ const Sidebar = ({ className }) =>
         <MailIcon />
       </SocialLink>
     </nav>
-  </Aside>);
+  </Aside>
+);
 
 Sidebar.propTypes = {
   className: PropTypes.string,

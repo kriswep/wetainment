@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import styled from 'styled-components';
 
-import Layout from '../components/layout';
+import Layout from '../components/Layout';
 import media from '../styles/media';
-import StyledLink from '../layouts/link';
+import StyledLink from '../components/Link';
 import Comments from '../components/Comments';
 
 const Article = styled.article`
