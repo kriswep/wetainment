@@ -96,10 +96,10 @@ const PaginationLink = styled(StyledLink)`
   display: inline-block;
 `;
 
-const Index = ({ pathContext }) => {
+const Index = ({ pageContext }) => {
   const {
     group, index, first, last,
-  } = pathContext;
+  } = pageContext;
 
   return (
     // const { edges: posts } = data.allMarkdownRemark;
@@ -139,7 +139,7 @@ const Index = ({ pathContext }) => {
   );
 };
 Index.propTypes = {
-  pathContext: PropTypes.shape().isRequired,
+  pageContext: PropTypes.shape().isRequired,
 };
 
 export default Index;
