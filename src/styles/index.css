@@ -7,3 +7,9 @@ body {
 *:after {
   box-sizing: border-box;
 }
+
+:not(pre) > code.language-text,
+code.language-text {
+  background: none;
+  color: #251d32;
+}

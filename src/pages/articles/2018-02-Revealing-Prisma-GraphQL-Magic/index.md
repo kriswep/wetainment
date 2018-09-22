@@ -12,9 +12,9 @@ issueNumber: 17
 
 #### Explore the tricks
 
-**Tl,dr: [Prisma GraphQL](https://www.prismagraphql.com/) helps you write a realtime GraphQL API with ease! Using it may sometimes feel like magic, at least if one doesn't know what happens where. But in the end it really boils down to clever engineering.**
+**Tl,dr: [Prisma GraphQL](https://www.prisma.io/) helps you write a realtime GraphQL API with ease! Using it may sometimes feel like magic, at least if one doesn't know what happens where. But in the end it really boils down to clever engineering.**
 
-The team from [graph.cool](graph.cool) launched their Prisma GraphQL project in mid January 2018. At the heart it is a API layer using [GraphQL](http://graphql.org/). It uses some amazing techniques for that, and that could feel like true magic. So, let us explore Prisma as if it was a Las Vegas show. To get the most out of this article, it would be best if you already know GraphQL. You could catch up on [How to GraphQL](https://www.howtographql.com/). Also try to follow along on your machine. If you can't, find the code, we are going to look at, over [here](https://github.com/kriswep/prisma-show).
+The team from [graph.cool](https://graph.cool) launched their Prisma GraphQL project in mid January 2018. At the heart it is a API layer using [GraphQL](https://graphql.org/). It uses some amazing techniques for that, and that could feel like true magic. So, let us explore Prisma as if it was a Las Vegas show. To get the most out of this article, it would be best if you already know GraphQL. You could catch up on [How to GraphQL](https://www.howtographql.com/). Also try to follow along on your machine. If you can't, find the code, we are going to look at, over [here](https://github.com/kriswep/prisma-show).
 
 **Since writting this article a new Prisma version was released (1.7).
 Some of the introduced changes revealed a little bit magic by exposing a `docker-compose.yml`.
@@ -94,16 +94,16 @@ feed(parent, args, ctx: Context, info) {
 }
 ```
 
-This basically delegates the query execution to the Prisma API. Nice, it almost looks like an [ORM](https://en.wikipedia.org/wiki/Object-relational_mapping). Feel free to play around with it, you might even get code completion, depending on your environment. The db objects comes from the GraphQL Bindings project, initiated by the graph.cool team and introduced [on their blog](https://blog.graph.cool/reusing-composing-graphql-apis-with-graphql-bindings-80a4aa37cff5). More exactly, it uses [Prisma binding](https://github.com/graphcool/prisma-binding). That's set up right in our application code, in `./src/index.ts`. See, no magic here!
+This basically delegates the query execution to the Prisma API. Nice, it almost looks like an [ORM](https://en.wikipedia.org/wiki/Object-relational_mapping). Feel free to play around with it, you might even get code completion, depending on your environment. The db objects comes from the GraphQL Bindings project, initiated by the graph.cool/prisma team and introduced [on their blog](https://www.prisma.io/blog/reusing-and-composing-graphql-apis-with-graphql-bindings-80a4aa37cff5/). More exactly, it uses [Prisma binding](https://github.com/graphcool/prisma-binding). That's set up right in our application code, in `./src/index.ts`. See, no magic here!
 
 Oh, did I tell you where all this code in front of us came from? `primsa init` pulled that right from the [GraphQL Boilerplates](https://github.com/graphql-boilerplates) GitHub organization, we used [TypeScript variant](https://github.com/graphql-boilerplates/typescript-graphql-server). There are a lot more, if you want to explore.
 
 And we can see even more cool things, some of them only in the pipeline. I keep it short for now:
 
 - Control how you model your data, defined in `./database/datamodel.graphql`
-- [Deploy](https://www.prismagraphql.com/docs/tutorials/cluster-deployment/kubernetes-aiqu8ahgha) options to the cloud, local or to some kind of [cluster](https://www.prismagraphql.com/docs/reference/clusters/overview-eu2ood0she)
+- [Deploy](https://www.prisma.io/docs/tutorials/cluster-deployment/kubernetes-aiqu8ahgha) options to the cloud, local or to some kind of [cluster](https://www.prisma.io/docs/reference/clusters/overview-eu2ood0she)
 - Choices of underlying database (coming soon)
-- Database [export/import](https://www.prismagraphql.com/docs/reference/data-import-and-export/data-import-ol2eoh8xie) and seeding
+- Database [export/import](https://www.prisma.io/docs/reference/data-import-and-export/data-import-ol2eoh8xie/) and seeding
 
-Hope this motivated you to give Prisma a try. If you get stuck along the way, the [docs](https://www.prismagraphql.com/docs) are great and there is an active [slack](https://slack.graph.cool/).
+Hope this motivated you to give Prisma a try. If you get stuck along the way, the [docs](https://www.prisma.io/docs) are great and there is an active [slack](https://slack.graph.cool/).
 Ok, enjoy the show, have a great evening, and be ready to be amazed by the awesome people moving the GraphQL ecosystem forward! Thanks and shoutout to (graph.cool).
