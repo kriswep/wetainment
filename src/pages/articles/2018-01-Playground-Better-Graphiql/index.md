@@ -1,12 +1,12 @@
 ---
-title: "GraphQL Playground - The Better GraphiQL?"
-date: "2018-01-15T12:00:00.000Z"
+title: 'GraphQL Playground - The Better GraphiQL?'
+date: '2018-01-15T12:00:00.000Z'
 layout: post
-path: "/playground-better-graphiql/"
-category: "GraphQL"
-description: "GraphQL Playground expands on the idea of GraphiQL, adding some nice features to provide an even better development experience for the GraphQL world."
-author: "@kriswep"
-readNext: "/articles/2018-02-Revealing-Prisma-GraphQL-Magic/"
+path: '/playground-better-graphiql/'
+category: 'GraphQL'
+description: 'GraphQL Playground expands on the idea of GraphiQL, adding some nice features to provide an even better development experience for the GraphQL world.'
+author: '@kriswep'
+readNext: '/articles/2018-02-Revealing-Prisma-GraphQL-Magic/'
 issueNumber: 15
 ---
 
@@ -41,7 +41,7 @@ Well, there is a [standalone desktop app](https://github.com/graphcool/graphql-p
 
 Another options is to add the Playground directly to your server. You could add it as a [React Component](https://github.com/graphcool/graphql-playground#as-react-component), which sounds pretty involving, or add it as a middleware to many server frameworks (as of now, there is support for express, hapi, koa and lambda). You can check the [details](https://github.com/graphcool/graphql-playground#as-server-middleware), but the gist for express is this:
 
-```JavaScript
+```javascript
 import express from 'express';
 import { graphqlExpress } from 'graphql-server-express';
 import expressPlayground from 'graphql-playground-middleware-express';

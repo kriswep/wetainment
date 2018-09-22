@@ -1,12 +1,12 @@
 ---
 title: "Revealing Prisma GraphQL's magic tricks"
-date: "2018-03-05T12:00:00.000Z"
+date: '2018-03-05T12:00:00.000Z'
 layout: post
-path: "/revealing-prismagraphql-magic/"
-category: "GraphQL"
+path: '/revealing-prismagraphql-magic/'
+category: 'GraphQL'
 description: "Prisma is a GraphQL API Layer. Trying it out with one of the available boilerplates gives you a ton of great features, almost feeling like magic. But is it? Let's have a look behind the tricks!"
-author: "@kriswep"
-readNext: "/articles/2018-01-Playground-Better-Graphiql/"
+author: '@kriswep'
+readNext: '/articles/2018-01-Playground-Better-Graphiql/'
 issueNumber: 17
 ---
 
@@ -53,7 +53,7 @@ Welcome to our playground, the [GraphQL Explorer App](/playground-better-graphiq
 
 Here, we can play and explore our API. Run a query
 
-```
+```graphql
 {
   feed {
     title
@@ -67,7 +67,7 @@ Here, we can play and explore our API. Run a query
 
 Or a mutation
 
-```
+```graphql
 mutation {
   signup(email: "demo@example.com", name: "demo", password: "secret") {
     token
@@ -88,7 +88,7 @@ So, what is happening here? Here's the revelation: There are two servers at work
 
 Secondly, there's your application server. This was started by the `npm run dev` command. This is where you reign and basically write GraphQL resolvers to your liking. The idea is, to write the needed business logic here and delegate the data querying to the Prisma API. How would that work? Do you have to connect and send some http calls around? Glad you asked, that was made a lot easier for you. Take a look at `./src/resovers/Query.ts`. There you'll see code like this
 
-```JavaScript
+```javascript
 feed(parent, args, ctx: Context, info) {
   return ctx.db.query.posts({ where: { isPublished: true } }, info)
 }

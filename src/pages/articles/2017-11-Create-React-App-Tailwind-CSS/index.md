@@ -1,12 +1,12 @@
 ---
-title: "Integrating Tailwind CSS in Create React App"
-date: "2017-11-13T12:00:00.000Z"
+title: 'Integrating Tailwind CSS in Create React App'
+date: '2017-11-13T12:00:00.000Z'
 layout: post
-path: "/create-react-app-tailwind-css/"
-category: "CSS"
-description: "Add the Tailwind CSS utility-first Framework in a Create React App environment, without ejecting from CRA!"
-author: "@kriswep"
-readNext: "/articles/2017-12-Comment-System/"
+path: '/create-react-app-tailwind-css/'
+category: 'CSS'
+description: 'Add the Tailwind CSS utility-first Framework in a Create React App environment, without ejecting from CRA!'
+author: '@kriswep'
+readNext: '/articles/2017-12-Comment-System/'
 issueNumber: 11
 ---
 
@@ -56,7 +56,7 @@ The last command generates the magic configuration file. This is one of the majo
 
 Create React App includes a global css file under `./src/index.css`. Delete this file, as this is where we let Tailwind CSS generate it's utility classes to. Now create a new file called `./src/index.tailwind.css` with the following content:
 
-```CSS
+```css
 @tailwind preflight;
 
 @tailwind utilities;
@@ -66,7 +66,7 @@ These are Tailwind's directives, which declare what to include. Again, there is 
 
 The last step is to add the Tailwind build command to our tooling scripts. Open your projects' `package.json` and add the following prebuild and prestart tasks:
 
-```JSON
+```json
   "scripts": {
     "prestart": "tailwind build ./src/index.tailwind.css -c ./tailwind.js -o ./src/index.css",
     "start": "react-scripts start",
