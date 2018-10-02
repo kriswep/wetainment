@@ -1,12 +1,12 @@
 ---
-title: "GraphQL Playground - The Better GraphiQL?"
-date: "2018-01-15T12:00:00.000Z"
+title: 'GraphQL Playground - The Better GraphiQL?'
+date: '2018-01-15T12:00:00.000Z'
 layout: post
-path: "/playground-better-graphiql/"
-category: "GraphQL"
-description: "GraphQL Playground expands on the idea of GraphiQL, adding some nice features to provide an even better development experience for the GraphQL world."
-author: "@kriswep"
-readNext: "/revealing-prismagraphql-magic/"
+path: '/playground-better-graphiql/'
+category: 'GraphQL'
+description: 'GraphQL Playground expands on the idea of GraphiQL, adding some nice features to provide an even better development experience for the GraphQL world.'
+author: '@kriswep'
+readNext: '/articles/2018-02-Revealing-Prisma-GraphQL-Magic/'
 issueNumber: 15
 ---
 
@@ -20,12 +20,12 @@ In september 2017, the team of [graph.cool](https://www.graph.cool/) released a 
 
 The coolest features it has over GraphiQL:
 
-* Tabs!
-* Nice themes
-* Multi-column schema explorer
-* Custom header UI, usable for auth tokens etc.
-* Improved Query history
-* GraphQL subscription support (I did not try that out yet)
+- Tabs!
+- Nice themes
+- Multi-column schema explorer
+- Custom header UI, usable for auth tokens etc.
+- Improved Query history
+- GraphQL subscription support (I did not try that out yet)
 
 Honestly, the first time I stumpled upon GraphQL Playground, was when I tried out graph.cool last summer. They integrate the Playground as part of their web UI to build GraphQL services. At that time, at least for me, the Playground crashed from time to time with weird UI flaws. Recently I looked for an easy way to add custom headers to GraphiQl for authentication. The now open sourced GraphQL Playground enabled that. Integrating the Playground to an existing GraphQL server was fairly easy and most of the previously experienced problems seemed to have been fixed (I still have a bug with not closing the suggestions popover on tab switching). Having said that, the graph.cool team told me they are still working on making the Playground more stable.
 
@@ -41,7 +41,7 @@ Well, there is a [standalone desktop app](https://github.com/graphcool/graphql-p
 
 Another options is to add the Playground directly to your server. You could add it as a [React Component](https://github.com/graphcool/graphql-playground#as-react-component), which sounds pretty involving, or add it as a middleware to many server frameworks (as of now, there is support for express, hapi, koa and lambda). You can check the [details](https://github.com/graphcool/graphql-playground#as-server-middleware), but the gist for express is this:
 
-```JavaScript
+```javascript
 import express from 'express';
 import { graphqlExpress } from 'graphql-server-express';
 import expressPlayground from 'graphql-playground-middleware-express';

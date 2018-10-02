@@ -1,12 +1,12 @@
 ---
-title: "Quick tip: Tree Shaking"
-date: "2017-03-12T12:00:00.000Z"
+title: 'Quick tip: Tree Shaking'
+date: '2017-03-12T12:00:00.000Z'
 layout: post
-path: "/tree-shaking/"
-category: "Performance"
-description: "Setting up tree shaking with webpack2, Babel and ES2015 modules"
-author: "@kriswep"
-readNext: "/comment-system/"
+path: '/tree-shaking/'
+category: 'Performance'
+description: 'Setting up tree shaking with webpack2, Babel and ES2015 modules'
+author: '@kriswep'
+readNext: '/articles/2017-12-Comment-System/'
 issueNumber: 10
 ---
 
@@ -22,17 +22,20 @@ That's the problem when using babel and babel-loader in your webpack config. Cha
 
 **`.babelrc`**
 
-```JSON
+```json
 {
-  "presets": ["env", {
-    "modules": false
-  }]
+  "presets": [
+    "env",
+    {
+      "modules": false
+    }
+  ]
 }
 ```
 
 **`webpack.config.js` (excerpt)**
 
-```JavaScript
+```javascript
 // ...
 module: {
   rules: [

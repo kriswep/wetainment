@@ -2,7 +2,6 @@
 title: "Mock a GraphQL API in your unit tests"
 date: "2018-05-11T20:00:00.000Z"
 layout: post
-path: "/mock-apollo-graphql/"
 category: "GraphQL"
 description: "Mock your GraphQL schema during your client unit tet with apollo-link-schema."
 author: "@kriswep"

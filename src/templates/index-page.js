@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Link from 'gatsby-link';
+// import { Link } from 'gatsby';
 // import Helmet from 'react-helmet';
 import ArrowIcon from 'react-icons/lib/ti/arrow-right';
 
+import Layout from '../components/Layout';
 import media from '../styles/media';
-import StyledLink from '../layouts/link';
+import StyledLink from '../components/Link';
 
 const StyledWrapper = styled.div`
   color: ${props => props.theme.darkShades};
@@ -95,46 +96,50 @@ const PaginationLink = styled(StyledLink)`
   display: inline-block;
 `;
 
-const Index = ({ pathContext }) => {
+const Index = ({ pageContext }) => {
   const {
     group, index, first, last,
-  } = pathContext;
+  } = pageContext;
 
   return (
     // const { edges: posts } = data.allMarkdownRemark;
-    <StyledWrapper>
-      {group
-        .filter(post => post.node.frontmatter.title.length > 0 && post.node.frontmatter.layout === 'post')
-        .map(({ node: post }) => (
-          <PostPreviewWrapper key={post.id}>
-            <Date>{String(post.frontmatter.date).toUpperCase()}</Date>
-            <Category>{String(post.frontmatter.category).toUpperCase()}</Category>
-            <H1>
-              <PostLink to={post.frontmatter.path}>{post.frontmatter.title}</PostLink>
-            </H1>
-            <PostExcerpt>{post.frontmatter.description || post.excerpt}</PostExcerpt>
-            <ReadLink data-nav to={post.frontmatter.path}>
-              <ArrowIcon />Read
-            </ReadLink>
-          </PostPreviewWrapper>
-        ))}
-      <PaginationWrapper>
-        {!first && (
-          <PaginationLink data-nav to={index > 2 ? `/p/${index - 1}` : '/'}>
-            Newer posts
-          </PaginationLink>
-        )}
-        {!last && (
-          <PaginationLink data-nav to={`/p/${index + 1}`}>
-            Older posts
-          </PaginationLink>
-        )}
-      </PaginationWrapper>
-    </StyledWrapper>
+    <Layout>
+      <StyledWrapper>
+        {group
+          .filter(post =>
+              post.node.frontmatter.title.length > 0 && post.node.frontmatter.layout === 'post')
+          .map(({ node: post }) => (
+            <PostPreviewWrapper key={post.id}>
+              <Date>{String(post.frontmatter.date).toUpperCase()}</Date>
+              <Category>{String(post.frontmatter.category).toUpperCase()}</Category>
+              <H1>
+                <PostLink to={post.frontmatter.path}>{post.frontmatter.title}</PostLink>
+              </H1>
+              <PostExcerpt>{post.frontmatter.description || post.excerpt}</PostExcerpt>
+              <ReadLink data-nav to={post.frontmatter.path}>
+                <ArrowIcon />
+                Read
+              </ReadLink>
+            </PostPreviewWrapper>
+          ))}
+        <PaginationWrapper>
+          {!first && (
+            <PaginationLink data-nav to={index > 2 ? `/p/${index - 1}` : '/'}>
+              Newer posts
+            </PaginationLink>
+          )}
+          {!last && (
+            <PaginationLink data-nav to={`/p/${index + 1}`}>
+              Older posts
+            </PaginationLink>
+          )}
+        </PaginationWrapper>
+      </StyledWrapper>
+    </Layout>
   );
 };
 Index.propTypes = {
-  pathContext: PropTypes.shape().isRequired,
+  pageContext: PropTypes.shape().isRequired,
 };
 
 export default Index;

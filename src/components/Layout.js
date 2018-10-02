@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import styled, { ThemeProvider } from 'styled-components';
 import Helmet from 'react-helmet';
 
-
 import 'normalize.css';
 import 'prismjs/themes/prism-okaidia.css';
 import 'typeface-roboto'; // eslint-disable-line import/extensions
@@ -11,15 +10,14 @@ import 'typeface-roboto'; // eslint-disable-line import/extensions
 import theme from '../styles/theme';
 import media from '../styles/media';
 
-import Header from './header';
-import StyledLink from './link';
+import Header from './Header';
+import StyledLink from './Link';
 
-import Sidebar from './sidebar';
-import Footer from './footer';
-import Cookie from '../components/Cookie';
+import Sidebar from './Sidebar';
+import Footer from './Footer';
+import Cookie from './Cookie';
 
-import './index.css';
-
+import '../styles/index.css';
 
 const StyledWrapper = styled.section`
   min-height: 100vh;
@@ -49,13 +47,16 @@ const StyledWrapper = styled.section`
   `};
 `;
 
-const MainHeader = () => (
+const MainHeader = ({ title }) => (
   <Header>
     <StyledLink to="/" data-head>
-      wetainment
+      {title}
     </StyledLink>
   </Header>
 );
+MainHeader.propTypes = {
+  title: PropTypes.string.isRequired,
+};
 
 const StyledSidebar = styled(Sidebar)`
   grid-area: sidebar;
@@ -78,11 +79,12 @@ const ContentWrapper = styled.div`
   `};
 `;
 
-const TemplateWrapper = ({ children, ...rest }) => (
+const TemplateWrapper = props => (
   <ThemeProvider theme={theme}>
     <StyledWrapper>
       <Helmet
-        title="wetainment"
+        htmlAttributes={{ lang: 'en' }}
+        title={props.title}
         meta={[
           {
             name: 'description',
@@ -101,9 +103,9 @@ const TemplateWrapper = ({ children, ...rest }) => (
         ]}
       />
 
-      <MainHeader />
+      <MainHeader title={props.title} />
       <StyledSidebar />
-      <ContentWrapper>{children({ ...rest })}</ContentWrapper>
+      <ContentWrapper>{props.children}</ContentWrapper>
       <Footer>
         <p>
           Made with{' '}
@@ -122,7 +124,11 @@ const TemplateWrapper = ({ children, ...rest }) => (
 );
 
 TemplateWrapper.propTypes = {
-  children: PropTypes.func, // eslint-disable-line
+  children: PropTypes.object, // eslint-disable-line
+  title: PropTypes.string,
+};
+TemplateWrapper.defaultProps = {
+  title: 'wetainment',
 };
 
 export default TemplateWrapper;

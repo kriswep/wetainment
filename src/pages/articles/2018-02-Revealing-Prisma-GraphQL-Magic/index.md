@@ -1,12 +1,12 @@
 ---
 title: "Revealing Prisma GraphQL's magic tricks"
-date: "2018-03-05T12:00:00.000Z"
+date: '2018-03-05T12:00:00.000Z'
 layout: post
-path: "/revealing-prismagraphql-magic/"
-category: "GraphQL"
+path: '/revealing-prismagraphql-magic/'
+category: 'GraphQL'
 description: "Prisma is a GraphQL API Layer. Trying it out with one of the available boilerplates gives you a ton of great features, almost feeling like magic. But is it? Let's have a look behind the tricks!"
-author: "@kriswep"
-readNext: "/mock-apollo-graphql/"
+author: '@kriswep'
+readNext: '/articles/2018-01-Playground-Better-Graphiql/'
 issueNumber: 17
 ---
 
@@ -35,7 +35,8 @@ graphql create prisma-show
 ```
 
 There are different shows running, let me select you a fun one. When asked, choose the following option:
- - `typescript-advanced     GraphQL server (incl. database & authentication)`
+
+- `typescript-advanced GraphQL server (incl. database & authentication)`
 
 Prisma will set up your theatre stage, just wait a bit. When asked about the cluster, choose local, if you have a docker and docker-compose installation on your machine. Otherwhise one of the public cloud options will cover you, albeit not as cool. Newer versions might not ask you about deployment clusters. If you want to work on a local setup, you will need to remove the `PRISMA_ENDPOINT` from the `.env` file and run `prisma deploy`. To start your local cluster, try `prisma init`.
 
@@ -51,7 +52,8 @@ npm run dev
 Welcome to our playground, the [GraphQL Explorer App](/playground-better-graphiql/) that should have been opened just now (if not, try opening http://localhost:3000/playground)
 
 Here, we can play and explore our API. Run a query
-```
+
+```graphql
 {
   feed {
     title
@@ -62,8 +64,10 @@ Here, we can play and explore our API. Run a query
   }
 }
 ```
+
 Or a mutation
-```
+
+```graphql
 mutation {
   signup(email: "demo@example.com", name: "demo", password: "secret") {
     token
@@ -83,20 +87,23 @@ That looks pretty cool, right?
 So, what is happening here? Here's the revelation: There are two servers at work for you. First one is the Prisma API server, which was created by issuing the `prisma init` command. It can be redeployed with `prisma deploy`. Where does this server live? It's contained inside a docker environment, which Prisma set up for you. If you choosed the local options, you can see two relevant images on your system, when running `docker ps -a`. One is the database, the other the API server. If you deployed to Prisma cloud, this stuff runs over there.
 
 Secondly, there's your application server. This was started by the `npm run dev` command. This is where you reign and basically write GraphQL resolvers to your liking. The idea is, to write the needed business logic here and delegate the data querying to the Prisma API. How would that work? Do you have to connect and send some http calls around? Glad you asked, that was made a lot easier for you. Take a look at `./src/resovers/Query.ts`. There you'll see code like this
-```JavaScript
+
+```javascript
 feed(parent, args, ctx: Context, info) {
   return ctx.db.query.posts({ where: { isPublished: true } }, info)
 }
 ```
+
 This basically delegates the query execution to the Prisma API. Nice, it almost looks like an [ORM](https://en.wikipedia.org/wiki/Object-relational_mapping). Feel free to play around with it, you might even get code completion, depending on your environment. The db objects comes from the GraphQL Bindings project, initiated by the graph.cool/prisma team and introduced [on their blog](https://www.prisma.io/blog/reusing-and-composing-graphql-apis-with-graphql-bindings-80a4aa37cff5/). More exactly, it uses [Prisma binding](https://github.com/graphcool/prisma-binding). That's set up right in our application code, in `./src/index.ts`. See, no magic here!
 
 Oh, did I tell you where all this code in front of us came from? `primsa init` pulled that right from the [GraphQL Boilerplates](https://github.com/graphql-boilerplates) GitHub organization, we used [TypeScript variant](https://github.com/graphql-boilerplates/typescript-graphql-server). There are a lot more, if you want to explore.
 
 And we can see even more cool things, some of them only in the pipeline. I keep it short for now:
-  - Control how you model your data, defined in `./database/datamodel.graphql`
-  - [Deploy](https://www.prisma.io/docs/tutorials/cluster-deployment/kubernetes-aiqu8ahgha) options to the cloud, local or to some kind of [cluster](https://www.prisma.io/docs/reference/clusters/overview-eu2ood0she)
-  - Choices of underlying database (coming soon)
-  - Database [export/import](https://www.prisma.io/docs/reference/data-import-and-export/data-import-ol2eoh8xie/) and seeding
+
+- Control how you model your data, defined in `./database/datamodel.graphql`
+- [Deploy](https://www.prisma.io/docs/tutorials/cluster-deployment/kubernetes-aiqu8ahgha) options to the cloud, local or to some kind of [cluster](https://www.prisma.io/docs/reference/clusters/overview-eu2ood0she)
+- Choices of underlying database (coming soon)
+- Database [export/import](https://www.prisma.io/docs/reference/data-import-and-export/data-import-ol2eoh8xie/) and seeding
 
 Hope this motivated you to give Prisma a try. If you get stuck along the way, the [docs](https://www.prisma.io/docs) are great and there is an active [slack](https://slack.graph.cool/).
 Ok, enjoy the show, have a great evening, and be ready to be amazed by the awesome people moving the GraphQL ecosystem forward! Thanks and shoutout to (graph.cool).

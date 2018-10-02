@@ -1,11 +1,12 @@
-/* globals graphql */
-import React, { Component } from 'react';
+import React from 'react';
+import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import styled from 'styled-components';
 
+import Layout from '../components/Layout';
 import media from '../styles/media';
-import StyledLink from '../layouts/link';
+import StyledLink from '../components/Link';
 import Comments from '../components/Comments';
 
 const Article = styled.article`
@@ -32,33 +33,23 @@ const ReadNextDescription = styled.p`
 `;
 
 /* eslint-disable react/no-danger */
-class Template extends Component {
-  constructor(props, { setTitle }) {
-    super(props);
-
-    // set title in pageLayout
-    const { markdownRemark: post } = props.data;
-    setTitle(post.frontmatter.title);
+const Template = (props) => {
+  const { markdownRemark: post, readNext } = props.data;
+  // <meta name="robots" content="noindex" />
+  const meta = [
+    { name: 'description', content: post.frontmatter.description },
+    { name: 'twitter:card', content: 'summary' },
+    { name: 'twitter:site', content: post.frontmatter.author },
+    { name: 'twitter:title', content: post.frontmatter.title },
+    { name: 'twitter:description', content: post.frontmatter.description },
+  ];
+  if (post.frontmatter.noindex) {
+    meta.push({ name: 'robots', content: 'noindex' });
   }
-  render() {
-    const { markdownRemark: post, readNext } = this.props.data;
-    // <meta name="robots" content="noindex" />
-    const meta = [
-      { name: 'description', content: post.frontmatter.description },
-      { name: 'twitter:card', content: 'summary' },
-      { name: 'twitter:site', content: post.frontmatter.author },
-      { name: 'twitter:title', content: post.frontmatter.title },
-      { name: 'twitter:description', content: post.frontmatter.description },
-    ];
-    if (post.frontmatter.noindex) {
-      meta.push({ name: 'robots', content: 'noindex' });
-    }
-    return (
+  return (
+    <Layout title={post.frontmatter.title}>
       <Article>
-        <Helmet
-          title={`${post.frontmatter.title} - wetainment`}
-          meta={meta}
-        />
+        <Helmet title={`${post.frontmatter.title} - wetainment`} meta={meta} />
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
         {post.frontmatter.date &&
           post.frontmatter.date !== 'Invalid date' && <em>Published {post.frontmatter.date}</em>}
@@ -74,27 +65,20 @@ class Template extends Component {
             </ReadNext>
           )}
       </Article>
-    );
-  }
-}
+    </Layout>
+  );
+};
 /* eslint-enable react/no-danger */
 
 Template.propTypes = {
   data: PropTypes.shape().isRequired,
 };
-// yes, we're using context. They'll provide a codemod if needs be... right...?
-Template.contextTypes = {
-  setTitle: PropTypes.func,
-};
 
 export default Template;
 
-export const pageQuery = graphql`
-  query BlogPostByPath(
-    $path: String = "/eclipse-for-node/"
-    $readNext: String = "/eclipse-for-node/"
-  ) {
-    markdownRemark(frontmatter: { path: { eq: $path } }) {
+export const query = graphql`
+  query($slug: String!, $readNext: String = "/eclipse-for-node/") {
+    markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
@@ -107,7 +91,7 @@ export const pageQuery = graphql`
         issueNumber
       }
     }
-    readNext: markdownRemark(frontmatter: { path: { eq: $readNext } }) {
+    readNext: markdownRemark(fields: { slug: { eq: $readNext } }) {
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
         path

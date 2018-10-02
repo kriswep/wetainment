@@ -6,7 +6,7 @@ path: "/comment-system/"
 category: "Meta"
 description: "Recently, I added a new comment system on this blog, leveraging GitHub issues as a 'backend' for the comments. Would love you writing something there."
 author: "@kriswep"
-readNext: "/playground-better-graphiql/"
+readNext: "/articles/2018-01-Playground-Better-Graphiql/"
 issueNumber: 12
 ---
 

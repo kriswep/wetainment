@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import queryString from 'query-string';
 import styled from 'styled-components';
 import LoadingIcon from 'react-icons/lib/fa/spinner';
-import Gitcomment from 'gitcomment';
+import Gitcomment from 'gitcomment/dist/gitcomment';
 import Button from './Button';
 
 const repo = 'kriswep/wetainment';
