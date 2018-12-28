@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 // import { Link } from 'gatsby';
 // import Helmet from 'react-helmet';
-import ArrowIcon from 'react-icons/lib/ti/arrow-right';
+import { FaLongArrowAltRight as ArrowIcon } from 'react-icons/fa';
 
 import Layout from '../components/Layout';
 import media from '../styles/media';
@@ -42,6 +42,11 @@ const PostLink = styled(StyledLink)`
 const ReadLink = styled(StyledLink)`
   padding: 5px 0;
   display: inline-block;
+
+  svg {
+    top: 3px;
+    position: relative;
+  }
 `;
 
 const Date = styled.div`

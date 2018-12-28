@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import queryString from 'query-string';
 import styled from 'styled-components';
-import LoadingIcon from 'react-icons/lib/fa/spinner';
+import { FaSpinner as LoadingIcon } from 'react-icons/fa';
 import Gitcomment from 'gitcomment/dist/gitcomment';
 import Button from './Button';
 
