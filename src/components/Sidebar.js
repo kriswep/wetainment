@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import TwitterIcon from 'react-icons/lib/fa/twitter';
-import GithubIcon from 'react-icons/lib/fa/github';
-import MailIcon from 'react-icons/lib/fa/envelope-o';
+import {
+  FaTwitter as TwitterIcon,
+  FaGithub as GithubIcon,
+  FaRegEnvelope as MailIcon,
+} from 'react-icons/fa';
 import profile from '../img/profile.jpg';
 
 import media from '../styles/media';
@@ -48,6 +50,11 @@ const SocialLink = styled.a`
   text-decoration: none;
   background-color: ${props => props.theme.lightestAccent};
   color: ${props => props.theme.darkShades};
+
+  svg {
+    top: 3px;
+    position: relative;
+  }
 `;
 
 const Sidebar = ({ className }) => (

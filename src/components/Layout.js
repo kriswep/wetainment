@@ -113,8 +113,11 @@ const TemplateWrapper = props => (
             ❤
           </span>{' '}
           by <a href="https://twitter.com/kriswep">@kriswep</a>
-          <StyledLink to="/privacy" style={{ position: 'absolute', right: '10px' }} data-underline>
+          <StyledLink to="/privacy" style={{ float: 'right' }} data-underline>
             Privacy
+          </StyledLink>
+          <StyledLink to="/imprint" style={{ float: 'right', paddingRight: '10px' }} data-underline>
+            Imprint
           </StyledLink>
         </p>
       </Footer>
