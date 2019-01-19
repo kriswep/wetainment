@@ -14,14 +14,20 @@ issueNumber: 23
 
 **Tl,dr: We can setup Tailwind in a Create React App V2. Therefore we don't need to eject or manipulate any build task. Today, you can use a babel-macro and most CSS in JS solutions.**
 
-Time for an update: Blah.
+Tailwind: utility css, you get useful classnames to use, based on a config file you adjust ->Link to tailwind
+Styled-Components: Popular css-in-js library, write css componente based
+->combine that
 
 ![Modern wind mills on a field. Metaphor for wind like in Tailwind.](wind-mills.jpg)
 
 <p><sub><sup>Not any official logo. Photo by <a href="https://unsplash.com/@rawfilm">RawFilm</a> on <a href="https://unsplash.com/photos/ihMzQV3lleo">Unsplash</a>.</sup></sub></p>
 
-#### Todo
+#### Setting Up
 
-Coming along
+Coming along, see https://github.com/kriswep/cra-tailwindcss-in-js
+
+#### But, how does it work?
+
+with babel-macro
 
 As mentioned, an inspirational project is open sourced an on GitHub, so [see for yourself](https://github.com/kriswep/cra-tailwindcss-in-js)! If you are interested in a deeper writeup, or have any other question, please reach out down there in the comments, or on my [twitter](https://twitter.com/kriswep).
