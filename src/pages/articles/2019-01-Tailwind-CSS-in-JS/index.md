@@ -15,7 +15,9 @@ issueNumber: 23
 **Tl,dr: We can setup Tailwind in a Create React App V2. Therefore we don't need to eject or manipulate any build task. Today, you can use a babel-macro and most CSS in JS solutions.**
 
 Tailwind: utility css, you get useful classnames to use, based on a config file you adjust ->Link to tailwind
+
 Styled-Components: Popular css-in-js library, write css componente based
+
 ->combine that
 
 ![Modern wind mills on a field. Metaphor for wind like in Tailwind.](wind-mills.jpg)
@@ -25,6 +27,62 @@ Styled-Components: Popular css-in-js library, write css componente based
 #### Setting Up
 
 Coming along, see https://github.com/kriswep/cra-tailwindcss-in-js
+
+```bash
+npx create-react-app cra-tailwindcss-in-js
+cd cra-tailwindcss-in-js
+# install further dependencies
+npm i -D tailwindcss tailwind.macro
+npm i -S styled-components
+```
+
+configure tailwind
+`./node_modules/.bin/tailwind init ./src/tailwind.js`
+
+add a `babel-plugin-macros.config.js` in project root, since CRA needs the tailwind config file under the `src` folder.
+
+```javascript
+// babel-plugin-macros.config.js
+module.exports = {
+  tailwind: {
+    config: './src/tailwind.js',
+  },
+};
+```
+
+Use like so
+
+```javascript
+// App.js
+import React, { Component } from 'react';
+import styled from 'styled-components/macro';
+import tw from 'tailwind.macro';
+
+// use tailwind classes the styled way
+const Header = styled.header`
+  ${tw`bg-black min-h-screen flex flex-col items-center justify-center text-xl text-white`};
+`;
+
+class App extends Component {
+  render() {
+    return (
+      // via fancy css prop
+      <div css={tw`text-center`}>
+        <Header>
+          <p css={tw`text-blue-light`}>
+            Using <code>tailwind</code> and <code>styled-components</code>{' '}
+            together.
+          </p>
+        </Header>
+      </div>
+    );
+  }
+}
+
+export default App;
+```
+
+Beautiful, right?
 
 #### But, how does it work?
 
