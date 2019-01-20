@@ -14,6 +14,8 @@ issueNumber: 11
 
 _Disclaimer: I am by no means an expert in Tailwind CSS, but it sounds like a good match for a [React](https://reactjs.org/) app. There are quite a lot alternatives to styling React components, like `CSS in JS` projects, but the more the better, right? Let's see how to integrate Tailwind CSS with React, maybe it's really a cool thing._
 
+_Heads up in 2019 and beyond: While the way described below works and is valid, I wrote about a new and improved setup using [styled components and a tailwind macro](/articles/tailwind-css-in-js/)._
+
 [Tailwind CSS](https://tailwindcss.com/) is a newly released utility-first CSS Framework. It's value proposition is that it provides a lot of different utility CSS classes, instead of whole components. So designing an app means, you add CSS classes right to your html elements. These classes are highly composable and allow you to build components and full fledged designs with them. You can find more informations and explanations on their website, or by listening to the [Fullstack Radio podcast 76](http://www.fullstackradio.com/76), which I enjoyed quite a lot.
 
 ![Wind turbines and a highway, giving you an impression of speed and wind](wind-teaser-image.jpg)
