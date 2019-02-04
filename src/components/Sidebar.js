@@ -61,7 +61,7 @@ const Sidebar = ({ className }) => (
   // const Sidebar = () =>
   <Aside className={className}>
     <header>
-      <StyledLink to="/">
+      <StyledLink to="/" aria-label="Home">
         <ProfileImage src={profile} alt="Portrait showing myself" />
       </StyledLink>
       <H1>
@@ -78,13 +78,13 @@ const Sidebar = ({ className }) => (
     </nav>
 
     <nav>
-      <SocialLink href="https://twitter.com/kriswep">
+      <SocialLink href="https://twitter.com/kriswep" aria-label="Twitter handle @kriswep">
         <TwitterIcon />
       </SocialLink>
-      <SocialLink href="https://github.com/kriswep">
+      <SocialLink href="https://github.com/kriswep" aria-label="GitHub handle @kriswep">
         <GithubIcon />
       </SocialLink>
-      <SocialLink href="mailto:kriswep@wetainment.com">
+      <SocialLink href="mailto:kriswep@wetainment.com" aria-label="Contact via mail">
         <MailIcon />
       </SocialLink>
     </nav>
