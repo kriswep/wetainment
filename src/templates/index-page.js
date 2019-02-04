@@ -59,7 +59,7 @@ const Date = styled.div`
 
 const Category = styled.div`
   margin: 0;
-  color: ${props => props.theme.main};
+  color: ${props => props.theme.darkMain};
   font-size: 1rem;
   font-weight: bold;
   display: inline-block;
