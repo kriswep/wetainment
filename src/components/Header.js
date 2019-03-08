@@ -45,7 +45,11 @@ const Header = ({ children }) => (
 );
 
 Header.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.element]), // eslint-disable-line
+  children: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.func,
+    PropTypes.element,
+  ]), // eslint-disable-line
 };
 
 export default Header;

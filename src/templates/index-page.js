@@ -102,25 +102,32 @@ const PaginationLink = styled(StyledLink)`
 `;
 
 const Index = ({ pageContext }) => {
-  const {
-    group, index, first, last,
-  } = pageContext;
+  const { group, index, first, last } = pageContext;
 
   return (
     // const { edges: posts } = data.allMarkdownRemark;
     <Layout>
       <StyledWrapper>
         {group
-          .filter(post =>
-              post.node.frontmatter.title.length > 0 && post.node.frontmatter.layout === 'post')
+          .filter(
+            post =>
+              post.node.frontmatter.title.length > 0 &&
+              post.node.frontmatter.layout === 'post',
+          )
           .map(({ node: post }) => (
             <PostPreviewWrapper key={post.id}>
               <Date>{String(post.frontmatter.date).toUpperCase()}</Date>
-              <Category>{String(post.frontmatter.category).toUpperCase()}</Category>
+              <Category>
+                {String(post.frontmatter.category).toUpperCase()}
+              </Category>
               <H1>
-                <PostLink to={post.frontmatter.path}>{post.frontmatter.title}</PostLink>
+                <PostLink to={post.frontmatter.path}>
+                  {post.frontmatter.title}
+                </PostLink>
               </H1>
-              <PostExcerpt>{post.frontmatter.description || post.excerpt}</PostExcerpt>
+              <PostExcerpt>
+                {post.frontmatter.description || post.excerpt}
+              </PostExcerpt>
               <ReadLink data-nav to={post.frontmatter.path}>
                 <ArrowIcon />
                 Read

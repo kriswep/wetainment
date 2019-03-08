@@ -78,13 +78,22 @@ const Sidebar = ({ className }) => (
     </nav>
 
     <nav>
-      <SocialLink href="https://twitter.com/kriswep" aria-label="Twitter handle @kriswep">
+      <SocialLink
+        href="https://twitter.com/kriswep"
+        aria-label="Twitter handle @kriswep"
+      >
         <TwitterIcon />
       </SocialLink>
-      <SocialLink href="https://github.com/kriswep" aria-label="GitHub handle @kriswep">
+      <SocialLink
+        href="https://github.com/kriswep"
+        aria-label="GitHub handle @kriswep"
+      >
         <GithubIcon />
       </SocialLink>
-      <SocialLink href="mailto:kriswep@wetainment.com" aria-label="Contact via mail">
+      <SocialLink
+        href="mailto:kriswep@wetainment.com"
+        aria-label="Contact via mail"
+      >
         <MailIcon />
       </SocialLink>
     </nav>

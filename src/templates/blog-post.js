@@ -33,7 +33,7 @@ const ReadNextDescription = styled.p`
 `;
 
 /* eslint-disable react/no-danger */
-const Template = (props) => {
+const Template = props => {
   const { markdownRemark: post, readNext } = props.data;
   // <meta name="robots" content="noindex" />
   const meta = [
@@ -51,19 +51,24 @@ const Template = (props) => {
       <Article>
         <Helmet title={`${post.frontmatter.title} - wetainment`} meta={meta} />
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
-        {post.frontmatter.date &&
-          post.frontmatter.date !== 'Invalid date' && <em>Published {post.frontmatter.date}</em>}
+        {post.frontmatter.date && post.frontmatter.date !== 'Invalid date' && (
+          <em>Published {post.frontmatter.date}</em>
+        )}
 
-        {post.frontmatter.layout === 'post' &&
-          post.frontmatter.issueNumber && <Comments issueNumber={post.frontmatter.issueNumber} />}
-        {readNext &&
-          post.frontmatter.layout === 'post' && (
-            <ReadNext>
-              <ReadNextHeader>READ THIS NEXT:</ReadNextHeader>
-              <StyledLink to={readNext.frontmatter.path}>{readNext.frontmatter.title}</StyledLink>
-              <ReadNextDescription>{readNext.frontmatter.description}</ReadNextDescription>
-            </ReadNext>
-          )}
+        {post.frontmatter.layout === 'post' && post.frontmatter.issueNumber && (
+          <Comments issueNumber={post.frontmatter.issueNumber} />
+        )}
+        {readNext && post.frontmatter.layout === 'post' && (
+          <ReadNext>
+            <ReadNextHeader>READ THIS NEXT:</ReadNextHeader>
+            <StyledLink to={readNext.frontmatter.path}>
+              {readNext.frontmatter.title}
+            </StyledLink>
+            <ReadNextDescription>
+              {readNext.frontmatter.description}
+            </ReadNextDescription>
+          </ReadNext>
+        )}
       </Article>
     </Layout>
   );

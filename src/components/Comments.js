@@ -11,9 +11,11 @@ const repo = 'kriswep/wetainment';
 const gkServer = process.env.GATEKEEPER_URL || 'https://gk-wetainment.now.sh/';
 const ghClientId = process.env.GITHUB_CLIENTID || 'ccfe868780485a0221b3';
 const redirect = () =>
-  window.location.replace(`https://github.com/login/oauth/authorize?client_id=${ghClientId}&scope=public_repo&redirect_uri=${
-    window.location.href
-  }`);
+  window.location.replace(
+    `https://github.com/login/oauth/authorize?client_id=${ghClientId}&scope=public_repo&redirect_uri=${
+      window.location.href
+    }`,
+  );
 
 const CommentHeader = styled.h2`
   padding: 0;
@@ -96,11 +98,13 @@ class Comments extends Component {
           const commentList = comments.map((comment, idx) => (
             <Comment key={comment.id}>
               {idx === 0 && <Divider />}
-              {comment.author &&
-                comment.author.login && (
-                  <a href={`https://github.com/${comment.author.login}`}>{comment.author.login}</a>
-                )}
-              <Small>{new Date(comment.created).toLocaleDateString()}</Small>: {comment.body}
+              {comment.author && comment.author.login && (
+                <a href={`https://github.com/${comment.author.login}`}>
+                  {comment.author.login}
+                </a>
+              )}
+              <Small>{new Date(comment.created).toLocaleDateString()}</Small>:{' '}
+              {comment.body}
               <Divider />
             </Comment>
           ));
@@ -128,7 +132,11 @@ class Comments extends Component {
                       <Button onClick={handler}>Add Comment</Button>
                       <Small>
                         The comment will be posted with your GitHub handle on{' '}
-                        <a href={`https://github.com/${repo}/issues/${this.props.issueNumber}`}>
+                        <a
+                          href={`https://github.com/${repo}/issues/${
+                            this.props.issueNumber
+                          }`}
+                        >
                           GitHub.
                         </a>
                       </Small>
@@ -138,7 +146,10 @@ class Comments extends Component {
                   (!user.login && (
                     <FlexContainer>
                       <Button onClick={redirect}>Login</Button>
-                      <Small>Please authenticate with GitHub in order to add a comment.</Small>
+                      <Small>
+                        Please authenticate with GitHub in order to add a
+                        comment.
+                      </Small>
                     </FlexContainer>
                   )))}
             </div>

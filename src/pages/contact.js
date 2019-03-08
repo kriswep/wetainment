@@ -11,9 +11,10 @@ const ContactPage = () => (
     </Helmet>
     <h1>Contact me</h1>
     <p>
-      If anyone wants to contact me, just send me a <a href="https://twitter.com/kriswep">tweet</a>.
-      Or <a href="mailto:kriswep@wetainment.com">mail</a> me if you want to keep it between the two
-      of us.
+      If anyone wants to contact me, just send me a{' '}
+      <a href="https://twitter.com/kriswep">tweet</a>. Or{' '}
+      <a href="mailto:kriswep@wetainment.com">mail</a> me if you want to keep it
+      between the two of us.
     </p>
   </Layout>
 );

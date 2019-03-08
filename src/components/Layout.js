@@ -31,20 +31,15 @@ const StyledWrapper = styled.section`
     'header header header' 'content content content' 'sidebar sidebar sidebar'
     'footer footer footer';
   ${media.m`
-  grid-gap: 10px;
-  grid-template-rows: auto 1fr auto;
-  grid-template-areas: "header header header" "sidebar content content" "footer footer footer";
-  `} ${media.l`
-    grid-template-columns: 20rem 1fr;
-  `} ${media.xl`
-    grid-template-columns: 35rem 1fr;
-  `} ${media.xxl`
-    grid-template-columns: 50rem 1fr;
-  `} ${media.xxxl`
-    grid-template-columns: 70rem 1fr;
-  `} ${media.uxxxl`
-    grid-template-columns: 100rem 1fr;
-  `};
+    grid-gap: 10px;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas: "header header header" "sidebar content content" "footer footer footer";
+  `}
+  ${media.l` grid-template-columns: 20rem 1fr; `}
+  ${media.xl` grid-template-columns: 35rem 1fr; `}
+  ${media.xxl` grid-template-columns: 50rem 1fr; `}
+  ${media.xxxl` grid-template-columns: 70rem 1fr; `}
+  ${media.uxxxl` grid-template-columns: 100rem 1fr; `};
 `;
 
 const MainHeader = ({ title }) => (
@@ -116,7 +111,11 @@ const TemplateWrapper = props => (
           <StyledLink to="/privacy" style={{ float: 'right' }} data-underline>
             Privacy
           </StyledLink>
-          <StyledLink to="/imprint" style={{ float: 'right', paddingRight: '10px' }} data-underline>
+          <StyledLink
+            to="/imprint"
+            style={{ float: 'right', paddingRight: '10px' }}
+            data-underline
+          >
             Imprint
           </StyledLink>
         </p>
