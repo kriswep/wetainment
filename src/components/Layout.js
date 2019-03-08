@@ -5,7 +5,7 @@ import Helmet from 'react-helmet';
 
 import 'normalize.css';
 import 'prismjs/themes/prism-okaidia.css';
-import 'typeface-roboto'; // eslint-disable-line import/extensions
+import 'typeface-roboto/index.css';
 
 import theme from '../styles/theme';
 import media from '../styles/media';

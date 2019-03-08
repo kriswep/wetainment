@@ -8,3 +8,5 @@ public/
 yarn-error.log
 # env
 .env.*
+# Coverage directory used by tools like istanbul
+coverage

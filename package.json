@@ -13,7 +13,11 @@
     "develop": "gatsby develop",
     "lint": "eslint .",
     "format": "prettier --write ./src/**/*.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "validate": "npm-run-all --parallel lint test build",
+    "test": "is-ci \"test:coverage\" \"test:watch\"",
+    "test:coverage": "jest --coverage",
+    "test:watch": "jest --watch",
+    "test:debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand --watch"
   },
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.0",
@@ -46,14 +50,23 @@
     "typeface-roboto": "0.0.54"
   },
   "devDependencies": {
+    "@babel/core": "^7.3.4",
+    "babel-jest": "^24.3.1",
+    "babel-preset-gatsby": "^0.1.8",
     "eslint": "^5.15.1",
     "eslint-config-kentcdodds": "^14.3.1",
     "eslint-plugin-cypress": "^2.2.1",
     "eslint-plugin-jest": "^22.3.0",
     "husky": "^1.3.1",
+    "identity-obj-proxy": "^3.0.0",
+    "is-ci-cli": "^1.1.1",
+    "jest": "^24.3.1",
+    "jest-in-case": "^1.0.2",
     "lint-staged": "^8.1.5",
     "npm-run-all": "^4.1.5",
-    "prettier": "^1.16.4"
+    "prettier": "^1.16.4",
+    "react-testing-library": "^6.0.0",
+    "start-server-and-test": "^1.7.11"
   },
   "prettier": {
     "singleQuote": true,
