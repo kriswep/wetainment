@@ -10,3 +10,7 @@ yarn-error.log
 .env.*
 # Coverage directory used by tools like istanbul
 coverage
+
+cypress/videos
+cypress/screenshots
+.env

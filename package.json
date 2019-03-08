@@ -11,13 +11,20 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
+    "start": "gatsby serve --port 5020",
     "lint": "eslint .",
     "format": "prettier --write ./src/**/*.js",
-    "validate": "npm-run-all --parallel lint test build",
+    "build-and-test": "npm-run-all --sequential build test:e2e",
+    "validate": "npm-run-all --parallel lint test build-and-test",
     "test": "is-ci \"test:coverage\" \"test:watch\"",
     "test:coverage": "jest --coverage",
     "test:watch": "jest --watch",
-    "test:debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand --watch"
+    "test:debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand --watch",
+    "install:cypress": "cypress install",
+    "cy": "is-ci \"test:e2e\" \"cy:open\"",
+    "cy:open": "cypress open",
+    "cy:run": "CYPRESS_BASE_URL=http://localhost:5020 cypress run",
+    "test:e2e": "start-server-and-test start http://localhost:5020 cy:run"
   },
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.0",
@@ -53,6 +60,8 @@
     "@babel/core": "^7.3.4",
     "babel-jest": "^24.3.1",
     "babel-preset-gatsby": "^0.1.8",
+    "cypress": "^3.1.5",
+    "cypress-testing-library": "^2.3.6",
     "eslint": "^5.15.1",
     "eslint-config-kentcdodds": "^14.3.1",
     "eslint-plugin-cypress": "^2.2.1",
