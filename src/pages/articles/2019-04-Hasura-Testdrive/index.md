@@ -15,7 +15,7 @@ issueNumber: 24
 **Tl,dr: https://hasura.io/**
 
 - ~~Outline~~
-- Getting started
+- ~~Getting started~~
 - Migrations via CLI console
 - Access rules
 - Prod ready?
@@ -43,3 +43,9 @@ The first thing I did was to add a table under the data tab. There you can enter
 From there I created a basic `author` - `post` datamodel with some foreign key relations, which can be exposed as relationships for your GraphQL schema. Really nice, if you ask me. By the way, you can check out my experiments on [GitHub](https://github.com/kriswep/hasura-testdrive).
 
 There's also an option to add a third party GraphQL schema (Schema-Stitching for the win) and another option for exposing events to external services. The latter has a lot of potential, as it allows you to integrate any serverless functions to events happeing in your database, and more. Again, [Hasuras' documentation](https://docs.hasura.io/1.0/graphql/manual/event-triggers/index.html) is very helpful!
+
+#### Migrate your environment
+
+Playing around in the console, tweaking tables and relations is fun, but how would we bring our progress from a dev to a production environment. Some kind of continous integration?
+
+Luckily, Hasura has an answer in the form of [migrations](https://docs.hasura.io/1.0/graphql/manual/migrations/index.html).
