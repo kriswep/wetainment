@@ -21,9 +21,9 @@ issueNumber: 24
 - Prod ready?
 - Summary
 
-GraphQL at its' core is a specification for data communication, most commonly used between client and servers. Originally created and open sourced by Facebook, it quickly grow and got picked up by a lot of companies in all shapes and sizes. Nowadays there's a growing number of startups providing services in the GraphQL space. I've previously explored one om them, Primsa, and have written about their [magic GraphQL tricks](/revealing-prismagraphql-magic/). Today let's take a look at another service in this space, called [Hasura](https://hasura.io/).
+GraphQL at its' core is a specification for data communication, most commonly used between client and servers. Originally created and open sourced by Facebook, it quickly grow and got picked up by a lot of companies in all shapes and sizes. Nowadays there's a growing number of startups providing services in the GraphQL space. I've previously explored one of them, Primsa, and have written about their [magic GraphQL tricks](/revealing-prismagraphql-magic/). Today let's take a look at another service in this space, called [Hasura](https://hasura.io/).
 
-Hasura promises you a GraphQL API on existing and new Postgres databases, focusing on realtime features leveraging subscriptions. Hasura engines is strictly limited to Postgres, giving them the advantage to use these databases' features tightly in their engine. For example, instead of resolving each field separately, they transform the whole GraphQL query to a corresponding SQL statement. This helps to avoid unnecessary database request. The Hasura team described their [architecture further](https://blog.hasura.io/architecture-of-a-high-performance-graphql-to-sql-server-58d9944b8a87/) some time ago.
+Hasura promises you a GraphQL API on existing and new Postgres databases, focusing on realtime features leveraging subscriptions. Hasura engines is strictly limited to Postgres, giving them the advantage to use these databases' features tightly in their engine. For example, instead of resolving each field separately, they transform the whole GraphQL query to a corresponding SQL statement. This helps to avoid unnecessary database request (Ever heard of the n+1 problem?). The Hasura team described their [architecture further](https://blog.hasura.io/architecture-of-a-high-performance-graphql-to-sql-server-58d9944b8a87/) some time ago.
 
 Another key feature is Hasuras' console. This is not only a GUI to Postgres, it also lets you define what tables to expose in your GraphQL engine, add views, access permissions, event hooks and more.
 
@@ -42,7 +42,7 @@ The first thing I did was to add a table under the data tab. There you can enter
 
 From there I created a basic `author` - `post` datamodel with some foreign key relations, which can be exposed as relationships for your GraphQL schema. Really nice, if you ask me. By the way, you can check out my experiments on [GitHub](https://github.com/kriswep/hasura-testdrive).
 
-There's also an option to add a third party GraphQL schema (Schema-Stitching for the win) and another option for exposing events to external services. The latter has a lot of potential, as it allows you to integrate any serverless functions to events happeing in your database, and more. Again, [Hasuras' documentation](https://docs.hasura.io/1.0/graphql/manual/event-triggers/index.html) is very helpful!
+There's also an option to add a third party GraphQL schema (Schema-Stitching for the win) and another option for exposing events to external services. The latter has a lot of potential, as it allows you to integrate any serverless functions to events happening in your database, and more. Again, [Hasuras' documentation](https://docs.hasura.io/1.0/graphql/manual/event-triggers/index.html) is very helpful!
 
 #### Migrate your environment
 
