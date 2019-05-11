@@ -42,7 +42,7 @@ The first thing I did was to add a table under the data tab. There you can enter
 
 From there I created a basic `author` - `post` datamodel with some foreign key relations, which can be exposed as relationships for your GraphQL schema. Really nice, if you ask me. By the way, you can check out my experiments on [GitHub](https://github.com/kriswep/hasura-testdrive).
 
-There's also an option to add a third party GraphQL schema (Schema-Stitching for the win) and another option for exposing events to external services. The latter has a lot of potential, as it allows you to integrate any serverless functions to events happening in your database, and more. Again, [Hasuras' documentation](https://docs.hasura.io/1.0/graphql/manual/event-triggers/index.html) is very helpful!
+There's also an option to add a third party GraphQL schema (schema-stitching for the win) and another option for exposing events to external services. The latter has a lot of potential, as it allows you to integrate any serverless functions to events happening in your database, and more. Again, [Hasuras' documentation](https://docs.hasura.io/1.0/graphql/manual/event-triggers/index.html) is very helpful!
 
 #### Migrate your environment
 
