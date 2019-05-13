@@ -16,7 +16,7 @@ issueNumber: 24
 
 - ~~Outline~~
 - ~~Getting started~~
-- Migrations via CLI console
+- ~~Migrations via CLI console~~
 - Access rules
 - Prod ready?
 - Summary
@@ -48,4 +48,4 @@ There's also an option to add a third party GraphQL schema (schema-stitching for
 
 Playing around in the console, tweaking tables and relations is fun, but how would we bring our progress from a dev to a production environment. Some kind of continous integration?
 
-Luckily, Hasura has an answer in the form of [migrations](https://docs.hasura.io/1.0/graphql/manual/migrations/index.html).
+Luckily, Hasura has an answer in the form of [migrations](https://docs.hasura.io/1.0/graphql/manual/migrations/index.html). You can choose to let Hasura log all changes made to the database schema, as well as the Hasura metadata, by using their provided [CLI](https://docs.hasura.io/1.0/graphql/manual/hasura-cli/index.html). Using this will generate some yaml files, which you can use to recreate your local dev database in a staging and production environment. This made a really good impression on me.
