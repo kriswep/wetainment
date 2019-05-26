@@ -1,6 +1,6 @@
 ---
 title: 'Hasura GraphQL - First impressions'
-date: '2019-05-01T20:00:00.000Z'
+date: '2019-05-15T20:00:00.000Z'
 layout: post
 path: '/articles/hasura-impression/'
 category: 'GraphQL'
