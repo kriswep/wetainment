@@ -2,6 +2,7 @@ module.exports = {
   siteMetadata: {
     title: 'wetainment',
     author: 'Christoph Benjamin Weber',
+    siteUrl: 'https://wetainment.com',
   },
 
   plugins: [
@@ -42,6 +43,7 @@ module.exports = {
           },
           'gatsby-remark-copy-linked-files',
           'gatsby-remark-smartypants',
+          'gatsby-remark-social-cards',
         ],
       },
     },

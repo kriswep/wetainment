@@ -34,14 +34,24 @@ const ReadNextDescription = styled.p`
 
 /* eslint-disable react/no-danger */
 const Template = props => {
-  const { markdownRemark: post, readNext } = props.data;
+  const { markdownRemark: post, readNext, site } = props.data;
   // <meta name="robots" content="noindex" />
   const meta = [
     { name: 'description', content: post.frontmatter.description },
-    { name: 'twitter:card', content: 'summary' },
+    { name: 'twitter:card', content: 'summary_large_image' },
     { name: 'twitter:site', content: post.frontmatter.author },
     { name: 'twitter:title', content: post.frontmatter.title },
     { name: 'twitter:description', content: post.frontmatter.description },
+    {
+      name: 'twitter:image',
+      content: `${site.siteMetadata.siteUrl}${
+        post.fields.slug
+      }twitter-card.jpg`,
+    },
+    {
+      name: 'twitter:image:alt',
+      content: post.frontmatter.title,
+    },
   ];
   if (post.frontmatter.noindex) {
     meta.push({ name: 'robots', content: 'noindex' });
@@ -85,6 +95,9 @@ export const query = graphql`
   query($slug: String!, $readNext: String = "/eclipse-for-node/") {
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html
+      fields {
+        slug
+      }
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
         path
@@ -102,6 +115,12 @@ export const query = graphql`
         path
         title
         description
+      }
+    }
+    site: site {
+      siteMetadata {
+        title
+        siteUrl
       }
     }
   }
