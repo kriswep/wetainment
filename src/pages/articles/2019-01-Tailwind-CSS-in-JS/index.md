@@ -14,6 +14,8 @@ issueNumber: 23
 
 **Tl,dr: We can setup Tailwind in a Create React App, version 2+. Therefore we don't even need to eject or manipulate any build task. Today, you can use a babel-macro and most CSS in JS solutions. Take a look at this demo [React project](https://github.com/kriswep/cra-tailwindcss-in-js)**
 
+_June '19: Updated to use the first Tailwind major relase, [Tailwind v1](https://tailwindcss.com/docs/release-notes#tailwind-css-v1-0)_
+
 Tailwind is a utility css framework, which gives you specific, rememberable css classes to set, instead of writing plain css rules. It aims to help you build rich user interfaces fast. One can declare the needed utilities by editing a config JavaScipt file. Find out more in their [docs](https://tailwindcss.com/docs).
 
 Another solid approach to write your css in modern React components is CSS in JS. This term describes different set of tools allowing you to write CSS directly in your JavaScript files, colocating the styling to your components. One of the more popular CSS in JS frameworks in the React ecosytem is [styled-components](https://www.styled-components.com/).
@@ -39,24 +41,28 @@ cd cra-tailwindcss-in-js
 We'll need some additional dependecies, so go ahead and install them right away.
 
 ```bash
-npm i -D tailwindcss tailwind.macro
+npm i -D tailwind.macro@next
 npm i -S styled-components
 ```
 
-Tailwind need a JavaScript configuration file to know which utilities to create. Luckily, it comes with a command to generate a good default setup.
+_Note: As of June '19 you need to use the [prelease of tailwind-macro](https://github.com/bradlc/babel-plugin-tailwind-components/issues/20), in order to use Tailwind v1. This should not be necessary forever._
+
+Tailwind can be customized with a JavaScript [configuration file](https://tailwindcss.com/docs/configuration). If you need that, Tailwind added a command to create a config file. Since version 1 of Tailwind this file is optional!
 
 ```bash
-./node_modules/.bin/tailwind init ./src/tailwind.js
+npx tailwind init ./src/tailwind.config.js
 ```
 
 You may have noticed that we generated this file in the `./src` subfolder. This is where all of our source files live, and also Create React App complains, if we import from other locations.
-We installed `tailwind.macro` before. In order for that to pick up our configuration file, add a `babel-plugin-macros.config.js` in projects' root folder.
+
+Next configure the `tailwind.macro` we installed before. Add a `babel-plugin-macros.config.js` in projects' root folder and tell tailwind macro to use the styled component macro.
 
 ```javascript
 // babel-plugin-macros.config.js
 module.exports = {
   tailwind: {
-    config: './src/tailwind.js',
+    config: './src/tailwind.config.js', // if you added a config file
+    styled: 'styled-components/macro',
   },
 };
 ```
@@ -82,7 +88,7 @@ class App extends Component {
     return (
       <div css={tw`text-center`}>
         <Header>
-          <p css={tw`text-blue-light`}>
+          <p css={tw`text-blue-300`}>
             Using <code>tailwind</code> and <code>styled-components</code>{' '}
             together.
           </p>
