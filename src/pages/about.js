@@ -44,6 +44,28 @@ const ContactPage = () => (
       <a href="mailto:kriswep@wetainment.com">mail</a> if you want to learn more
       for some reason.
     </p>
+    <h3>AndTeam - Estimations (2019)</h3>
+    <p>
+      <span>URL:</span>{' '}
+      <a href="https://estimation.andteam.app">estimation.andteam.app</a>
+      <span>Code:</span> <a href="https://github.com/kriswep/tpp">GitHub</a>
+    </p>
+    <p>
+      AndTeam - Estimations allows teams to connect together and estimate their
+      tasks more reliable. It is inspired by the planning poker concepts in
+      agile software development. Every team member should connect to the same
+      session, and give their estimation to each task represented by story
+      points. After everybody picked their estimated number, the cards are
+      revealed and the outliers should be discussed. This is repeated until a
+      consensus is reached. AndTeam - Estimations gives a nice animated frontend
+      to these sessions, and allows product owners to moderate and steer the
+      estimation session.
+    </p>
+    <img src="/estimation.gif" alt="Screenflow of the estimation process" />
+    <p>
+      <strong>Used technologies:</strong> React for the frontend, WebRTC and
+      WebSockets for communication between the clients.
+    </p>
   </Layout>
 );
 
