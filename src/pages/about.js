@@ -1,7 +1,23 @@
 import React from 'react';
 import Helmet from 'react-helmet';
+import styled from 'styled-components';
 
 import Layout from '../components/Layout';
+// import Link from '../components/Link';
+
+const Link = styled.a`
+  color: ${props => props.theme.darkAccent};
+`;
+
+const PortfolioImage = styled.img`
+  max-width: 400px;
+  float: left;
+  margin: 0 1em 1em 0;
+`;
+
+const Technologies = styled.p`
+  clear: both;
+`;
 
 const ContactPage = () => (
   <Layout>
@@ -29,27 +45,34 @@ const ContactPage = () => (
       Besides my full-time job, where I mostly work with SAP backend
       technologies, I like tinkering with modern frontend technologies.
       Currently, I enjoy the React and GraphQL stack the most and have some
-      spare time projects, which can be found on{' '}
-      <a href="https://github.com/kriswep">Github</a>.
+      spare time projects using these technologies, which can be found on{' '}
+      <Link href="https://github.com/kriswep">Github</Link>.
     </p>
     <h2>Portfolio</h2>
     <p>
       Here's some of the work I've done in recent years. All of them are my
       spare time projects since these are the ones I can talk about freely. I
       also have some smaller projects and tutorials, which can be found either
-      here on my blog or on <a href="https://github.com/kriswep">Github</a>.
+      here on my blog or on{' '}
+      <Link href="https://github.com/kriswep">Github</Link>.
       <br />
       Of course, I also worked on a lot of different projects and products at my
       full-time job, please send me an inquiry per{' '}
-      <a href="mailto:kriswep@wetainment.com">mail</a> if you want to learn more
-      for some reason.
+      <Link href="mailto:kriswep@wetainment.com">mail</Link> if you want to
+      learn more about these for some reason.
     </p>
     <h3>AndTeam - Estimations (2019)</h3>
     <p>
       <span>URL:</span>{' '}
-      <a href="https://estimation.andteam.app">estimation.andteam.app</a>
-      <span>Code:</span> <a href="https://github.com/kriswep/tpp">GitHub</a>
+      <Link href="https://estimation.andteam.app">estimation.andteam.app</Link>
+      <br />
+      <span>Code:</span>{' '}
+      <Link href="https://github.com/kriswep/tpp">GitHub</Link>
     </p>
+    <PortfolioImage
+      src="/estimation.gif"
+      alt="Screenflow of the estimation process"
+    />
     <p>
       AndTeam - Estimations allows teams to connect together and estimate their
       tasks more reliable. It is inspired by the planning poker concepts in
@@ -61,11 +84,62 @@ const ContactPage = () => (
       to these sessions, and allows product owners to moderate and steer the
       estimation session.
     </p>
-    <img src="/estimation.gif" alt="Screenflow of the estimation process" />
-    <p>
+    <Technologies>
       <strong>Used technologies:</strong> React for the frontend, WebRTC and
       WebSockets for communication between the clients.
+    </Technologies>
+
+    <h3>Balloon Game (2012)</h3>
+    <p>
+      <span>URL:</span>{' '}
+      <Link href="https://play.wetainment.com/balloon">
+        play.wetainment.com/balloon
+      </Link>
+      <br />
+      <span>Code:</span>{' '}
+      <Link href="https://github.com/kriswep/balloon/">GitHub</Link>
     </p>
+    <PortfolioImage src="/balloon.gif" alt="A round of playing balloon" />
+    <p>
+      Balloon is an HTML5 Canvas-based game played in the browser. It is best
+      played on mobile devices. The main part was developed during the holidays
+      in 2012, the game was later refined to use service workers for full
+      offline support and sound was added.
+    </p>
+    <p>
+      The gameplay was inspired by fruit ninja. The player has to catch balloons
+      as they fly towards the sky by touching them. The target audience is
+      preschool children. My children still enjoy to play balloon from time to
+      time, so it was well worth creating it.
+    </p>
+    <Technologies>
+      <strong>Used technologies:</strong> Frameworkless frontend, rendered in
+      HTML5-Canvas. Hand-drawn graphics. Web audio is used for generating sound
+      effects during runtime. The game can be played offline thanks to the usage
+      of service workers.
+    </Technologies>
+
+    <h3>Socsur - German (2008)</h3>
+    <p>
+      <span>URL:</span> <Link href="http://www.socsur.de">www.socsur.de</Link>
+    </p>
+    <PortfolioImage src="/socsur.png" alt="A poll result chart" />
+    <p>
+      Socsur is a platform for creating and sharing simple one question polls.
+      It is my first fullscale web project written during my time at university.
+      Socsur uses a custom made PHP based backend and templating engine for
+      rendering the frontend.
+    </p>
+    <p>
+      It was possible to register a user, but not necessary. This reduced the
+      friction to create a poll. Also, some people embedded the polls on their
+      own homepage. Due to low time for maintenance and promoting, user interest
+      declined and Socsur was put in a read-only mode.
+    </p>
+    <Technologies>
+      <strong>Used technologies:</strong> Custom written PHP backend connected
+      to a MySQL database. Bootstrap powered frontend.
+    </Technologies>
   </Layout>
 );
 
