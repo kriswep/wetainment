@@ -1,12 +1,12 @@
 ---
-title: "GitComment"
-date: "2017-12-17T22:00:00.000Z"
+title: 'GitComment'
+date: '2017-12-17T22:00:00.000Z'
 layout: post
-path: "/comment-system/"
-category: "Meta"
+path: '/comment-system/'
+category: 'Meta'
 description: "Recently, I added a new comment system on this blog, leveraging GitHub issues as a 'backend' for the comments. Would love you writing something there."
-author: "@kriswep"
-readNext: "/articles/2018-01-Playground-Better-Graphiql/"
+author: '@kriswep'
+readNext: '/articles/2019-11-Build-Serverless/'
 issueNumber: 12
 ---
 

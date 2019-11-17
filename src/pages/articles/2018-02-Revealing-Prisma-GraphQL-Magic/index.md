@@ -6,7 +6,7 @@ path: '/revealing-prismagraphql-magic/'
 category: 'GraphQL'
 description: "Prisma is a GraphQL API Layer. Trying it out with one of the available boilerplates gives you a ton of great features, almost feeling like magic. But is it? Let's have a look behind the tricks!"
 author: '@kriswep'
-readNext: '/articles/2018-01-Playground-Better-Graphiql/'
+readNext: '/articles/2019-11-Build-Serverless/'
 issueNumber: 17
 ---
 
