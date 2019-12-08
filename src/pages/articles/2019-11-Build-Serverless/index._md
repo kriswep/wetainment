@@ -14,6 +14,10 @@ issueNumber: 25
 
 **Tl,dr: Serverless functions allow you to implement your backend business logic without maintaining server infrastructure. [Netlify Functions](https://www.netlify.com/products/functions/) are a great way to get started, allowing you to author your functions in modern JavaScript or TypeScript and transpiling them to the needed format. You can even run your functions locally in your development environment using [Netlify Dev](https://www.netlify.com/products/dev/)**
 
+Serverless
+
+_NOTE: Netlify offers some paid services, all of them are worth more than they cost. You can get started with functions on a free tier, check their [pricing page](https://www.netlify.com/pricing/)._
+
 ![A Big, white cloud in a blue sky during daytime.](clouds.jpg)
 
 <p><sub><sup>Cloud and serverless go hand in hand. Photo by <a href="https://unsplash.com/@rachadan">Lim changwonz</a> on <a href="https://unsplash.com/photos/Ez5V2THOpDo">Unsplash</a>.</sup></sub></p>
