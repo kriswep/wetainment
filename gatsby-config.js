@@ -59,6 +59,19 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-plugin-ackee-tracker',
+      options: {
+        // Domatin ID found when adding a domain in the admin panel.
+        domainId: 'e8e11cfb-e203-4937-b95f-ebfbc9c48464',
+        // URL to Server eg: "https://analytics.test.com".
+        server: 'https://api.wetainment.com',
+        // Disabled analytic tracking when running localy
+        ignoreLocalhost: true,
+        // If enabled it will collect info on OS, BrowserInfo, Device  & ScreenSize
+        detailed: false,
+      },
+    },
+    {
       resolve: 'gatsby-plugin-manifest',
       options: {
         name: 'wetainment blog/portfolio',
