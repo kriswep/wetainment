@@ -6,7 +6,7 @@ path: '/comment-system/'
 category: 'Meta'
 description: "Recently, I added a new comment system on this blog, leveraging GitHub issues as a 'backend' for the comments. Would love you writing something there."
 author: '@kriswep'
-readNext: '/articles/2019-11-Build-Serverless/'
+readNext: '/articles/2020-01-CRA-Template/'
 issueNumber: 12
 ---
 

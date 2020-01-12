@@ -6,7 +6,7 @@ path: '/articles/tailwind-css-in-js/'
 category: 'CSS'
 description: 'The improved way of adding the Tailwind CSS Framework in a Create React App using CSS in JS solutions and a babel-macro!'
 author: '@kriswep'
-readNext: '/articles/2019-11-Build-Serverless/'
+readNext: '/articles/2020-01-CRA-Template/'
 issueNumber: 23
 ---
 
