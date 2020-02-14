@@ -71,8 +71,8 @@ const PrivacyPage = () => (
           language, country you are located in, and web browser type) you used
           during your visit, and more. We process this usage data for
           statistical purposes, to improve our site and to recognize and stop
-          any misuse. We use Google Analytics, more info{' '}
-          <a href="#analytics">below</a>.
+          any misuse. We use <a href="https://matomo.org/">matomo</a>, as a
+          self-hosted analytics solution.
         </li>
         <li>
           Cookies — we use cookies (small data files transferred onto computers
@@ -160,52 +160,11 @@ const PrivacyPage = () => (
             </a>
           </td>
         </tr>
-        <tr>
-          <td>
-            <a href="https://analytics.google.com/">Google Analytics</a>
-          </td>
-          <td>Gain insights about usage and optimization possibilities.</td>
-          <td>Legitimate interest</td>
-          <td>USA</td>
-          <td>Cookies and Usage Data, anonymized IP adress</td>
-          <td>
-            <a href="https://www.google.com/intl/en/policies/privacy/">link</a>
-          </td>
-        </tr>
       </table>
       <p>
         In addition to that, we set links to external sites. We try our best to
         do that responsible, but are not responsible for their content or other
         legal concerns.
-      </p>
-      <h3 id="analytics">Analytics</h3>
-      <p>
-        The services contained in this section enable the Owner to monitor and
-        analyze web traffic and can be used to keep track of User behavior.
-      </p>
-      <h4>Google Analytics with anonymized IP (Google Inc.)</h4>
-      <p>
-        Google Analytics is a web analysis service provided by Google Inc.
-        (“Google”). Google utilizes the Data collected to track and examine the
-        use of wetainment, to prepare reports on its activities. Therefore,
-        Google Analytics uses cookies and similiar techniques. Google may use
-        the Data collected to contextualize and personalize the ads of its own
-        advertising network and share them with other Google services.
-      </p>
-      <p>
-        This integration of Google Analytics anonymizes your IP address. It
-        works by shortening Users&apos; IP addresses within member states of the
-        European Union or in other contracting states to the Agreement on the
-        European Economic Area. Only in exceptional cases will the complete IP
-        address be sent to a Google server and shortened within the US.
-      </p>
-      <p>
-        Personal Data collected: Cookies and Usage Data.
-        <br /> Place of processing: USA –{' '}
-        <a href="https://www.google.com/intl/en/policies/privacy/">
-          Privacy Policy
-        </a>{' '}
-        – <a href="https://tools.google.com/dlpage/gaoptout?hl=en">Opt Out</a>.
       </p>
       <h2 id="retention">Retention of data</h2>
       <p>
@@ -224,9 +183,8 @@ const PrivacyPage = () => (
       </p>
       <h2 id="changes">Privacy Policy Changes</h2>
       <p>
-        We may update this Policy from time to time. If we do, we’ll let you
-        know about any material changes, either by notifying you on the website
-        or by sending you an email.
+        We may update this Policy from time to time. You can find the latest
+        version <a href="https://wetainment.com/privacy">online</a>.
       </p>
       <h2 id="contact">Contact Us</h2>
       <p>E-Mail: privacy@wetainment.com</p>

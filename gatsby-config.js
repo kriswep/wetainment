@@ -51,24 +51,17 @@ module.exports = {
     'gatsby-plugin-sharp',
     'gatsby-plugin-react-helmet',
     {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: 'gatsby-plugin-matomo',
       options: {
-        trackingId: 'UA-135963540-1',
-        anonymize: true,
-        respectDNT: true,
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-ackee-tracker',
-      options: {
-        // Domatin ID found when adding a domain in the admin panel.
-        domainId: 'e8e11cfb-e203-4937-b95f-ebfbc9c48464',
-        // URL to Server eg: "https://analytics.test.com".
-        server: 'https://api.wetainment.com',
-        // Disabled analytic tracking when running localy
-        ignoreLocalhost: true,
-        // If enabled it will collect info on OS, BrowserInfo, Device  & ScreenSize
-        detailed: false,
+        siteId: '1',
+        matomoUrl: 'https://matomo.wetainment.com',
+        siteUrl: 'https://wetainment.com',
+        // All the optional settings
+        // exclude: ['/offline-plugin-app-shell-fallback/'],
+        // requireConsent: false,
+        disableCookies: false,
+        // localScript: '/piwik.js',
+        // dev: false,
       },
     },
     {
