@@ -6,7 +6,7 @@ path: '/articles/sticky-html-footer/'
 category: 'CSS'
 description: "When adding a footer to yout HTML page you probably want to have it at the bottom. But how do you achieve that, if the page content doesn't fill the whole page? CSS flexbox to the rescue!"
 author: '@kriswep'
-readNext: '/articles/2020-01-CRA-Template/'
+readNext: '/articles/2020-03-Build-An-App-01/'
 issueNumber: 26
 ---
 

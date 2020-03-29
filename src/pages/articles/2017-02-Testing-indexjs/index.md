@@ -6,7 +6,7 @@ path: '/testing-indexjs/'
 category: 'Testing'
 description: 'Writing unit tests for your React index.js file can be a little tricky. Read on how I did it lately...'
 author: '@kriswep'
-readNext: '/articles/2020-01-CRA-Template/'
+readNext: '/articles/2020-03-Build-An-App-01/'
 issueNumber: 9
 ---
 

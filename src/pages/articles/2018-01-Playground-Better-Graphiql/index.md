@@ -6,7 +6,7 @@ path: '/playground-better-graphiql/'
 category: 'GraphQL'
 description: 'GraphQL Playground expands on the idea of GraphiQL, adding some nice features to provide an even better development experience for the GraphQL world.'
 author: '@kriswep'
-readNext: '/articles/2018-02-Revealing-Prisma-GraphQL-Magic/'
+readNext: '/articles/2020-03-Build-An-App-01/'
 issueNumber: 15
 ---
 

@@ -6,7 +6,7 @@ path: '/articles/create-react-app-template/'
 category: 'React'
 description: 'Create React App can bootstrap your React applications. Nowadays, you can even use a template to quickly start your projects with your preferred stack. Learn how to write and publish your own template.'
 author: '@kriswep'
-readNext: '/articles/2019-04-Hasura-Testdrive/'
+readNext: '/articles/2020-03-Build-An-App-01/'
 issueNumber: 25
 ---
 
