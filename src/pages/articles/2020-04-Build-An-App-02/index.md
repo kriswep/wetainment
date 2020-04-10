@@ -1,6 +1,6 @@
 ---
 title: "Let's build an app - Part 2"
-date: '2020-04-06T20:00:00.000Z'
+date: '2020-04-12T20:00:00.000Z'
 layout: post
 path: '/articles/build-an-app-02/'
 category: 'JavaScript'
@@ -10,17 +10,22 @@ readNext: '/articles/2020-03-Build-An-App-01/'
 issueNumber: 28
 ---
 
-## Bored at home? Learn how to build a native app from scratch using React Native.
+## Bored at home? Learn how to build a app from scratch using React Native.
 
-**In this multipart series we'll develop a native app from Scratch.**
+**In this multipart series we'll develop a native app from Scratch. This second part we'll start building the main functionalities of our app. We'll be able to enter some values, fetch data and show the calculated results.**
 
+Let's learn how to build a native app together. We'll build a currency convertor. In the [first part](../build-an-app-01/) of this series I layed out why I think this is a good example and learning app. The also started our journey by setting up our dev environment, consisting of React Native and Expo. We started with a blank Expo template. This is where we'll start from now.
+
+Motivated? As a sneak peak, this will be today's endresult. Not too much, but it'll be fully working and will convert currencies.
 ![First screen of the app we'll build. There are two fields to select the currencies and two inputs to enter the corresponding values. They are aligned centrally on the screen.](app-iphone.jpg)
+
+### Start Building
 
 ### Fetch Data
 
 ### Done
 
-So, we finished the main functionality of our app. We can specify the currencies, enter values and see the converted amount.
+So, we finished the main functionality of our app. We can specify currencies, enter values and see the converted amount. In the background we fetch the needed exchange rates from an external API.
 
 This is what we have for now:
 
