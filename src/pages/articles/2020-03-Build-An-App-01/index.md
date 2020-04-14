@@ -6,7 +6,7 @@ path: '/articles/build-an-app-01/'
 category: 'JavaScript'
 description: "Bored at home? Join me learning how to build a small, but complete app in 2020. We'll use React Native to build a cross platform and fully native app."
 author: '@kriswep'
-readNext: '/articles/2020-01-CRA-Template/'
+readNext: '/articles/2020-04-Build-An-App-02/'
 issueNumber: 27
 ---
 

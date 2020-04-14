@@ -1,6 +1,6 @@
 ---
 title: "Let's build an app - Part 2"
-date: '2020-04-12T20:00:00.000Z'
+date: '2020-04-14T20:00:00.000Z'
 layout: post
 path: '/articles/build-an-app-02/'
 category: 'JavaScript'
@@ -14,14 +14,71 @@ issueNumber: 28
 
 **In this multipart series we'll develop a native app from Scratch. This second part we'll start building the main functionalities of our app. We'll be able to enter some values, fetch data and show the calculated results.**
 
-Let's learn how to build a native app together. We'll build a currency convertor. In the [first part](../build-an-app-01/) of this series I layed out why I think this is a good example and learning app. The also started our journey by setting up our dev environment, consisting of React Native and Expo. We started with a blank Expo template. This is where we'll start from now.
+Let's learn how to build a native app together. We'll build a currency convertor. In the [first part](../build-an-app-01/) of this series I layed out why I think this is a good example and learning app. The also started our journey by setting up our dev environment, consisting of React Native and Expo. We started with a blank Expo template. This is where we'll start from now. Also, in case you want to skip ahead, I'll have a [GitHub repo](https://github.com/kriswep/currency/tree/part2) with what we'll end up today.
 
 Motivated? As a sneak peak, this will be today's endresult. Not too much, but it'll be fully working and will convert currencies.
+
 ![First screen of the app we'll build. There are two fields to select the currencies and two inputs to enter the corresponding values. They are aligned centrally on the screen.](app-iphone.jpg)
 
 ### Start Building
 
+First things first: After setting up the dev environment using Expo before, we now need to install the npm modules we need. For now, that's just one, [React Query](https://github.com/tannerlinsley/react-query) as our data fetching helper: `npm i -S react-query`.
+
+To keep things simple and since we only started out, we'll add all our code in the main `App.js` file for now. Later on we can worry about file setup and splitting the right components apart.
+
+Our app will be a currency convertor. The user will enter a base amount in their currency, and get the corresponding amount in another currency. As such, we'll need some input fields to select currencies and enter values. Also, we have to know the actual exchange rates to calculate the foreign currency amount.
+
 ### Fetch Data
+
+Let's start with fetching the current exchange rates. A nice API to get that, is the [Rates API](http://ratesapi.io/). It's fast and doesn't need any registration or key to use.
+
+Start your dev script with `npm run start`, open your project in the Expo simulator on your mobile device and start working in the file `App.js`. Change its' content to the following:
+
+```jsx
+// App.js
+import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+import { useQuery } from 'react-query';
+
+/**
+ * Our main App component
+ */
+export default function App() {
+  /* use useQuery from React Query, to get the latest exchange rates */
+  const { _, data, error } = useQuery(
+    ['latest', 'EUR', 'USD'],
+    fetchCurrencies,
+  );
+
+  return (
+    <View style={styles.container}>
+      {error && <Text>Uh Oh, an error happened...</Text>}
+      {/* Let's see what we got */}
+      {data && <Text>{JSON.stringify(data.rates)}</Text>}
+    </View>
+  );
+}
+
+/* The fetcher function used by React Query: A fetch from the API, returning its' response */
+const fetchCurrencies = async (_, base, target) => {
+  const res = await fetch(
+    `https://api.ratesapi.io/api/latest?base=${base}&symbols=${target}`,
+  );
+
+  return await res.json();
+};
+
+/* The styles for our app */
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: 'row',
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
+```
 
 ### Done
 
