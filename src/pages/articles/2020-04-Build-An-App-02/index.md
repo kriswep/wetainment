@@ -1,6 +1,6 @@
 ---
 title: "Let's build an app - Part 2"
-date: '2020-04-14T20:00:00.000Z'
+date: '2020-05-20T20:00:00.000Z'
 layout: post
 path: '/articles/build-an-app-02/'
 category: 'JavaScript'
@@ -80,11 +80,137 @@ const styles = StyleSheet.create({
 });
 ```
 
+The interesting parts of our code are the useQuery function call, which React Query provides for us, in tandem with a fetcher function we wrote. The fetcher function makes a call to our API and returns its response. React Query takes over from here and helps us with caching that.
+
+For now, we only render the current rate for Euro to US Dollar on the screen with some minimal styling. Let's expand on that and build our app.
+
+### Render the UI
+
+We need two inputs for the currencies we want to convert from and to, and two inputs for the corresponding values. React Native gives us the TextInput primitive for that. We also need some state for our inputs. We'll rely on React `useState` and `useEffect` hooks for that.
+
+Let's extend our main App.js.
+
+```jsx
+// App.js
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, Text, TextInput, View } from 'react-native';
+import { useQuery } from 'react-query';
+
+/**
+ * Our main App component
+ */
+export default function App() {
+  const [base, setBase] = useState('EUR');
+  const [target, setTarget] = useState('USD');
+
+  const [baseAmount, setBaseAmount] = useState('1');
+  const [targetAmount, setTargetAmount] = useState('0');
+
+  /* use useQuery from React Query, to get the latest exchange rates.
+   * Instead of fixed currencies we use our state
+   */
+
+  const { _, data, error } = useQuery(
+    ['latest', base, target],
+    fetchCurrencies,
+  );
+
+  /*
+   * Improved UI, with Inputs to enter the needed values */
+  return (
+    <View style={styles.container}>
+      {/* Minor error management for now */}
+      {error && <Text>Uh Oh, an error happened...</Text>}
+      <>
+        <View style={styles.currencyContainer}>
+          {/* The input to enter the base currency */}
+          <TextInput
+            autoCapitalize="characters"
+            style={styles.currency}
+            value={base}
+            onChangeText={setBase}
+          />
+          {/* The input to enter the base value, 
+              we're omitting onChangeText for now */}
+          <TextInput
+            style={styles.currencyAmount}
+            keyboardType="numeric"
+            value={baseAmount}
+          />
+        </View>
+        <View style={styles.currencyContainer}>
+          {/* The input to enter the target currency */}
+          <TextInput
+            autoCapitalize="characters"
+            style={styles.currency}
+            value={target}
+            onChangeText={setTarget}
+          />
+          {/* The input to display the target value, 
+              we're omitting onChangeText for now */}
+          <TextInput
+            style={styles.currencyAmount}
+            keyboardType="numeric"
+            value={targetAmount}
+          />
+        </View>
+      </>
+    </View>
+  );
+}
+
+/**
+ * The fetcher function used by React Query: A fetch from the API, returning its' response
+ * Same as before
+ */
+const fetchCurrencies = async (_, base, target) => {
+  const res = await fetch(
+    `https://api.ratesapi.io/api/latest?base=${base}&symbols=${target}`,
+  );
+
+  return await res.json();
+};
+
+// We'll also extend our styles, we wont our Inputs centered and with enough space
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: 'row',
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+
+  currencyContainer: {
+    flexBasis: 150,
+    margin: 12,
+  },
+  currency: {
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+  },
+  currencyAmount: {
+    fontSize: 24,
+    padding: 12,
+    borderStyle: 'solid',
+    borderWidth: 1,
+    borderColor: '#e2e2e2',
+    borderRadius: 12,
+  },
+});
+```
+
+What happened? After importing what we need, we start by declaring the state we need in our `App` function. That's the `base` and `target` currencies, as well as the `baseAmount` and `targetAmount`. We also extended our render. There is some minimal error handling and the needed `TextInput`s. The way we set it up, you can already enter currencies, which will trigger network request to the exchange rate API. That's good, the can now start converting.
+
+Note we're not finished yet. There are no handlers for changes in the value inputs, and also no functions to actually convert.
+
+.. TODO: Next code block
+
 ### Done
 
 So, we finished the main functionality of our app. We can specify currencies, enter values and see the converted amount. In the background we fetch the needed exchange rates from an external API.
 
-This is what we have for now:
+As a reference, this is what we landed on today:
 
 ```jsx
 // App.js
