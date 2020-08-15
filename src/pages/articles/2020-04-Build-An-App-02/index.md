@@ -106,20 +106,21 @@ export default function App() {
   const [baseAmount, setBaseAmount] = useState('1');
   const [targetAmount, setTargetAmount] = useState('0');
 
-  /* use useQuery from React Query, to get the latest exchange rates.
+  /**
+   * use useQuery from React Query, to get the latest exchange rates.
    * Instead of fixed currencies we use our state
    */
-
   const { _, data, error } = useQuery(
     ['latest', base, target],
     fetchCurrencies,
   );
 
   /*
-   * Improved UI, with Inputs to enter the needed values */
+   * Improved UI, with Inputs to enter the needed values
+   */
   return (
     <View style={styles.container}>
-      {/* Minor error management for now */}
+      {/* Minor error management, enough for our use case */}
       {error && <Text>Uh Oh, an error happened...</Text>}
       <>
         <View style={styles.currencyContainer}>
@@ -171,7 +172,7 @@ const fetchCurrencies = async (_, base, target) => {
   return await res.json();
 };
 
-// We'll also extend our styles, we wont our Inputs centered and with enough space
+// We'll also extend our styles, we want our Inputs centered and with enough space
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -202,15 +203,7 @@ const styles = StyleSheet.create({
 
 What happened? After importing what we need, we start by declaring the state we need in our `App` function. That's the `base` and `target` currencies, as well as the `baseAmount` and `targetAmount`. We also extended our render. There is some minimal error handling and the needed `TextInput`s. The way we set it up, you can already enter currencies, which will trigger network request to the exchange rate API. That's good, the can now start converting.
 
-Note we're not finished yet. There are no handlers for changes in the value inputs, and also no functions to actually convert.
-
-.. TODO: Next code block
-
-### Done
-
-So, we finished the main functionality of our app. We can specify currencies, enter values and see the converted amount. In the background we fetch the needed exchange rates from an external API.
-
-As a reference, this is what we landed on today:
+Note we're not finished yet. There are no handlers for changes in the value inputs, and also no functions to actually convert. Let's change that.
 
 ```jsx
 // App.js
@@ -230,8 +223,15 @@ export default function App() {
     fetchCurrencies,
   );
 
+  /**
+   * Convert when data changes, e.g. on start
+   */
   useEffect(() => calculateFromBase(baseAmount), [data]);
 
+  /**
+   * When the first value (base) is changed, calculate the second
+   * with the rate retrieved from the API
+   */
   const calculateFromBase = number => {
     if (!isNaN(number) && data && data.rates) {
       setBaseAmount(number);
@@ -239,6 +239,11 @@ export default function App() {
       setTargetAmount(isNaN(newTargetAmount) ? 0 : newTargetAmount);
     }
   };
+
+  /**
+   * When the second value (target) is changed, calculate the first
+   * with the rate retrieved from the API
+   */
   const calculateFromTarget = number => {
     if (!isNaN(number) && data && data.rates) {
       const newBaseAmount = (number / data.rates[target]).toFixed(2);
@@ -259,6 +264,8 @@ export default function App() {
             value={base}
             onChangeText={setBase}
           />
+          {/* The input to enter the base value, 
+              onChangeText calls our function to convert the second (target) value */}
           <TextInput
             style={styles.currencyAmount}
             keyboardType="numeric"
@@ -266,6 +273,8 @@ export default function App() {
             onChangeText={calculateFromBase}
           />
         </View>
+        {/* The input to enter the target value, 
+              onChangeText calls our function to convert the first (base) value */}
         <View style={styles.currencyContainer}>
           <TextInput
             autoCapitalize="characters"
@@ -285,6 +294,7 @@ export default function App() {
   );
 }
 
+// same as before
 const fetchCurrencies = async (_, base, target) => {
   const res = await fetch(
     `https://api.ratesapi.io/api/latest?base=${base}&symbols=${target}`,
@@ -293,6 +303,157 @@ const fetchCurrencies = async (_, base, target) => {
   return await res.json();
 };
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: 'row',
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+
+  currencyContainer: {
+    flexBasis: 150,
+    margin: 12,
+  },
+  currency: {
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+  },
+  currencyAmount: {
+    fontSize: 24,
+    padding: 12,
+    borderStyle: 'solid',
+    borderWidth: 1,
+    borderColor: '#e2e2e2',
+    borderRadius: 12,
+  },
+});
+```
+
+.. TODO: Explain changes
+
+### Done
+
+So, we finished the main functionality of our app. We can specify currencies, enter values and see the converted amount. In the background we fetch the needed exchange rates from an external API.
+
+As a reference, this is what we landed on today:
+
+```jsx
+// App.js
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, Text, TextInput, View } from 'react-native';
+import { useQuery } from 'react-query';
+
+/**
+ * Our main App component
+ */
+export default function App() {
+  const [base, setBase] = useState('EUR');
+  const [target, setTarget] = useState('USD');
+
+  const [baseAmount, setBaseAmount] = useState('1');
+  const [targetAmount, setTargetAmount] = useState('0');
+
+  /**
+   * use useQuery from React Query, to get the latest exchange rates.
+   * Instead of fixed currencies we use our state
+   */
+  const { _, data, error } = useQuery(
+    ['latest', base, target],
+    fetchCurrencies,
+  );
+
+  /**
+   * Convert when data changes, e.g. on start
+   */
+  useEffect(() => calculateFromBase(baseAmount), [data]);
+
+  /**
+   * When the first value (base) is changed, calculate the second
+   * with the rate retrieved from the API
+   */
+  const calculateFromBase = number => {
+    if (!isNaN(number) && data && data.rates) {
+      setBaseAmount(number);
+      const newTargetAmount = (number * data.rates[target]).toFixed(2);
+      setTargetAmount(isNaN(newTargetAmount) ? 0 : newTargetAmount);
+    }
+  };
+
+  /**
+   * When the second value (target) is changed, calculate the first
+   * with the rate retrieved from the API
+   */
+  const calculateFromTarget = number => {
+    if (!isNaN(number) && data && data.rates) {
+      const newBaseAmount = (number / data.rates[target]).toFixed(2);
+      setBaseAmount(isNaN(newBaseAmount) ? 0 : newBaseAmount);
+      setTargetAmount(number);
+    }
+  };
+
+  /*
+   * UI with Inputs to enter the needed values
+   */
+  return (
+    <View style={styles.container}>
+      {/* Minor error management, enough for our use case */}
+      {error && <Text>Uh Oh, an error happened...</Text>}
+
+      <>
+        <View style={styles.currencyContainer}>
+          {/* The input to enter the base currency */}
+          <TextInput
+            autoCapitalize="characters"
+            style={styles.currency}
+            value={base}
+            onChangeText={setBase}
+          />
+          {/* The input to enter the base value, 
+              onChangeText calls our function to convert the second (target) value */}
+          <TextInput
+            style={styles.currencyAmount}
+            keyboardType="numeric"
+            value={baseAmount}
+            onChangeText={calculateFromBase}
+          />
+        </View>
+        <View style={styles.currencyContainer}>
+          {/* The input to enter the target currency */}
+          <TextInput
+            autoCapitalize="characters"
+            style={styles.currency}
+            value={target}
+            onChangeText={setTarget}
+          />
+          {/* The input to enter the target value, 
+                onChangeText calls our function to convert the first (base) value */}
+          <TextInput
+            style={styles.currencyAmount}
+            keyboardType="numeric"
+            value={targetAmount}
+            onChangeText={calculateFromTarget}
+          />
+        </View>
+      </>
+    </View>
+  );
+}
+
+/**
+ * The fetcher function used by React Query: A fetch from the API, returning its' response
+ * Same as before
+ */
+const fetchCurrencies = async (_, base, target) => {
+  const res = await fetch(
+    `https://api.ratesapi.io/api/latest?base=${base}&symbols=${target}`,
+  );
+
+  return await res.json();
+};
+
+// our styles, center the Inputs and give them some space
 const styles = StyleSheet.create({
   container: {
     flex: 1,
