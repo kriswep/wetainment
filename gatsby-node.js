@@ -21,6 +21,7 @@ exports.createPages = async ({ graphql, actions }) => {
                 title
                 path
                 description
+                readNext
               }
             }
           }
@@ -45,6 +46,7 @@ exports.createPages = async ({ graphql, actions }) => {
       component: blogPost,
       context: {
         slug: post.node.fields.slug,
+        readNext: post.node.frontmatter.readNext,
         previous,
         next,
       },

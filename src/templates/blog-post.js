@@ -8,6 +8,7 @@ import SEO from '../components/seo';
 import { rhythm, scale } from '../utils/typography';
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
+  console.log(data);
   const post = data.mdx;
   const siteTitle = data.site.siteMetadata.title;
   const { previous, next } = pageContext;
@@ -62,14 +63,14 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         >
           <li>
             {previous && (
-              <Link to={previous.fields.slug} rel="prev">
+              <Link to={previous.frontmatter.path} rel="prev">
                 ← {previous.frontmatter.title}
               </Link>
             )}
           </li>
           <li>
             {next && (
-              <Link to={next.fields.slug} rel="next">
+              <Link to={next.frontmatter.path} rel="next">
                 {next.frontmatter.title} →
               </Link>
             )}
@@ -83,7 +84,10 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
 export default BlogPostTemplate;
 
 export const pageQuery = graphql`
-  query BlogPostBySlug($slug: String!) {
+  query BlogPostBySlug(
+    $slug: String!
+    $readNext: String = "/eclipse-for-node/"
+  ) {
     site {
       siteMetadata {
         title
@@ -94,8 +98,21 @@ export const pageQuery = graphql`
       excerpt(pruneLength: 160)
       body
       frontmatter {
-        title
         date(formatString: "MMMM DD, YYYY")
+        path
+        title
+        description
+        author
+        layout
+        readNext
+        issueNumber
+      }
+    }
+    readNext: mdx(fields: { slug: { eq: $readNext } }) {
+      frontmatter {
+        date(formatString: "MMMM DD, YYYY")
+        path
+        title
         description
       }
     }
