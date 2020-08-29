@@ -1,11 +1,14 @@
 {
-  "name": "gatsby-starter-blog",
+  "name": "wetainment",
   "private": true,
-  "description": "A starter for a blog powered by Gatsby and Markdown",
-  "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "description": "my private blog and portfolio page",
+  "version": "2.2.0",
+  "author": "Christoph Benjamin Weber",
+  "keywords": [
+    "JavaScript"
+  ],
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/kriswep/wetainment/issues"
   },
   "dependencies": {
     "@mdx-js/mdx": "^1.6.16",
@@ -34,21 +37,19 @@
     "react-typography": "^0.16.19",
     "typeface-merriweather": "0.0.72",
     "typeface-montserrat": "0.0.75",
+    "typeface-nunito": "^1.1.3",
     "typography": "^0.16.19",
     "typography-theme-wordpress-2016": "^0.16.19"
   },
   "devDependencies": {
     "prettier": "2.0.5"
   },
-  "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
-  "keywords": [
-    "gatsby"
-  ],
-  "license": "0BSD",
+  "homepage": "https://github.com/kriswep/wetainment",
+  "license": "MIT",
   "main": "n/a",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gatsbyjs/gatsby-starter-blog.git"
+    "url": "git+https://github.com/kriswep/wetainment.git"
   },
   "scripts": {
     "build": "gatsby build",
