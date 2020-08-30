@@ -4,6 +4,12 @@ import { Link } from 'gatsby';
 
 import GlobalStyle from './global.style';
 
+const PageWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+`;
+
 const Header = styled.header`
   color: var(--header-text-color, #000000);
   padding: var(--header-padding);
@@ -41,6 +47,7 @@ const Header = styled.header`
   }
   nav {
     display: flex;
+    max-width: 50rem;
   }
   ul {
     display: flex;
@@ -78,6 +85,27 @@ const Header = styled.header`
   }
 `;
 
+const Main = styled.main`
+  color: var(--main-text-color, #f0eed6);
+  padding: var(--main-padding);
+  & > div {
+    max-width: 50rem;
+  }
+  a {
+    color: inherit;
+  }
+`;
+
+const Footer = styled.footer`
+  color: var(--footer-text-color, #f5de09);
+  padding: var(--footer-padding);
+  margin-top: auto;
+  background: var(--footer-bg-color);
+  a {
+    color: inherit;
+  }
+`;
+
 const Layout = ({ siteTitle, pageTitle, pageSubTitle, children }) => {
   const header = (
     <Header>
@@ -104,15 +132,13 @@ const Layout = ({ siteTitle, pageTitle, pageSubTitle, children }) => {
   return (
     <>
       <GlobalStyle />
-      <div>
+      <PageWrapper>
         {header}
-        <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
-      </div>
+        <Main>
+          <div>{children}</div>
+        </Main>
+        <Footer>Made with ❤ by @kriswep</Footer>
+      </PageWrapper>
     </>
   );
 };

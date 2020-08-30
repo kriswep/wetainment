@@ -11,16 +11,34 @@ const GlobalStyle = createGlobalStyle`
   --header-h2-line-height: 2rem;
   --header-h3-font-size: 1.125rem;
   --header-h3-line-height: 1.5rem;
+
+  --main-bg-color: #373737;
+  --main-text-color: #F0EED6;
+  --main-accent-color: #FFD56C;
+  --main-padding: 3.75rem 16.5rem;
+
+  
+  --footer-bg-color: #F5DE09;
+  --footer-text-color: #000000;
+  --footer-padding: 2rem 16.5rem;
 }
 
 @media (max-width: 70rem) { 
   :root {
     --header-padding: 3.75rem 10.5rem;
+
+    --main-padding: 3.75rem 10.5rem;
+
+    --footer-padding: 2rem 10.5rem;
   }
  }
 @media (max-width: 52.5rem) { 
   :root {
     --header-padding: 3.75rem 7rem;
+
+    --main-padding: 3.75rem 7rem;
+
+    --footer-padding: 2rem 7rem;
   }
  }
 @media (max-width: 45rem) { 
@@ -29,12 +47,20 @@ const GlobalStyle = createGlobalStyle`
     --header-h1-margin: 3.75rem 0;
     --header-h1-font-size: 3rem;
     --header-h1-line-height: 3.5rem;
+
+    --main-padding: 3.75rem 3.75rem;
+
+    --footer-padding: 2rem 3.75rem;
   }
  }
 @media (max-width: 40rem) { 
   :root {
     --header-padding: 1rem 1rem;
     --header-h1-margin: 1rem 0;
+
+    --main-padding: 1rem 1rem;
+
+    --footer-padding: 1rem 1rem;
   }
  }
 @media (max-width: 32.5rem) { 
@@ -50,14 +76,18 @@ const GlobalStyle = createGlobalStyle`
   }
  }
 
+body{
+  background-color: var(--main-bg-color, 373737);
+}
+
 .gatsby-highlight-code-line {
-    background-color: #feb;
-    display: block;
-    margin-right: -1em;
-    margin-left: -1em;
-    padding-right: 1em;
-    padding-left: 0.75em;
-    border-left: 0.25em solid #f99;
+  background-color: #feb;
+  display: block;
+  margin-right: -1em;
+  margin-left: -1em;
+  padding-right: 1em;
+  padding-left: 0.75em;
+  border-left: 0.25em solid #f99;
 }
 
 /**
