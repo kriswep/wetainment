@@ -5,8 +5,8 @@ module.exports = {
       name: `Christoph Benjamin Weber`,
       summary: `Interested in all frontend stuff`,
     },
-    description: `wetainment, blog and portfolio`,
-    siteUrl: `https://wetainment.com/`,
+    description: `wetainment, blog and portfolio. Read about modern frontend technologies.`,
+    siteUrl: `https://wetainment.com`,
     social: {
       twitter: `kriswep`,
     },
@@ -36,6 +36,7 @@ module.exports = {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 590,
+              linkImagesToOriginal: true,
             },
           },
           {
@@ -47,17 +48,12 @@ module.exports = {
           `gatsby-remark-prismjs`,
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-smartypants`,
+          'gatsby-remark-social-cards',
         ],
       },
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    // {
-    //   resolve: `gatsby-plugin-google-analytics`,
-    //   options: {
-    //     //trackingId: `ADD YOUR TRACKING ID HERE`,
-    //   },
-    // },
     // `gatsby-plugin-feed`,
     {
       resolve: `gatsby-plugin-manifest`,
@@ -79,8 +75,30 @@ module.exports = {
         omitGoogleFont: true,
       },
     },
+    {
+      resolve: 'gatsby-plugin-matomo',
+      options: {
+        siteId: '1',
+        matomoUrl: 'https://matomo.wetainment.com',
+        siteUrl: 'https://wetainment.com',
+        // All the optional settings
+        // exclude: ['/offline-plugin-app-shell-fallback/'],
+        // requireConsent: false,
+        disableCookies: true,
+        // localScript: '/piwik.js',
+        // dev: false,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-canonical-urls`,
+      options: {
+        siteUrl: `https://wetainment.com`,
+        stripQueryString: true,
+      },
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
+    'gatsby-plugin-remove-serviceworker',
   ],
 };

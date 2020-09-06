@@ -21,6 +21,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
       <SEO
         title={`${post.frontmatter.title}`}
         description={post.frontmatter.description || post.excerpt}
+        slug={post.slug}
       />
       <article>
         <MDXRenderer>{post.body}</MDXRenderer>
@@ -78,6 +79,7 @@ export const pageQuery = graphql`
     }
     mdx(fields: { slug: { eq: $slug } }) {
       id
+      slug
       excerpt(pruneLength: 160)
       body
       frontmatter {

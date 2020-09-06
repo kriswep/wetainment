@@ -8,15 +8,14 @@ import SEO from '../components/seo';
 const CardWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  --margin: 2rem;
-  margin: calc(var(--margin) * -1);
+  margin: calc(var(--blog-list-margin) * -1);
 `;
 const Card = styled.article`
   flex-grow: 1;
   flex-basis: 22rem;
-  margin: var(--margin);
+  margin: var(--blog-list-margin);
   h3 {
-    margin: 0 0 2rem 0;
+    margin: var(--blog-list-header-margin);
     font-size: 2.25rem;
   }
   h3 > a {
@@ -45,7 +44,7 @@ const Card = styled.article`
 const Pagination = styled.nav`
   display: flex;
   justify-content: space-between;
-  margin: 4rem 0 0;
+  margin-top: calc(var(--blog-list-margin) * 2);
   & > .older-1 {
     margin-left: auto;
   }

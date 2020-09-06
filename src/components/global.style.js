@@ -16,11 +16,13 @@ const GlobalStyle = createGlobalStyle`
   --main-text-color: #F0EED6;
   --main-accent-color: #FFD56C;
   --main-padding: 3.75rem 16.5rem;
-
   
   --footer-bg-color: #F5DE09;
   --footer-text-color: #000000;
   --footer-padding: 2rem 16.5rem;
+
+  --blog-list-margin: 2rem;
+  --blog-list-header-margin: 0 0 2rem 0;
 }
 
 @media (max-width: 70rem) { 
@@ -61,6 +63,9 @@ const GlobalStyle = createGlobalStyle`
     --main-padding: 1rem 1rem;
 
     --footer-padding: 1rem 1rem;
+
+    --blog-list-margin: 1rem;
+  --blog-list-header-margin: 0 0 1rem 0;
   }
  }
 @media (max-width: 32.5rem) { 
