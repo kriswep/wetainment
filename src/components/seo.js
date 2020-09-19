@@ -86,7 +86,6 @@ const SEO = ({ description, lang, meta, title, slug }) => {
   }
 
   allMeta = allMeta.concat(meta);
-  console.log(allMeta);
 
   return (
     <Helmet

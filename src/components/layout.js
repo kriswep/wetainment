@@ -58,8 +58,10 @@ const Header = styled.header`
     margin-left: 2.25rem;
   }
   a {
-    box-shadow: none;
     color: inherit;
+  }
+  a:not(.active) {
+    box-shadow: none;
   }
 
   @media (max-width: 27rem) {
@@ -103,6 +105,20 @@ const Footer = styled.footer`
   background: var(--footer-bg-color);
   a {
     color: inherit;
+    box-shadow: none;
+  }
+  p {
+    display: flex;
+    margin: 0;
+  }
+  .side {
+    margin-left: auto;
+  }
+  .side a {
+    margin: var(--footer-side-margin);
+  }
+  .side a:first-child {
+    margin-left: 0;
   }
 `;
 
@@ -115,13 +131,19 @@ const Layout = ({ siteTitle, pageTitle, pageSubTitle, children }) => {
         </h3>
         <ul>
           <li>
-            <Link to={`/`}>Articles</Link>
+            <Link to={`/`} activeClassName="active">
+              Articles
+            </Link>
           </li>
           <li>
-            <Link to={`/`}>About</Link>
+            <Link to={`/about`} activeClassName="active">
+              About
+            </Link>
           </li>
           <li>
-            <Link to={`/`}>Contact</Link>
+            <Link to={`/contact`} activeClassName="active">
+              Contact
+            </Link>
           </li>
         </ul>
       </nav>
@@ -137,7 +159,17 @@ const Layout = ({ siteTitle, pageTitle, pageSubTitle, children }) => {
         <Main>
           <div>{children}</div>
         </Main>
-        <Footer>Made with ❤ by @kriswep</Footer>
+        <Footer>
+          <p>
+            <span>
+              Made with ❤ by <a href="https://twitter.com/kriswep">@kriswep</a>
+            </span>
+            <span className="side">
+              <Link to={`/privacy`}>Privacy</Link>
+              <Link to={`/imprint`}>Imprint</Link>
+            </span>
+          </p>
+        </Footer>
       </PageWrapper>
     </>
   );

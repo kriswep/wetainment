@@ -20,6 +20,7 @@ const GlobalStyle = createGlobalStyle`
   --footer-bg-color: #F5DE09;
   --footer-text-color: #000000;
   --footer-padding: 2rem 16.5rem;
+  --footer-side-margin: 0 0 0 2rem;
 
   --blog-list-margin: 2rem;
   --blog-list-header-margin: 0 0 2rem 0;
@@ -63,21 +64,24 @@ const GlobalStyle = createGlobalStyle`
     --main-padding: 1rem 1rem;
 
     --footer-padding: 1rem 1rem;
+    --footer-side-margin: 0 0 0 1rem;
 
     --blog-list-margin: 1rem;
-  --blog-list-header-margin: 0 0 1rem 0;
+    --blog-list-header-margin: 0 0 1rem 0;
   }
  }
 @media (max-width: 32.5rem) { 
   :root {
     --header-h1-font-size: 2rem;
     --header-h1-line-height: 2.5rem;
+
+    --footer-side-margin: 0 0 0 0.5rem;
   }
  }
 @media (max-width: 23.75rem) { 
   :root {
-  --header-h2-font-size: 1.125rem;
-  --header-h2-line-height: 1.5rem;
+    --header-h2-font-size: 1.125rem;
+    --header-h2-line-height: 1.5rem;
   }
  }
 
