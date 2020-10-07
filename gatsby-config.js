@@ -89,6 +89,13 @@ module.exports = {
         // dev: false,
       },
     },
+    // {
+    //   resolve: `gatsby-plugin-plausible`,
+    //   options: {
+    //     domain: `benni-taichi31:19007`,
+    //     customDomain: `http://localhost:8050`,
+    //   },
+    // },
     {
       resolve: `gatsby-plugin-canonical-urls`,
       options: {

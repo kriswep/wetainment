@@ -23,6 +23,7 @@
     "gatsby-plugin-matomo": "^0.8.3",
     "gatsby-plugin-mdx": "^1.2.37",
     "gatsby-plugin-offline": "^3.2.23",
+    "gatsby-plugin-plausible": "0.0.7",
     "gatsby-plugin-react-helmet": "^3.3.10",
     "gatsby-plugin-remove-serviceworker": "^1.0.0",
     "gatsby-plugin-sharp": "^2.6.26",
