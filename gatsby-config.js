@@ -1,55 +1,80 @@
 module.exports = {
   siteMetadata: {
-    title: 'wetainment',
-    author: 'Christoph Benjamin Weber',
-    siteUrl: 'https://wetainment.com',
+    title: `wetainment`,
+    author: {
+      name: `Christoph Benjamin Weber`,
+      summary: `Interested in all frontend stuff`,
+    },
+    description: `wetainment, blog and portfolio. Read about modern frontend technologies.`,
+    siteUrl: `https://wetainment.com`,
+    social: {
+      twitter: `kriswep`,
+    },
   },
-
   plugins: [
-    'gatsby-plugin-catch-links',
-    'gatsby-plugin-styled-components',
+    `gatsby-plugin-styled-components`,
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/src/pages`,
-        name: 'pages',
+        path: `${__dirname}/content/blog`,
+        name: `blog`,
       },
     },
     {
-      resolve: 'gatsby-transformer-remark',
+      resolve: `gatsby-source-filesystem`,
       options: {
-        plugins: [
+        path: `${__dirname}/content/assets`,
+        name: `assets`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        extensions: [`.md`, `.mdx`],
+        gatsbyRemarkPlugins: [
           {
-            resolve: 'gatsby-remark-prismjs',
-            options: {
-              classPrefix: 'language-',
-              inlineCodeMarker: null,
-              aliases: {},
-              showLineNumbers: false,
-            },
-          },
-          {
-            resolve: 'gatsby-remark-images',
+            resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 590,
               linkImagesToOriginal: true,
             },
           },
           {
-            resolve: 'gatsby-remark-responsive-iframe',
+            resolve: `gatsby-remark-responsive-iframe`,
             options: {
-              wrapperStyle: 'margin-bottom: 1.0725rem',
+              wrapperStyle: `margin-bottom: 1.0725rem`,
             },
           },
-          'gatsby-remark-copy-linked-files',
-          'gatsby-remark-smartypants',
+          `gatsby-remark-prismjs`,
+          `gatsby-remark-copy-linked-files`,
+          `gatsby-remark-smartypants`,
           'gatsby-remark-social-cards',
         ],
       },
     },
-    'gatsby-transformer-sharp',
-    'gatsby-plugin-sharp',
-    'gatsby-plugin-react-helmet',
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+    // `gatsby-plugin-feed`,
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `wetainment - blog and portfolio`,
+        short_name: `wetainment`,
+        start_url: `/`,
+        background_color: `#AC9B00`,
+        theme_color: `#F5DE09`,
+        display: `minimal-ui`,
+        icon: `content/assets/ic_launcher_512.png`,
+      },
+    },
+    `gatsby-plugin-react-helmet`,
+    {
+      resolve: `gatsby-plugin-typography`,
+      options: {
+        pathToConfigModule: `src/utils/typography`,
+        omitGoogleFont: true,
+      },
+    },
     {
       resolve: 'gatsby-plugin-matomo',
       options: {
@@ -59,61 +84,28 @@ module.exports = {
         // All the optional settings
         // exclude: ['/offline-plugin-app-shell-fallback/'],
         // requireConsent: false,
-        disableCookies: false,
+        disableCookies: true,
         // localScript: '/piwik.js',
         // dev: false,
       },
     },
+    // {
+    //   resolve: `gatsby-plugin-plausible`,
+    //   options: {
+    //     domain: `benni-taichi31:19007`,
+    //     customDomain: `http://localhost:8050`,
+    //   },
+    // },
     {
-      resolve: 'gatsby-plugin-manifest',
+      resolve: `gatsby-plugin-canonical-urls`,
       options: {
-        name: 'wetainment blog/portfolio',
-        short_name: 'wetainment',
-        start_url: '/',
-        background_color: '#F4F2F3',
-        theme_color: '#DC680B',
-        display: 'standalone',
-        orientation: 'portrait',
-        icons: [
-          {
-            src: '/ic_launcher_48.png',
-            sizes: '48x48',
-            type: 'image/png',
-          },
-          {
-            src: '/ic_launcher_72.png',
-            sizes: '72x72',
-            type: 'image/png',
-          },
-          {
-            src: '/ic_launcher_96.png',
-            sizes: '96x96',
-            type: 'image/png',
-          },
-          {
-            src: '/ic_launcher_144.png',
-            sizes: '144x144',
-            type: 'image/png',
-          },
-          {
-            src: '/ic_launcher_192.png',
-            sizes: '192x192',
-            type: 'image/png',
-          },
-          {
-            src: '/ic_launcher_512.png',
-            sizes: '512x512',
-            type: 'image/png',
-          },
-          {
-            src: '/ic_launcher_1024.png',
-            sizes: '1024x1024',
-            type: 'image/png',
-          },
-        ],
+        siteUrl: `https://wetainment.com`,
+        stripQueryString: true,
       },
     },
-    // 'gatsby-plugin-offline',
+    // this (optional) plugin enables Progressive Web App + Offline functionality
+    // To learn more, visit: https://gatsby.dev/offline
+    // `gatsby-plugin-offline`,
     'gatsby-plugin-remove-serviceworker',
   ],
 };

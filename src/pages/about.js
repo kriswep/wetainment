@@ -2,11 +2,11 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import styled from 'styled-components';
 
-import Layout from '../components/Layout';
+import Layout from '../components/layout';
 // import Link from '../components/Link';
 
 const Link = styled.a`
-  color: ${props => props.theme.darkAccent};
+  color: ${(props) => props.theme.darkAccent};
 `;
 
 const PortfolioImage = styled.img`

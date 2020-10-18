@@ -1,103 +1,87 @@
 import React from 'react';
-import { graphql } from 'gatsby';
-import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
-import styled from 'styled-components';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
+import { Link, graphql } from 'gatsby';
 
-import Layout from '../components/Layout';
-import media from '../styles/media';
-import StyledLink from '../components/Link';
-import Comments from '../components/Comments';
+import Bio from '../components/bio';
+import Layout from '../components/layout';
+import SEO from '../components/seo';
+import { rhythm } from '../utils/typography';
 
-const Article = styled.article`
-  color: ${props => props.theme.darkShades};
-  padding: 0;
-  ${media.m`
-    padding: 0 1rem;
-  `};
-  & a {
-    color: ${props => props.theme.darkAccent};
-  }
-`;
+const BlogPostTemplate = ({ data, pageContext, location }) => {
+  const post = data.mdx;
+  const siteTitle = data.site.siteMetadata.title;
+  const { previous, next } = pageContext;
 
-const ReadNext = styled.footer`
-  border-top: solid 1px ${props => props.theme.lightestAccent};
-  margin: 2.5rem 0 0.5rem;
-`;
-const ReadNextHeader = styled.h6`
-  margin: 0.1rem 0;
-`;
-const ReadNextDescription = styled.p`
-  margin: 0.1rem 0;
-  font-size: 0.8rem;
-`;
-
-/* eslint-disable react/no-danger */
-const Template = props => {
-  const { markdownRemark: post, readNext, site } = props.data;
-  // <meta name="robots" content="noindex" />
-  const meta = [
-    { name: 'description', content: post.frontmatter.description },
-    { name: 'twitter:card', content: 'summary_large_image' },
-    { name: 'twitter:site', content: post.frontmatter.author },
-    { name: 'twitter:title', content: post.frontmatter.title },
-    { name: 'twitter:description', content: post.frontmatter.description },
-    {
-      name: 'twitter:image',
-      content: `${site.siteMetadata.siteUrl}${
-        post.fields.slug
-      }twitter-card.jpg`,
-    },
-    {
-      name: 'twitter:image:alt',
-      content: post.frontmatter.title,
-    },
-  ];
-  if (post.frontmatter.noindex) {
-    meta.push({ name: 'robots', content: 'noindex' });
-  }
   return (
-    <Layout title={post.frontmatter.title}>
-      <Article>
-        <Helmet title={`${post.frontmatter.title} - wetainment`} meta={meta} />
-        <div dangerouslySetInnerHTML={{ __html: post.html }} />
-        {post.frontmatter.date && post.frontmatter.date !== 'Invalid date' && (
-          <em>Published {post.frontmatter.date}</em>
-        )}
+    <Layout
+      location={location}
+      siteTitle={siteTitle}
+      pageTitle={post.frontmatter.title}
+    >
+      <SEO
+        title={`${post.frontmatter.title}`}
+        description={post.frontmatter.description || post.excerpt}
+        slug={post.slug}
+      />
+      <article>
+        <MDXRenderer>{post.body}</MDXRenderer>
+        <hr
+          style={{
+            marginBottom: rhythm(1),
+          }}
+        />
+        <footer>
+          <Bio />
+        </footer>
+      </article>
 
-        {post.frontmatter.layout === 'post' && post.frontmatter.issueNumber && (
-          <Comments issueNumber={post.frontmatter.issueNumber} />
-        )}
-        {readNext && post.frontmatter.layout === 'post' && (
-          <ReadNext>
-            <ReadNextHeader>READ THIS NEXT:</ReadNextHeader>
-            <StyledLink to={readNext.frontmatter.path}>
-              {readNext.frontmatter.title}
-            </StyledLink>
-            <ReadNextDescription>
-              {readNext.frontmatter.description}
-            </ReadNextDescription>
-          </ReadNext>
-        )}
-      </Article>
+      <nav>
+        <ul
+          style={{
+            display: `flex`,
+            flexWrap: `wrap`,
+            justifyContent: `space-between`,
+            listStyle: `none`,
+            padding: 0,
+          }}
+        >
+          <li>
+            {previous && (
+              <Link to={previous.frontmatter.path} rel="prev">
+                ← {previous.frontmatter.title}
+              </Link>
+            )}
+          </li>
+          <li>
+            {next && (
+              <Link to={next.frontmatter.path} rel="next">
+                {next.frontmatter.title} →
+              </Link>
+            )}
+          </li>
+        </ul>
+      </nav>
     </Layout>
   );
 };
-/* eslint-enable react/no-danger */
 
-Template.propTypes = {
-  data: PropTypes.shape().isRequired,
-};
+export default BlogPostTemplate;
 
-export default Template;
-
-export const query = graphql`
-  query($slug: String!, $readNext: String = "/eclipse-for-node/") {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      html
-      fields {
-        slug
+export const pageQuery = graphql`
+  query BlogPostBySlug(
+    $slug: String!
+    $readNext: String = "/eclipse-for-node/"
+  ) {
+    site {
+      siteMetadata {
+        title
       }
+    }
+    mdx(fields: { slug: { eq: $slug } }) {
+      id
+      slug
+      excerpt(pruneLength: 160)
+      body
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
         path
@@ -109,18 +93,12 @@ export const query = graphql`
         issueNumber
       }
     }
-    readNext: markdownRemark(fields: { slug: { eq: $readNext } }) {
+    readNext: mdx(fields: { slug: { eq: $readNext } }) {
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
         path
         title
         description
-      }
-    }
-    site: site {
-      siteMetadata {
-        title
-        siteUrl
       }
     }
   }
