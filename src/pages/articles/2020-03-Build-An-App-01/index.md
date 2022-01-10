@@ -1,5 +1,5 @@
 ---
-title: "Let's build an app - Part 1"
+title: "Let's build an app"
 date: '2020-04-03T20:00:00.000Z'
 layout: post
 path: '/articles/build-an-app-01/'

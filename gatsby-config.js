@@ -51,19 +51,29 @@ module.exports = {
     'gatsby-plugin-sharp',
     'gatsby-plugin-react-helmet',
     {
-      resolve: 'gatsby-plugin-matomo',
+      resolve: `gatsby-plugin-plausible`,
       options: {
-        siteId: '1',
-        matomoUrl: 'https://matomo.wetainment.com',
-        siteUrl: 'https://wetainment.com',
-        // All the optional settings
-        // exclude: ['/offline-plugin-app-shell-fallback/'],
-        // requireConsent: false,
-        disableCookies: false,
-        // localScript: '/piwik.js',
-        // dev: false,
+        domain: `wetainment.com`,
+        // Currently when using a custom domain with self-hosted plausible, the script
+        // path will incorrectly point to index.js. Here we force the correct path...
+        // https://github.com/pixelplicity/gatsby-plugin-plausible/issues/49
+        customDomain: `plausible.wetainment.com/js/plausible.js?original=`,
       },
     },
+    // {
+    //   resolve: 'gatsby-plugin-matomo',
+    //   options: {
+    //     siteId: '1',
+    //     matomoUrl: 'https://matomo.wetainment.com',
+    //     siteUrl: 'https://wetainment.com',
+    //     // All the optional settings
+    //     // exclude: ['/offline-plugin-app-shell-fallback/'],
+    //     // requireConsent: false,
+    //     disableCookies: false,
+    //     // localScript: '/piwik.js',
+    //     // dev: false,
+    //   },
+    // },
     {
       resolve: 'gatsby-plugin-manifest',
       options: {

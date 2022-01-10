@@ -33,6 +33,7 @@
     "gatsby-plugin-manifest": "^2.0.12",
     "gatsby-plugin-matomo": "^0.7.2",
     "gatsby-plugin-offline": "^2.0.20",
+    "gatsby-plugin-plausible": "^0.0.7",
     "gatsby-plugin-react-helmet": "^3.0.5",
     "gatsby-plugin-remove-serviceworker": "^1.0.0",
     "gatsby-plugin-sharp": "^2.0.17",
@@ -84,7 +85,7 @@
     "singleQuote": true,
     "trailingComma": "all"
   },
-  "husky": {
+  "_husky": {
     "hooks": {
       "pre-commit": "lint-staged"
     }
