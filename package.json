@@ -49,7 +49,7 @@
     "gatsby-transformer-sharp": "^2.1.9",
     "gitcomment": "^0.8.0",
     "normalize.css": "^8.0.1",
-    "prismjs": "^1.15.0",
+    "prismjs": "^1.27.0",
     "prop-types": "^15.6.0",
     "query-string": "^6.2.0",
     "react": "^16.7.0",
