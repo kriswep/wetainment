@@ -10,21 +10,7 @@
   "main": "n/a",
   "scripts": {
     "build": "gatsby build",
-    "develop": "gatsby develop",
-    "_start": "gatsby serve --port 5020",
-    "lint": "eslint .",
-    "format": "prettier --write ./src/**/*.js",
-    "build-and-test": "npm-run-all --sequential build test:e2e",
-    "validate": "npm-run-all --parallel lint test build-and-test",
-    "test": "is-ci \"test:coverage\" \"test:watch\"",
-    "test:coverage": "jest --coverage",
-    "test:watch": "jest --watch",
-    "test:debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand --watch",
-    "install:cypress": "cypress install",
-    "cy": "is-ci \"test:e2e\" \"cy:open\"",
-    "cy:open": "cypress open",
-    "cy:run": "CYPRESS_BASE_URL=http://localhost:5020 cypress run",
-    "test:e2e": "start-server-and-test start http://localhost:5020 cy:run"
+    "develop": "gatsby develop"
   },
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.0",
