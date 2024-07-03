@@ -11,7 +11,7 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "start": "gatsby serve --port 5020",
+    "_start": "gatsby serve --port 5020",
     "lint": "eslint .",
     "format": "prettier --write ./src/**/*.js",
     "build-and-test": "npm-run-all --sequential build test:e2e",
